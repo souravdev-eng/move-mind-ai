@@ -1,0 +1,150 @@
+{
+  "timestamp": "2026-03-20T00:21:33.275535",
+  "config": {
+    "embedding_model": "text-embedding-3-small",
+    "llm_model": "gpt-4o-mini",
+    "retriever_k": 5,
+    "num_vectors": 292
+  },
+  "custom_scores": {
+    "faithfulness": 1.0,
+    "answer_relevance": 0.7142857142857143,
+    "context_relevance": 0.7142857142857143,
+    "retrieval_hit_rate": 0.8333333333333334
+  },
+  "per_question": [
+    {
+      "question": "What state management libraries does the AMS Admin Tool use?",
+      "answer": "The AMS Admin Tool uses **Redux Toolkit** for global client-side state management and **TanStack Query** for managing server data.",
+      "ground_truth": "The AMS Admin Tool uses Redux Toolkit for global client-side state, TanStack Query for server data, redux-persist for persisted local state, and useState/useReducer for local UI state.",
+      "scores": {
+        "faithfulness": {
+          "score": 1,
+          "reason": "Every claim in the answer is directly supported by the context, which states that the AMS Admin Tool uses Redux Toolkit for global client-side state management and TanStack Query for managing server data."
+        },
+        "answer_relevance": {
+          "score": 1,
+          "reason": "The answer directly addresses the question by naming the state management libraries used by the AMS Admin Tool."
+        },
+        "context_relevance": {
+          "score": 1.0,
+          "reason": "All retrieved chunks mention the state management libraries used by the AMS Admin Tool, specifically Redux Toolkit and TanStack Query."
+        }
+      }
+    },
+    {
+      "question": "How does the Journey Canvas render nodes visually?",
+      "answer": "The Journey Canvas renders nodes visually based on their type, which is determined by the template or structure of each journey page. Each node type is represented by a specific visual style:\n\n- **script**: Blue card\n- **form**: Purple card\n- **list**: Green card\n- **condition**: Amber pill (compact)\n- **end**: Red card\n- **journey**: Cyan card\n- **datePicker**: Pink card\n- **default**: Gray card (for unrecognized templates)\n\nThe canvas uses the React Flow library to create these visual representations as part of an interactive node-and-edge flowchart.",
+      "ground_truth": "The Journey Canvas uses React Flow (@xyflow/react) to render nodes as an interactive flowchart with drag-and-drop, visual edge connections, and auto-layout via dagre.",
+      "scores": {
+        "faithfulness": {
+          "score": 1,
+          "reason": "Every claim in the answer about how the Journey Canvas renders nodes visually based on their type and the specific visual styles for each node type is fully supported by the context."
+        },
+        "answer_relevance": {
+          "score": 1,
+          "reason": "The answer directly addresses the question by explaining how the Journey Canvas visually renders nodes based on their type and provides specific details about the visual styles used."
+        },
+        "context_relevance": {
+          "score": 1.0,
+          "reason": "All retrieved chunks provide relevant information about how the Journey Canvas visually renders nodes, including details on node types, visual representations, and the overall functionality of the canvas."
+        }
+      }
+    },
+    {
+      "question": "What are the anti-patterns to avoid according to the code quality guide?",
+      "answer": "The anti-patterns to avoid according to the code quality guide are:\n\n- **Never store server data in Redux** \u2014 use TanStack Query instead.\n- **Never dispatch in render** \u2014 use `useEffect` or callbacks.\n- **Never read stale closure state in async operations** \u2014 use `store.getState()`.\n- **Never mutate state outside Immer (Redux reducers)**.",
+      "ground_truth": "Anti-patterns include storing server data in Redux, dispatching in render causing infinite loops, reading stale closure state in async operations, and mutating state outside Immer reducers.",
+      "scores": {
+        "faithfulness": {
+          "score": 1,
+          "reason": "Every claim in the answer is directly supported by the context provided, specifically the anti-patterns listed in the guide."
+        },
+        "answer_relevance": {
+          "score": 1,
+          "reason": "The answer directly lists the anti-patterns to avoid according to the code quality guide, addressing the question asked."
+        },
+        "context_relevance": {
+          "score": 1.0,
+          "reason": "All retrieved chunks contain relevant information about anti-patterns to avoid according to the code quality guide."
+        }
+      }
+    },
+    {
+      "question": "What Firestore collections does the Action Builder use?",
+      "answer": "The Action Builder uses the following Firestore collections based on the environment:\n\n- **wip**: `actiontype-wip`\n- **prewip**: `actiontype-prewip`\n- **dev**: `actiontype-wip` (shares with wip)\n- **uat**: `actiontype-uat`\n- **prod**: `actiontype-prod`\n- **preprodflex**: `actiontype-preprodflex`",
+      "ground_truth": "The Action Builder uses environment-scoped collections like actiontype-wip, actiontype-prewip, actiontype-dev, etc.",
+      "scores": {
+        "faithfulness": {
+          "score": 1,
+          "reason": "Every claim in the answer about the Firestore collections and their corresponding environments is directly supported by the context provided."
+        },
+        "answer_relevance": {
+          "score": 1,
+          "reason": "The answer directly lists the Firestore collections used by the Action Builder, addressing the question accurately."
+        },
+        "context_relevance": {
+          "score": 1.0,
+          "reason": "All retrieved chunks provide relevant information about the Firestore collections used by the Action Builder."
+        }
+      }
+    },
+    {
+      "question": "How does the theming system handle multiple themes?",
+      "answer": "The theming system in the AMS Admin Tool supports multiple themes by providing 6 pre-built themes (3 light and 3 dark) that are managed through MUI's theming system. The active theme is selected by the user in the settings, which triggers a series of actions that update the theme in the Redux store and persist it across sessions using `redux-persist`.\n\nEach theme follows a defined `ThemeConfig` interface, which includes properties such as `id`, `name`, `description`, `mode`, `preview`, and `palette`. The palette defines the color scheme for various UI elements.\n\nThe themes are organized in a theme registry, where each theme's configuration is stored and can be accessed programmatically. The system uses MUI's `styled()` API and `sx` prop for styling, ensuring that there are no hardcoded values for colors, spacing, or font sizes in the codebase. This architecture allows for easy switching between themes and consistent styling across the application.",
+      "ground_truth": "The theming system uses Material UI's ThemeProvider with custom theme configurations. Theme preference is persisted via redux-persist.",
+      "scores": {
+        "faithfulness": {
+          "score": 1,
+          "reason": "Every claim in the answer is supported by the context, including the number of themes, the user selection process, the use of Redux and redux-persist, the ThemeConfig interface, and the styling approach."
+        },
+        "answer_relevance": {
+          "score": 1,
+          "reason": "The answer directly addresses how the theming system handles multiple themes by explaining the support for pre-built themes, user selection, theme management, and the architecture involved."
+        },
+        "context_relevance": {
+          "score": 1.0,
+          "reason": "All retrieved chunks provide relevant information about how the theming system handles multiple themes, including theme selection, configuration, and persistence."
+        }
+      }
+    },
+    {
+      "question": "What is the deployment process for the application?",
+      "answer": "The provided context does not contain information about the deployment process for the AMS Admin Tool application.",
+      "ground_truth": "The deployment process details are documented in the operations section.",
+      "scores": {
+        "faithfulness": {
+          "score": 1,
+          "reason": "The answer accurately states that the context does not include information about the deployment process for the AMS Admin Tool application, which is supported by the absence of such details in the provided context."
+        },
+        "answer_relevance": {
+          "score": 0,
+          "reason": "The answer states that there is no information about the deployment process, which does not address the question."
+        },
+        "context_relevance": {
+          "score": 0.0,
+          "reason": "None of the retrieved chunks provide information about the deployment process for the application."
+        }
+      }
+    },
+    {
+      "question": "What is the capital of France?",
+      "answer": "The context provided does not contain information about the capital of France. Therefore, I cannot answer that question.",
+      "ground_truth": "This question is out of domain. The documentation does not contain information about geography.",
+      "scores": {
+        "faithfulness": {
+          "score": 1,
+          "reason": "The answer correctly states that the context does not contain information about the capital of France, which is fully supported by the provided context."
+        },
+        "answer_relevance": {
+          "score": 0,
+          "reason": "The answer does not provide the capital of France and instead states an inability to answer."
+        },
+        "context_relevance": {
+          "score": 0.0,
+          "reason": "None of the retrieved chunks provide information about the capital of France."
+        }
+      }
+    }
+  ]
+}

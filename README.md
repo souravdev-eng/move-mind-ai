@@ -247,3 +247,134 @@ Endpoints:
 ```bash
 pytest tests/
 ```
+
+---
+
+## Notebook Learning Path
+
+The `notebooks/` directory is a structured, hands-on curriculum for building production-grade RAG systems. Each notebook is self-contained and runnable — use them as reference when building the actual `app/` code.
+
+> **Kernel:** Always select the `.venv (Python 3.13.5)` kernel before running.
+
+| # | Notebook | What You Learn | Key Concepts |
+| --- | --- | --- | --- |
+| 1 | `1-data-preprocessing.ipynb` | Parse raw markdown docs into enriched chunks | Heading-aware splitting, `MarkdownHeaderTextSplitter` + `RecursiveCharacterTextSplitter`, metadata enrichment (doc_type, audience, section hierarchy) |
+| 2 | `2-ingestion.ipynb` | Embed chunks and build a vector index | OpenAI `text-embedding-3-small` (1536 dims), FAISS index, persist/load from disk, validation queries |
+| 3 | `3-retrieval.ipynb` | Compare retrieval strategies | Baseline similarity search, metadata filtering, multi-query retriever (LLM generates query variants), relevance scores, out-of-domain detection |
+| 4 | `4-langgraph-rag.ipynb` | Build a LangGraph RAG flow | `route_query → retrieve_docs → generate_answer`, LLM-based router, retriever registry (extensible to multiple knowledge bases) |
+| 5 | `5-evaluation.ipynb` | Measure RAG quality objectively | Golden eval dataset, LLM-as-judge (faithfulness, answer relevance, context relevance), Ragas framework, retrieval hit rate, saved results for comparison |
+| 6 | `6-memory.ipynb` | Multi-turn conversations | Question condensation (rewrite follow-ups), `MemorySaver` checkpointer, thread-based isolation, chat history in prompts |
+| 7 | `7-reranking.ipynb` | Improve precision after retrieval | Over-retrieve (k=15) → LLM rerank → keep top-5, bi-encoder vs cross-encoder tradeoff, rerank node in LangGraph |
+| 8 | `8-hybrid-search.ipynb` | Combine keyword + semantic search | BM25 retriever, Reciprocal Rank Fusion (RRF), ensemble weights, when BM25 beats vector search |
+| 9 | `9-adaptive-rag.ipynb` | Self-correcting RAG with quality gates | Document grading, hallucination detection, usefulness check, query rewriting, conditional edges, retry budget |
+
+### Recommended Run Order
+
+```
+1-data-preprocessing  →  2-ingestion  →  3-retrieval  →  4-langgraph-rag
+                                                              ↓
+                         5-evaluation  ←  run after any pipeline change
+                                                              ↓
+                      6-memory  →  7-reranking  →  8-hybrid-search  →  9-adaptive-rag
+```
+
+### From Notebooks to App
+
+Each notebook teaches a pattern you can pull into `app/`:
+
+| Notebook | Maps to                | What to extract                                  |
+| -------- | ---------------------- | ------------------------------------------------ |
+| 1–2      | `app/rag/ingestion.py` | Chunking strategy, embedding config              |
+| 3        | `app/rag/retriever.py` | Retriever factory with configurable strategy     |
+| 4        | `app/graphs/agent.py`  | Graph structure, router node, retriever registry |
+| 5        | `tests/test_rag.py`    | Eval harness as CI/CD quality gate               |
+| 6        | `app/graphs/agent.py`  | Add checkpointer + condense node                 |
+| 7        | `app/rag/retriever.py` | Add rerank step after retrieval                  |
+| 8        | `app/rag/retriever.py` | Hybrid BM25+vector retriever                     |
+| 9        | `app/graphs/agent.py`  | Full adaptive graph with conditional edges       |
+
+---
+
+## RAG Concepts Reference
+
+Quick reference for the core concepts used across this project.
+
+### Chunking
+
+- **Strategy:** Heading-aware splitting → `MarkdownHeaderTextSplitter` preserves document structure, then `RecursiveCharacterTextSplitter` enforces size limits
+- **Config:** 1000 chars per chunk, 200 char overlap
+- **Metadata:** Each chunk carries `source`, `doc_type`, `section`, `heading_hierarchy`, `chunk_index`
+
+### Embeddings
+
+- **Model:** OpenAI `text-embedding-3-small` (1536 dimensions)
+- **Why:** Good balance of quality, speed, and cost for technical docs
+
+### Vector Store
+
+- **Engine:** FAISS (CPU) — fast, local, no infrastructure needed
+- **Persistence:** Saved to `data/vectorstore/` (index.faiss + index.pkl)
+
+### Retrieval Strategies
+
+| Strategy             | Recall   | Precision | Latency | Best For                |
+| -------------------- | -------- | --------- | ------- | ----------------------- |
+| Baseline (k=5)       | Moderate | Good      | Fast    | Simple queries          |
+| Metadata filter      | Targeted | High      | Fast    | Scoped questions        |
+| Multi-query          | High     | Moderate  | Slower  | Ambiguous questions     |
+| Reranking            | High     | High      | Slower  | When precision matters  |
+| Hybrid (BM25+vector) | Highest  | Good      | Medium  | Exact terms + semantics |
+| Adaptive             | High     | Highest   | Slowest | Production reliability  |
+
+### Evaluation Metrics
+
+| Metric             | What It Measures                                 |
+| ------------------ | ------------------------------------------------ |
+| Faithfulness       | Is the answer grounded in the retrieved context? |
+| Answer Relevance   | Does the answer address the question?            |
+| Context Relevance  | Are the retrieved chunks relevant?               |
+| Context Precision  | Are relevant chunks ranked higher?               |
+| Context Recall     | Did we retrieve everything needed?               |
+| Retrieval Hit Rate | Did the expected source appear in top-k?         |
+
+---
+
+## Future Roadmap
+
+### Level 1 — Production App
+
+- [ ] FastAPI serving with streaming SSE (`astream_events`)
+- [ ] WebSocket chat UI (React/Next.js)
+- [ ] LangSmith tracing (config already in `.env.example`)
+- [ ] Persistent memory (`PostgresSaver` / `SqliteSaver`)
+
+### Level 2 — Robustness & Scale
+
+- [ ] Incremental ingestion (re-embed only changed docs)
+- [ ] Document CRUD API (add/update/delete from vectorstore)
+- [ ] Semantic caching (Redis or LangChain cache)
+- [ ] Guardrails (PII detection, prompt injection defense)
+- [ ] Rate limiting & authentication
+
+### Level 3 — Advanced RAG
+
+- [ ] Agentic RAG with tool calling (LLM decides when to retrieve)
+- [ ] Multi-index routing (5+ specialized knowledge bases)
+- [ ] Parent-child retrieval (small chunks for search, large chunks for context)
+- [ ] Semantic chunking (split by meaning, not character count)
+- [ ] Knowledge graph RAG (Neo4j for relational reasoning)
+
+### Level 4 — Intelligence & Optimization
+
+- [ ] Fine-tuned embeddings on domain-specific data
+- [ ] Prompt optimization (DSPy / auto-tuning with eval dataset)
+- [ ] A/B testing (serve two graph variants, compare scores)
+- [ ] User feedback loop (thumbs up/down → improve retrieval)
+- [ ] Multi-modal RAG (embed architecture diagrams + screenshots)
+
+### Level 5 — Platform
+
+- [ ] Multi-tenant (per-team indexes and permissions)
+- [ ] CI/CD eval gate (block deploys if scores drop)
+- [ ] Cost monitoring (tokens per query, embedding costs)
+- [ ] Observability dashboard (latency, hit rate, hallucination rate)
