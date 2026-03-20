@@ -2,6 +2,7 @@
 
 import logging
 
+from langchain_core.documents import Document
 from langchain_openai import ChatOpenAI
 
 
@@ -16,6 +17,14 @@ def get_logger(name: str) -> logging.Logger:
         logger.addHandler(handler)
         logger.setLevel(logging.INFO)
     return logger
+
+
+def format_docs(docs: list[Document], separator: str = "\n\n---\n\n") -> str:
+    """Format retrieved documents into a context string with source metadata."""
+    return separator.join(
+        f"[{doc.metadata.get('source', '?')} > {doc.metadata.get('section', '?')}]\n{doc.page_content}"
+        for doc in docs
+    )
 
 
 _llm: ChatOpenAI | None = None

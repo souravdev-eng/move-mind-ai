@@ -11,8 +11,4 @@ def load_processed_chunks(chunk_file_path: Path | str) -> list[Document]:
     documents = []
     for chunk in chunks:
         documents.append(Document(page_content=chunk["page_content"], metadata=chunk["metadata"]))
-    print(f"Loaded {len(documents)} documents from {chunk_file_path.name}")
-    print(f"\nSample document:")
-    print(f"  Content: {documents[0].page_content[:150]}...")
-    print(f"  Metadata keys: {list(documents[0].metadata.keys())}")
     return documents

@@ -9,7 +9,7 @@ class Settings(BaseSettings):
 
     # --- LLM ---
     OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY")
-    LLM_MODEL_NAME: str = "gpt-4o-mini"
+    LLM_MODEL_NAME: str = "gpt-4o"
     LLM_TEMPERATURE: float = 0.0
 
     # --- Embeddings ---

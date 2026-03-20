@@ -2,7 +2,7 @@
 
 from app.chains.answer_chain import get_answer_chain
 from app.graphs.state import GraphState
-from app.utils.helpers import get_logger
+from app.utils.helpers import format_docs, get_logger
 
 logger = get_logger(__name__)
 
@@ -10,11 +10,7 @@ logger = get_logger(__name__)
 def generate_answer(state: GraphState) -> dict:
     """Generate a final answer using retrieved context."""
     chain = get_answer_chain()
-
-    context = "\n\n---\n\n".join(
-        f"[{doc.metadata.get('source', '?')} > {doc.metadata.get('section', '?')}]\n{doc.page_content}"
-        for doc in state["documents"]
-    )
+    context = format_docs(state["documents"])
 
     answer = chain.invoke({
         "question": state["question"],
