@@ -25,6 +25,8 @@ dependencies = [
     "ipykernel>=7.2.0",
     "ragas>=0.4.3",
     "rank-bm25>=0.2.2",
+    # UI (temporary — remove when migrating to React)
+    "streamlit>=1.45.0",
 ]
 
 [project.optional-dependencies]

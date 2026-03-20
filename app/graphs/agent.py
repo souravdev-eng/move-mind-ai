@@ -1,47 +1,40 @@
-"""Example LangGraph agent skeleton.
+"""LangGraph RAG agent — route_query → retrieve_docs → generate_answer.
 
 Usage:
-    from app.graphs.agent import build_agent_graph
+    from app.graphs.agent import build_rag_graph
+    graph = build_rag_graph()
+    result = graph.invoke({"question": "How is state management handled?"})
+    # result["answer"], result["documents"], result["retriever_name"]
+
+Graph:
+    START → route_query → retrieve_docs → generate_answer → END
 """
 
-from typing import Annotated, TypedDict
-
 from langgraph.graph import END, StateGraph
-from langgraph.graph.message import add_messages
-from langchain_openai import ChatOpenAI
 
-from app.config import settings
-
-
-# ── State ────────────────────────────────────────────────────────────────────
-
-class AgentState(TypedDict):
-    """State schema passed through the graph."""
-
-    messages: Annotated[list, add_messages]
+from app.graphs.constants import NODE_GENERATE_ANSWER, NODE_RETRIEVE_DOCS, NODE_ROUTE_QUERY
+from app.graphs.state import GraphState
+from app.graphs.nodes.route_query import route_query
+from app.graphs.nodes.retrieve_docs import retrieve_docs
+from app.graphs.nodes.generate_answer import generate_answer
 
 
-# ── Nodes ────────────────────────────────────────────────────────────────────
+def build_rag_graph():
+    """Construct and compile the RAG graph.
 
-def call_model(state: AgentState) -> dict:
-    """Invoke the LLM with the current message history."""
-    llm = ChatOpenAI(
-        model=settings.LLM_MODEL_NAME,
-        temperature=settings.LLM_TEMPERATURE,
-    )
-    response = llm.invoke(state["messages"])
-    return {"messages": [response]}
+    Flow: START → route_query → retrieve_docs → generate_answer → END
+    """
+    workflow = StateGraph(GraphState)
 
+    # Add nodes
+    workflow.add_node(NODE_ROUTE_QUERY, route_query)
+    workflow.add_node(NODE_RETRIEVE_DOCS, retrieve_docs)
+    workflow.add_node(NODE_GENERATE_ANSWER, generate_answer)
 
-# ── Graph ────────────────────────────────────────────────────────────────────
+    # Wire edges
+    workflow.set_entry_point(NODE_ROUTE_QUERY)
+    workflow.add_edge(NODE_ROUTE_QUERY, NODE_RETRIEVE_DOCS)
+    workflow.add_edge(NODE_RETRIEVE_DOCS, NODE_GENERATE_ANSWER)
+    workflow.add_edge(NODE_GENERATE_ANSWER, END)
 
-def build_agent_graph() -> StateGraph:
-    """Construct and compile a minimal agent graph."""
-    graph = StateGraph(AgentState)
-
-    graph.add_node("agent", call_model)
-
-    graph.set_entry_point("agent")
-    graph.add_edge("agent", END)
-
-    return graph.compile()
+    return workflow.compile()

@@ -1,8 +1,23 @@
-"""Shared FastAPI dependencies (e.g., auth, DB sessions, rate limiting)."""
+"""Shared FastAPI dependencies — singleton LangGraph RAG graph."""
 
-# Example:
-# from fastapi import Depends, HTTPException
-#
-# async def verify_api_key(api_key: str = Header(...)):
-#     if api_key != settings.API_KEY:
-#         raise HTTPException(status_code=401, detail="Invalid API key")
+from app.graphs.agent import build_rag_graph
+from app.utils.helpers import get_logger
+
+logger = get_logger(__name__)
+
+_graph = None
+
+
+def init_rag_graph() -> None:
+    """Initialize the LangGraph RAG graph (called once at app startup)."""
+    global _graph
+    logger.info("Building LangGraph RAG graph...")
+    _graph = build_rag_graph()
+    logger.info("LangGraph RAG graph ready.")
+
+
+def get_rag_graph():
+    """Return the compiled LangGraph graph."""
+    if _graph is None:
+        raise RuntimeError("RAG graph not initialized. Call init_rag_graph() first.")
+    return _graph
