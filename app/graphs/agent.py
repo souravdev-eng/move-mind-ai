@@ -11,6 +11,7 @@ Graph:
 """
 
 from langgraph.graph import END, StateGraph
+from langgraph.checkpoint.memory import MemorySaver
 
 from app.graphs.constants import NODE_GENERATE_ANSWER, NODE_RETRIEVE_DOCS, NODE_ROUTE_QUERY
 from app.graphs.state import GraphState
@@ -24,6 +25,7 @@ def build_rag_graph():
 
     Flow: START → route_query → retrieve_docs → generate_answer → END
     """
+    memory = MemorySaver()
     workflow = StateGraph(GraphState)
 
     # Add nodes
@@ -37,4 +39,4 @@ def build_rag_graph():
     workflow.add_edge(NODE_RETRIEVE_DOCS, NODE_GENERATE_ANSWER)
     workflow.add_edge(NODE_GENERATE_ANSWER, END)
 
-    return workflow.compile()
+    return workflow.compile(checkpointer=memory)

@@ -7,6 +7,7 @@ This is a temporary frontend. Delete app/ui/ when migrating to React.
 """
 
 import sys
+import uuid
 from pathlib import Path
 
 # Ensure project root is on sys.path so `app.*` imports work
@@ -39,6 +40,9 @@ st.set_page_config(
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+if "thread_id" not in st.session_state:
+    st.session_state.thread_id = str(uuid.uuid4())
+
 if "graph" not in st.session_state:
     with st.spinner("Loading RAG graph..."):
         st.session_state.graph = build_rag_graph()
@@ -53,6 +57,7 @@ with st.sidebar:
 
     if st.button("Clear chat"):
         st.session_state.messages = []
+        st.session_state.thread_id = str(uuid.uuid4())
         st.rerun()
 
     st.divider()
@@ -82,7 +87,8 @@ if prompt := st.chat_input("Ask about the AMS Admin Tool..."):
 
         # Step 1: Route
         status.write("🔀 Routing query...")
-        result = graph.invoke({"question": prompt})
+        config = {"configurable": {"thread_id": st.session_state.thread_id}}
+        result = graph.invoke({"question": prompt}, config=config)
 
         retriever_name = result.get("retriever_name", "?")
         status.write(f"📚 Retriever: **{retriever_name}**")

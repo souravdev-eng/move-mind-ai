@@ -1,6 +1,7 @@
 """Chat endpoints – invoke LangGraph RAG pipeline via REST."""
 
 import json
+import uuid
 
 from fastapi import APIRouter
 from fastapi.responses import StreamingResponse
@@ -12,6 +13,12 @@ from app.utils.helpers import get_logger
 
 router = APIRouter()
 logger = get_logger(__name__)
+
+
+def _thread_config(session_id: str | None) -> dict:
+    """Build the LangGraph config with thread_id for memory."""
+    thread_id = session_id or str(uuid.uuid4())
+    return {"configurable": {"thread_id": thread_id}}
 
 
 def _docs_to_sources(docs) -> list[SourceDocument]:
@@ -38,15 +45,17 @@ async def chat(request: ChatRequest):
     - If `stream=false` (default): returns JSON with answer + sources.
     - If `stream=true`: returns SSE stream of token chunks, then sources.
     """
+    config = _thread_config(request.session_id)
+
     if request.stream:
         return StreamingResponse(
-            _stream_response(request.message),
+            _stream_response(request.message, config),
             media_type="text/event-stream",
         )
 
     # ── Sync: invoke the full graph ──────────────────────────────────────
     graph = get_rag_graph()
-    result = graph.invoke({"question": request.message})
+    result = graph.invoke({"question": request.message}, config=config)
 
     sources = _docs_to_sources(result.get("documents", []))
 
@@ -56,13 +65,13 @@ async def chat(request: ChatRequest):
     )
 
 
-async def _stream_response(question: str):
+async def _stream_response(question: str, config: dict):
     """SSE generator — stream graph events, emit tokens + sources."""
     graph = get_rag_graph()
 
     # Stream graph node-by-node using astream
     documents = []
-    async for event in graph.astream({"question": question}):
+    async for event in graph.astream({"question": question}, config=config):
         # Each event is {node_name: {state_updates}}
         if NODE_ROUTE_QUERY in event:
             retriever_name = event[NODE_ROUTE_QUERY].get("retriever_name", "")

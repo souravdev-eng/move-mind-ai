@@ -1,14 +1,26 @@
-"""Shared graph state schema used by all nodes."""
+"""Shared graph state schema used by all nodes.
 
-from typing import TypedDict
+Extends MessagesState so the graph supports conversational chat history
+(messages field with add_messages reducer) alongside RAG-specific fields.
+"""
+
+import operator
+from typing import Annotated
 
 from langchain_core.documents import Document
+from langgraph.graph import MessagesState
 
 
-class GraphState(TypedDict):
-    """State that flows through the RAG graph."""
+class GraphState(MessagesState):
+    """State that flows through the RAG graph.
+
+    Inherited from MessagesState:
+        messages: Annotated[list[BaseMessage], add_messages]  — chat history
+
+    RAG-specific fields:
+    """
 
     question: str
     retriever_name: str
-    documents: list[Document]
+    documents: Annotated[list[Document], operator.add]
     answer: str

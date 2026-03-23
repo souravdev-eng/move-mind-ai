@@ -59,6 +59,7 @@ ROUTER_PROMPT = ChatPromptTemplate.from_messages([
 
 ANSWER_PROMPT = ChatPromptTemplate.from_messages([
     ("system", _SYSTEM_ANSWER),
+    ("placeholder", "{chat_history}"),
     ("human", "{question}"),
 ])
 
