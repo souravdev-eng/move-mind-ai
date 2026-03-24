@@ -21,6 +21,5 @@ class GraphState(MessagesState):
     """
 
     question: str
-    retriever_name: str
     documents: Annotated[list[Document], operator.add]
     answer: str

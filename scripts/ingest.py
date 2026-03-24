@@ -14,7 +14,9 @@ logger = get_logger(__name__)
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Ingest documents into the vector store.")
+    parser = argparse.ArgumentParser(
+        description="Ingest documents into the vector store."
+    )
     parser.add_argument(
         "--source",
         type=str,

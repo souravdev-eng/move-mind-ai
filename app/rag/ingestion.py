@@ -46,7 +46,9 @@ def build_vectorstore(chunks_path: Path | str = DEFAULT_CHUNKS_PATH) -> FAISS:
 
     # ── 2. Embed + Build Index ───────────────────────────────────────────
     logger.info("Embedding with '%s'...", settings.EMBEDDING_MODEL_NAME)
-    embeddings = OpenAIEmbeddings(api_key=settings.OPENAI_API_KEY, model=settings.EMBEDDING_MODEL_NAME)
+    embeddings = OpenAIEmbeddings(
+        api_key=settings.OPENAI_API_KEY, model=settings.EMBEDDING_MODEL_NAME
+    )
     vectorstore = FAISS.from_documents(documents, embeddings)
     logger.info(
         "FAISS index built — %d vectors, dimension %d",
@@ -66,7 +68,9 @@ def build_vectorstore(chunks_path: Path | str = DEFAULT_CHUNKS_PATH) -> FAISS:
 def verify_vectorstore() -> None:
     """Quick sanity check — load the persisted index and run a test query."""
     vectorstore_path = PROJECT_ROOT / settings.VECTORSTORE_PATH
-    embeddings = OpenAIEmbeddings(api_key=settings.OPENAI_API_KEY, model=settings.EMBEDDING_MODEL_NAME)
+    embeddings = OpenAIEmbeddings(
+        api_key=settings.OPENAI_API_KEY, model=settings.EMBEDDING_MODEL_NAME
+    )
     vectorstore = FAISS.load_local(
         str(vectorstore_path),
         embeddings,
@@ -94,7 +98,9 @@ def verify_vectorstore() -> None:
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(description="Embed chunks and build FAISS vector store.")
+    parser = argparse.ArgumentParser(
+        description="Embed chunks and build FAISS vector store."
+    )
     parser.add_argument(
         "--source",
         type=str,

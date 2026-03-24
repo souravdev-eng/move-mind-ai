@@ -16,14 +16,15 @@ def route_query(state: GraphState) -> dict:
     chain = get_router_chain()
 
     retriever_list = "\n".join(
-        f"- {name}: {info['description']}"
-        for name, info in registry.items()
+        f"- {name}: {info['description']}" for name, info in registry.items()
     )
 
-    chosen = chain.invoke({
-        "question": state["question"],
-        "retriever_list": retriever_list,
-    }).strip()
+    chosen = chain.invoke(
+        {
+            "question": state["question"],
+            "retriever_list": retriever_list,
+        }
+    ).strip()
 
     # Fallback if LLM returns something unexpected
     if chosen not in registry:

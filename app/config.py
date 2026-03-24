@@ -1,8 +1,12 @@
 """Application configuration and settings."""
+
 import os
+
 from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
+
 load_dotenv()
+
 
 class Settings(BaseSettings):
     """Central configuration loaded from environment variables / .env file."""

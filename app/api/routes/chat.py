@@ -7,7 +7,7 @@ from fastapi import APIRouter
 from fastapi.responses import StreamingResponse
 
 from app.api.dependencies import get_rag_graph
-from app.graphs.constants import NODE_GENERATE_ANSWER, NODE_RETRIEVE_DOCS, NODE_ROUTE_QUERY
+from app.graphs.constants import NODE_GENERATE_ANSWER, NODE_RETRIEVE_DOCS
 from app.models.schemas import ChatRequest, ChatResponse, SourceDocument
 from app.utils.helpers import get_logger
 
@@ -73,11 +73,7 @@ async def _stream_response(question: str, config: dict):
     documents = []
     async for event in graph.astream({"question": question}, config=config):
         # Each event is {node_name: {state_updates}}
-        if NODE_ROUTE_QUERY in event:
-            retriever_name = event[NODE_ROUTE_QUERY].get("retriever_name", "")
-            yield f"data: {json.dumps({'type': 'status', 'node': NODE_ROUTE_QUERY, 'retriever': retriever_name})}\n\n"
-
-        elif NODE_RETRIEVE_DOCS in event:
+        if NODE_RETRIEVE_DOCS in event:
             documents = event[NODE_RETRIEVE_DOCS].get("documents", [])
             yield f"data: {json.dumps({'type': 'status', 'node': NODE_RETRIEVE_DOCS, 'count': len(documents)})}\n\n"
 

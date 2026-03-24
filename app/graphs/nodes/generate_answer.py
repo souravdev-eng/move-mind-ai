@@ -15,11 +15,13 @@ def generate_answer(state: GraphState) -> dict:
     context = format_docs(state["documents"])
     chat_history = state.get("messages", [])
 
-    answer = chain.invoke({
-        "question": state["question"],
-        "context": context,
-        "chat_history": chat_history,
-    })
+    answer = chain.invoke(
+        {
+            "question": state["question"],
+            "context": context,
+            "chat_history": chat_history,
+        }
+    )
 
     logger.info("[generate] → answer ready (%d chars)", len(answer))
 

@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+
 from langchain_core.documents import Document
 
 
@@ -10,5 +11,9 @@ def load_processed_chunks(chunk_file_path: Path | str) -> list[Document]:
         chunks = json.load(f)
     documents = []
     for chunk in chunks:
-        documents.append(Document(page_content=chunk["page_content"], metadata=chunk["metadata"]))
+        documents.append(
+            Document(page_content=chunk["page_content"], metadata=chunk["metadata"])
+        )
+    print(f"Loaded {len(documents)} documents")
+    print(f"Sample document: {documents[0].page_content[:100]}")
     return documents
