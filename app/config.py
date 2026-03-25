@@ -13,8 +13,13 @@ class Settings(BaseSettings):
 
     # --- LLM ---
     OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY")
-    LLM_MODEL_NAME: str = "gpt-4o"
-    LLM_TEMPERATURE: float = 0.0
+    LLM_MODEL_NAME: str = "gpt-5"
+    LLM_TEMPERATURE: float = 0
+
+    # --- OpenAI Model Presets ---
+    OPENAI_FAST: str = "gpt-4o-mini"       # cheap, fast (classifier, rewriter)
+    OPENAI_SMART: str = "gpt-4o"           # powerful (answer generation)
+    OPENAI_THINKING: str = "o3"       # reasoning-heavy tasks
 
     # --- Embeddings ---
     EMBEDDING_MODEL_NAME: str = "text-embedding-3-small"

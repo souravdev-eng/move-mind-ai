@@ -31,8 +31,35 @@ Context:
 
 _SYSTEM_CONVERSATIONAL = "You are a helpful AI assistant."
 
+_CLASSIFIER_PROMPT = """You are a query classifier. Your job is to understand the question based on the chat history and classify it as either rewrite or retrieve.
+
+If the user is asking a follow-up question that references prior conversation, respond with: rewrite
+If the user is asking a new standalone question, respond with: retrieve
+
+Respond with ONLY the word `rewrite` or `retrieve`, nothing else."""
+
+_REWRITE_PROMPT = """You are a question rewriter. Given the chat history and a follow-up question, rewrite it as a standalone question that is specific and detailed enough to retrieve relevant information from the knowledge base.
+
+Respond with ONLY the rewritten question, nothing else."""
 
 # ── Compiled templates ───────────────────────────────────────────────────────
+
+
+CLASSIFY_PROMPT = ChatPromptTemplate.from_messages(
+    [
+        ("system", _CLASSIFIER_PROMPT),
+        ("placeholder", "{chat_history}"),
+        ("human", "{question}"),
+    ]
+)
+
+QUERY_REWRITE_PROMPT = ChatPromptTemplate.from_messages(
+    [
+        ("system", _REWRITE_PROMPT),
+        ("placeholder", "{chat_history}"),
+        ("human", "{question}"),
+    ]
+)
 
 RAG_PROMPT = ChatPromptTemplate.from_messages(
     [

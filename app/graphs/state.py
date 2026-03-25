@@ -21,5 +21,6 @@ class GraphState(MessagesState):
     """
 
     question: str
+    query_type: str
     documents: Annotated[list[Document], operator.add]
     answer: str
