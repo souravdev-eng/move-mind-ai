@@ -7,7 +7,12 @@ from fastapi import APIRouter
 from fastapi.responses import StreamingResponse
 
 from app.api.dependencies import get_rag_graph
-from app.graphs.constants import NODE_GENERATE_ANSWER, NODE_RETRIEVE_DOCS
+from app.graphs.constants import (
+    NODE_CLASSIFY_QUESTION,
+    NODE_GENERATE_ANSWER,
+    NODE_RETRIEVE_DOCS,
+    NODE_REWRITE_QUESTION,
+)
 from app.models.schemas import ChatRequest, ChatResponse, SourceDocument
 from app.utils.helpers import get_logger
 
@@ -65,23 +70,51 @@ async def chat(request: ChatRequest):
     )
 
 
-async def _stream_response(question: str, config: dict):
-    """SSE generator — stream graph events, emit tokens + sources."""
-    graph = get_rag_graph()
+# Node names for status tracking
+_STATUS_NODES = {
+    NODE_CLASSIFY_QUESTION,
+    NODE_REWRITE_QUESTION,
+    NODE_RETRIEVE_DOCS,
+    NODE_GENERATE_ANSWER,
+}
 
-    # Stream graph node-by-node using astream
+
+async def _stream_response(question: str, config: dict):
+    """SSE generator — token-level streaming via astream_events.
+
+    Emits:
+        {type: 'status', node: '...'}           — when a node starts
+        {type: 'token',  content: '...'}         — LLM tokens from generate_answer
+        {type: 'sources', sources: [...]}        — retrieved source docs
+        [DONE]                                   — end of stream
+    """
+    graph = get_rag_graph()
     documents = []
-    async for event in graph.astream({"question": question}, config=config):
-        # Each event is {node_name: {state_updates}}
-        if NODE_RETRIEVE_DOCS in event:
-            documents = event[NODE_RETRIEVE_DOCS].get("documents", [])
+
+    async for event in graph.astream_events(
+        {"question": question}, config=config, version="v2"
+    ):
+        kind = event["event"]
+        name = event.get("name", "")
+        tags = event.get("tags", [])
+
+        # ── Node start → status update ────────────────────────────────
+        if kind == "on_chain_start" and name in _STATUS_NODES:
+            yield f"data: {json.dumps({'type': 'status', 'node': name})}\n\n"
+
+        # ── Retrieve docs complete → capture documents ────────────────
+        elif kind == "on_chain_end" and name == NODE_RETRIEVE_DOCS:
+            output = event.get("data", {}).get("output", {})
+            documents = output.get("documents", [])
             yield f"data: {json.dumps({'type': 'status', 'node': NODE_RETRIEVE_DOCS, 'count': len(documents)})}\n\n"
 
-        elif NODE_GENERATE_ANSWER in event:
-            answer = event[NODE_GENERATE_ANSWER].get("answer", "")
-            yield f"data: {json.dumps({'type': 'answer', 'content': answer})}\n\n"
+        # ── LLM token from generate_answer → stream to client ─────────
+        elif kind == "on_chat_model_stream" and NODE_GENERATE_ANSWER in tags:
+            chunk = event.get("data", {}).get("chunk")
+            if chunk and hasattr(chunk, "content") and chunk.content:
+                yield f"data: {json.dumps({'type': 'token', 'content': chunk.content})}\n\n"
 
-    # Send source documents
+    # ── Send source documents ─────────────────────────────────────────
     sources = [
         {
             "content": doc.page_content[:300],

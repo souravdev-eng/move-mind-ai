@@ -6,6 +6,7 @@ Run:
 This is a temporary frontend. Delete app/ui/ when migrating to React.
 """
 
+import asyncio
 import sys
 import uuid
 from pathlib import Path
@@ -21,9 +22,22 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from app.graphs.agent import build_rag_graph
+from app.graphs.constants import (
+    NODE_CLASSIFY_QUESTION,
+    NODE_GENERATE_ANSWER,
+    NODE_RETRIEVE_DOCS,
+    NODE_REWRITE_QUESTION,
+)
 from app.utils.helpers import get_logger
 
 logger = get_logger(__name__)
+
+_STATUS_LABELS = {
+    NODE_CLASSIFY_QUESTION: "🔀 Classifying query...",
+    NODE_REWRITE_QUESTION: "✏️ Rewriting question...",
+    NODE_RETRIEVE_DOCS: "🔍 Retrieving documents...",
+    NODE_GENERATE_ANSWER: "💡 Generating answer...",
+}
 
 
 # ── Page config ──────────────────────────────────────────────────────────────
@@ -80,28 +94,31 @@ if prompt := st.chat_input("Ask about the AMS Admin Tool..."):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # Run the graph
+    # Run the graph with node-level streaming for status updates
     with st.chat_message("assistant"):
         status = st.status("Thinking...", expanded=True)
+        answer_placeholder = st.empty()
         graph = st.session_state.graph
-
-        # Step 1: Route
-        status.write("🔀 Routing query...")
         config = {"configurable": {"thread_id": st.session_state.thread_id}}
-        result = graph.invoke({"question": prompt}, config=config)
 
-        retriever_name = result.get("retriever_name", "?")
-        status.write(f"📚 Retriever: **{retriever_name}**")
+        documents = []
+        answer = ""
 
-        # Step 2: Retrieved docs count
-        documents = result.get("documents", [])
-        status.write(f"🔍 Retrieved **{len(documents)}** chunks")
+        for event in graph.stream({"question": prompt}, config=config):
+            # Each event is {node_name: {state_updates}}
+            for node_name, output in event.items():
+                if node_name in _STATUS_LABELS:
+                    status.write(_STATUS_LABELS[node_name])
 
-        # Step 3: Answer
-        answer = result.get("answer", "")
+                if node_name == NODE_RETRIEVE_DOCS:
+                    documents = output.get("documents", [])
+                    status.write(f"📄 Retrieved **{len(documents)}** chunks")
+
+                elif node_name == NODE_GENERATE_ANSWER:
+                    answer = output.get("answer", "")
+
         status.update(label="Done", state="complete", expanded=False)
-
-        st.markdown(answer)
+        answer_placeholder.markdown(answer)
 
     # Save assistant message
     st.session_state.messages.append({"role": "assistant", "content": answer})
