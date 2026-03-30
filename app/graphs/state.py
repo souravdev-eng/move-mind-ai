@@ -7,7 +7,6 @@ Extends MessagesState so the graph supports conversational chat history
 import operator
 from typing import Annotated
 
-from langchain_core.documents import Document
 from langgraph.graph import MessagesState
 
 
@@ -18,9 +17,12 @@ class GraphState(MessagesState):
         messages: Annotated[list[BaseMessage], add_messages]  — chat history
 
     RAG-specific fields:
+        documents / reranked_documents are stored as plain dicts
+        (keys: page_content, metadata) for msgpack-safe serialization.
     """
 
     question: str
     query_type: str
-    documents: Annotated[list[Document], operator.add]
+    documents: Annotated[list[dict], operator.add]
+    reranked_documents: Annotated[list[dict], operator.add]
     answer: str

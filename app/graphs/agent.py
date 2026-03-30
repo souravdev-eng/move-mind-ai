@@ -7,17 +7,19 @@ Usage:
     # result["answer"], result["documents"]
 
 Graph:
-    START → classify_question → [retrieve] → retrieve_docs → generate_answer → END
-                              → [rewrite]  → rewrite_question → retrieve_docs → generate_answer → END
+    START → classify_question → [retrieve] → retrieve_docs → rerank_docs → generate_answer → END
+                              → [rewrite]  → rewrite_question → retrieve_docs → rerank_docs → generate_answer → END
 """
 
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, StateGraph
 
 from app.graphs.constants import (NODE_CLASSIFY_QUESTION, NODE_GENERATE_ANSWER,
-                                  NODE_RETRIEVE_DOCS, NODE_REWRITE_QUESTION)
+                                  NODE_RERANK_DOCS, NODE_RETRIEVE_DOCS,
+                                  NODE_REWRITE_QUESTION)
 from app.graphs.nodes.classify_question import classify_question
 from app.graphs.nodes.generate_answer import generate_answer
+from app.graphs.nodes.rerank_docs import rerank_docs
 from app.graphs.nodes.retrieve_docs import retrieve_docs
 from app.graphs.nodes.rewrite_question import rewrite_question
 from app.graphs.state import GraphState
@@ -45,6 +47,7 @@ def build_rag_graph():
     workflow.add_node(NODE_GENERATE_ANSWER, generate_answer)
     workflow.add_node(NODE_CLASSIFY_QUESTION, classify_question)
     workflow.add_node(NODE_REWRITE_QUESTION, rewrite_question)
+    workflow.add_node(NODE_RERANK_DOCS, rerank_docs)
 
     # Wire edges
     workflow.set_entry_point(NODE_CLASSIFY_QUESTION)
@@ -56,8 +59,9 @@ def build_rag_graph():
             "rewrite": NODE_REWRITE_QUESTION,
         },
     )
-    workflow.add_edge(NODE_RETRIEVE_DOCS, NODE_GENERATE_ANSWER)
+    workflow.add_edge(NODE_RETRIEVE_DOCS, NODE_RERANK_DOCS)
     workflow.add_edge(NODE_REWRITE_QUESTION, NODE_RETRIEVE_DOCS)
+    workflow.add_edge(NODE_RERANK_DOCS, NODE_GENERATE_ANSWER)
     workflow.add_edge(NODE_GENERATE_ANSWER, END)
 
     return workflow.compile(checkpointer=memory)

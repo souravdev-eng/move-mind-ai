@@ -22,12 +22,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from app.graphs.agent import build_rag_graph
-from app.graphs.constants import (
-    NODE_CLASSIFY_QUESTION,
-    NODE_GENERATE_ANSWER,
-    NODE_RETRIEVE_DOCS,
-    NODE_REWRITE_QUESTION,
-)
+from app.graphs.constants import (NODE_CLASSIFY_QUESTION, NODE_GENERATE_ANSWER,
+                                  NODE_RETRIEVE_DOCS, NODE_REWRITE_QUESTION)
 from app.utils.helpers import get_logger
 
 logger = get_logger(__name__)
@@ -127,13 +123,13 @@ if prompt := st.chat_input("Ask about the AMS Admin Tool..."):
     with sources_container:
         if documents:
             for i, doc in enumerate(documents):
-                m = doc.metadata
+                m = doc.get("metadata", {})
                 with st.expander(
                     f"[{i+1}] {m.get('section', 'Untitled')} — {m.get('doc_type', '?')}",
                     expanded=False,
                 ):
                     st.caption(f"📄 {m.get('source', '?')}")
                     st.caption(f"📂 {m.get('doc_title', '?')}")
-                    st.markdown(doc.page_content[:500])
+                    st.markdown(doc.get("page_content", "")[:500])
         else:
             st.info("No sources yet. Ask a question!")

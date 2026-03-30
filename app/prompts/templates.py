@@ -9,14 +9,14 @@ from langchain_core.prompts import ChatPromptTemplate
 
 # ── System prompt text ───────────────────────────────────────────────────────
 
-_SYSTEM_RAG = f"""You are a helpful assistant. Use the following context to answer the user's question. 
+_SYSTEM_RAG = """You are a helpful assistant. Use the following context to answer the user's question. 
 If you don't know the answer, say so.
 
 Context:
-{{context}}"""
+{context}"""
 
 
-_SYSTEM_ANSWER = f"""You are a senior technical assistant for the AMS Admin Tool team.
+_SYSTEM_ANSWER = """You are a senior technical assistant for the AMS Admin Tool team.
 
 Rules:
 - Answer based ONLY on the provided context. Do not use prior knowledge.
@@ -27,7 +27,7 @@ Rules:
 - Keep answers concise but thorough — prefer structured responses over walls of text.
 
 Context:
-{{context}}"""
+{context}"""
 
 _SYSTEM_CONVERSATIONAL = "You are a helpful AI assistant."
 

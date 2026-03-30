@@ -7,12 +7,8 @@ from fastapi import APIRouter
 from fastapi.responses import StreamingResponse
 
 from app.api.dependencies import get_rag_graph
-from app.graphs.constants import (
-    NODE_CLASSIFY_QUESTION,
-    NODE_GENERATE_ANSWER,
-    NODE_RETRIEVE_DOCS,
-    NODE_REWRITE_QUESTION,
-)
+from app.graphs.constants import (NODE_CLASSIFY_QUESTION, NODE_GENERATE_ANSWER,
+                                  NODE_RETRIEVE_DOCS, NODE_REWRITE_QUESTION)
 from app.models.schemas import ChatRequest, ChatResponse, SourceDocument
 from app.utils.helpers import get_logger
 

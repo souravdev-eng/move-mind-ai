@@ -10,7 +10,9 @@ def classify_question(state: GraphState):
 
     question = state["question"]
     chain = get_classify_chain()
-    result = chain.invoke({"question": question, "chat_history": state.get("messages", [])})
+    result = chain.invoke(
+        {"question": question, "chat_history": state.get("messages", [])}
+    )
 
     logger.info(f"Classification result: {result}")
 

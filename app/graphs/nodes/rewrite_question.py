@@ -10,7 +10,9 @@ def rewrite_question(state: GraphState):
 
     question = state["question"]
     chain = get_query_rewrite_chain()
-    result = chain.invoke({"question": question, "chat_history": state.get("messages", [])})
+    result = chain.invoke(
+        {"question": question, "chat_history": state.get("messages", [])}
+    )
 
     logger.info(f"Rewritten question: {result}")
 

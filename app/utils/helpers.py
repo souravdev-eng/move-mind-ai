@@ -19,12 +19,40 @@ def get_logger(name: str) -> logging.Logger:
     return logger
 
 
-def format_docs(docs: list[Document], separator: str = "\n\n---\n\n") -> str:
+def _sanitize_value(val):
+    """Convert numpy/non-standard types to Python natives for msgpack."""
+    if hasattr(val, "item"):  # numpy scalar → Python native
+        return val.item()
+    if isinstance(val, dict):
+        return {k: _sanitize_value(v) for k, v in val.items()}
+    if isinstance(val, list):
+        return [_sanitize_value(v) for v in val]
+    return val
+
+
+def doc_to_dict(doc: Document) -> dict:
+    """Convert a Document to a plain dict for msgpack-safe state storage."""
+    return {
+        "page_content": doc.page_content,
+        "metadata": {k: _sanitize_value(v) for k, v in doc.metadata.items()},
+    }
+
+
+def dict_to_doc(d: dict) -> Document:
+    """Convert a plain dict back to a Document."""
+    return Document(page_content=d["page_content"], metadata=d.get("metadata", {}))
+
+
+def format_docs(docs: list[dict | Document], separator: str = "\n\n---\n\n") -> str:
     """Format retrieved documents into a context string with source metadata."""
-    return separator.join(
-        f"[{doc.metadata.get('source', '?')} > {doc.metadata.get('section', '?')}]\n{doc.page_content}"
-        for doc in docs
-    )
+
+    def _get(doc):
+        if isinstance(doc, dict):
+            m = doc.get("metadata", {})
+            return f"[{m.get('source', '?')} > {m.get('section', '?')}]\n{doc['page_content']}"
+        return f"[{doc.metadata.get('source', '?')} > {doc.metadata.get('section', '?')}]\n{doc.page_content}"
+
+    return separator.join(_get(doc) for doc in docs)
 
 
 _llm_cache: dict[str, ChatOpenAI] = {}

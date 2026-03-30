@@ -12,7 +12,8 @@ logger = get_logger(__name__)
 def generate_answer(state: GraphState) -> dict:
     """Generate a final answer using retrieved context and chat history."""
     chain = get_answer_chain()
-    context = format_docs(state["documents"])
+    docs = state.get("reranked_documents") or state.get("documents", [])
+    context = format_docs(docs)
     chat_history = state.get("messages", [])
 
     answer = chain.invoke(
