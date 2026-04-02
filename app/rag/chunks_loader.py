@@ -14,6 +14,10 @@ def load_processed_chunks(chunk_file_path: Path | str) -> list[Document]:
         documents.append(
             Document(page_content=chunk["page_content"], metadata=chunk["metadata"])
         )
+
+    if not documents:
+        raise ValueError(f"No processed chunks found in {chunk_file_path}")
+
     print(f"Loaded {len(documents)} documents")
     print(f"Sample document: {documents[0].page_content[:100]}")
     return documents

@@ -1,41 +1,84 @@
-"""Ingestion pipeline — load pre-processed chunks, embed, and persist a FAISS vector store.
+"""Ingestion pipeline — load CMS3 log chunks, embed them, and upsert to Pinecone.
 
 Usage:
-    python -m app.rag.ingestion                           # default: data/processed/chunks_enriched.json
+    python -m app.rag.ingestion                           # default: data/processed/cms3_log_chunks.json
     python -m app.rag.ingestion --source path/to/chunks.json
 
 Pipeline (runs after the preprocessing notebook):
-    data/processed/chunks_enriched.json
+    data/processed/cms3_log_chunks.json
       → Load Document objects (page_content + enriched metadata)
       → Embed with OpenAI embeddings
-      → Build FAISS index
-      → Persist to data/vectorstore/
+      → Upsert into Pinecone
 """
 
+import hashlib
+import json
 from pathlib import Path
 
-from langchain_community.vectorstores import FAISS
-from langchain_openai import OpenAIEmbeddings
+from langchain_core.documents import Document
 
 from app.config import settings
 from app.rag.chunks_loader import load_processed_chunks
+from app.rag.pinecone_store import get_vectorstore
 from app.utils.helpers import get_logger
 
 logger = get_logger(__name__)
 
 # Resolve paths relative to the project root
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
-DEFAULT_CHUNKS_PATH = PROJECT_ROOT / "data" / "processed" / "chunks_enriched.json"
+DEFAULT_CHUNKS_PATH = PROJECT_ROOT / "data" / "processed" / "cms3_log_chunks.json"
 
 
-def build_vectorstore(chunks_path: Path | str = DEFAULT_CHUNKS_PATH) -> FAISS:
-    """End-to-end ingestion: load chunks → embed → build FAISS index.
+def _build_document_ids(documents: list) -> list[str]:
+    """Create stable vector IDs so repeated ingests overwrite instead of duplicating."""
+    ids: list[str] = []
+    for doc in documents:
+        payload = json.dumps(
+            {"page_content": doc.page_content, "metadata": doc.metadata},
+            sort_keys=True,
+            default=str,
+        )
+        ids.append(hashlib.sha1(payload.encode("utf-8")).hexdigest())
+    return ids
+
+
+def _sanitize_metadata_value(value):
+    """Normalize metadata into Pinecone-compatible scalar values."""
+    if value is None:
+        return None
+    if hasattr(value, "item"):
+        value = value.item()
+    if isinstance(value, (str, int, float, bool)):
+        return value
+    if isinstance(value, list):
+        sanitized = [_sanitize_metadata_value(item) for item in value]
+        return [item for item in sanitized if item is not None]
+    return str(value)
+
+
+def _sanitize_documents_for_pinecone(documents: list[Document]) -> list[Document]:
+    """Drop null metadata values before Pinecone upsert."""
+    sanitized_documents: list[Document] = []
+    for doc in documents:
+        metadata = {
+            key: sanitized
+            for key, value in doc.metadata.items()
+            if (sanitized := _sanitize_metadata_value(value)) is not None
+        }
+        sanitized_documents.append(
+            Document(page_content=doc.page_content, metadata=metadata)
+        )
+    return sanitized_documents
+
+
+def build_vectorstore(chunks_path: Path | str = DEFAULT_CHUNKS_PATH):
+    """End-to-end ingestion: load chunks → embed → upsert into Pinecone.
 
     Args:
         chunks_path: Path to the JSON file exported by the preprocessing notebook.
 
     Returns:
-        The in-memory FAISS vector store (also persisted to disk).
+        The Pinecone-backed vector store.
     """
     chunks_path = Path(chunks_path)
 
@@ -43,54 +86,48 @@ def build_vectorstore(chunks_path: Path | str = DEFAULT_CHUNKS_PATH) -> FAISS:
     logger.info("Loading chunks from %s", chunks_path)
     documents = load_processed_chunks(chunks_path)
     logger.info("Loaded %d chunks", len(documents))
+    documents = _sanitize_documents_for_pinecone(documents)
 
-    # ── 2. Embed + Build Index ───────────────────────────────────────────
-    logger.info("Embedding with '%s'...", settings.EMBEDDING_MODEL_NAME)
-    embeddings = OpenAIEmbeddings(
-        api_key=settings.OPENAI_API_KEY, model=settings.EMBEDDING_MODEL_NAME
-    )
-    vectorstore = FAISS.from_documents(documents, embeddings)
+    # ── 2. Embed + Upsert ────────────────────────────────────────────────
     logger.info(
-        "FAISS index built — %d vectors, dimension %d",
-        vectorstore.index.ntotal,
-        vectorstore.index.d,
+        "Upserting %d chunks into Pinecone index '%s' (namespace='%s')",
+        len(documents),
+        settings.PINECONE_INDEX_NAME,
+        settings.PINECONE_NAMESPACE,
     )
-
-    # ── 3. Persist ───────────────────────────────────────────────────────
-    vectorstore_path = PROJECT_ROOT / settings.VECTORSTORE_PATH
-    vectorstore_path.mkdir(parents=True, exist_ok=True)
-    vectorstore.save_local(str(vectorstore_path))
-    logger.info("Vector store saved to %s", vectorstore_path)
+    vectorstore = get_vectorstore()
+    ids = _build_document_ids(documents)
+    vectorstore.add_documents(documents=documents, ids=ids)
+    logger.info(
+        "Pinecone upsert complete for index '%s' (namespace='%s')",
+        settings.PINECONE_INDEX_NAME,
+        settings.PINECONE_NAMESPACE,
+    )
 
     return vectorstore
 
 
 def verify_vectorstore() -> None:
-    """Quick sanity check — load the persisted index and run a test query."""
-    vectorstore_path = PROJECT_ROOT / settings.VECTORSTORE_PATH
-    embeddings = OpenAIEmbeddings(
-        api_key=settings.OPENAI_API_KEY, model=settings.EMBEDDING_MODEL_NAME
-    )
-    vectorstore = FAISS.load_local(
-        str(vectorstore_path),
-        embeddings,
-        allow_dangerous_deserialization=True,
-    )
+    """Quick sanity check — query Pinecone and inspect the top matches."""
+    vectorstore = get_vectorstore()
     logger.info(
-        "Verification: loaded %d vectors from %s",
-        vectorstore.index.ntotal,
-        vectorstore_path,
+        "Verification query against Pinecone index '%s' (namespace='%s')",
+        settings.PINECONE_INDEX_NAME,
+        settings.PINECONE_NAMESPACE,
     )
 
     # Test similarity search
-    results = vectorstore.similarity_search("architecture overview", k=3)
+    results = vectorstore.similarity_search(
+        "For this customer, why did the flow move after move scope?",
+        k=3,
+    )
     logger.info("Test query returned %d results:", len(results))
     for i, doc in enumerate(results):
         logger.info(
             "  [%d] %s — %s (%.80s...)",
             i,
-            doc.metadata.get("doc_title", "?"),
-            doc.metadata.get("section", "?"),
+            doc.metadata.get("customer_id", "?"),
+            doc.metadata.get("chunk_type", "?"),
             doc.page_content,
         )
 
@@ -99,7 +136,7 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(
-        description="Embed chunks and build FAISS vector store."
+        description="Embed CMS3 log chunks and upsert them into Pinecone."
     )
     parser.add_argument(
         "--source",

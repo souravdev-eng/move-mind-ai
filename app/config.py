@@ -23,11 +23,21 @@ class Settings(BaseSettings):
 
     # --- Embeddings ---
     EMBEDDING_MODEL_NAME: str = "text-embedding-3-small"
+    EMBEDDING_DIMENSION: int = 1536
 
-    # --- Vector Store ---
+    # --- Local Vector Store (notebook/dev only) ---
     VECTORSTORE_PATH: str = "data/vectorstore"
     CHUNK_SIZE: int = 1000
     CHUNK_OVERLAP: int = 200
+
+    # --- Pinecone ---
+    PINECONE_API_KEY: str | None = os.getenv("PINECONE_API_KEY")
+    PINECONE_INDEX_NAME: str = os.getenv("PINECONE_INDEX_NAME", "move-mind-ai")
+    PINECONE_INDEX_HOST: str | None = os.getenv("PINECONE_INDEX_HOST")
+    PINECONE_NAMESPACE: str = os.getenv("PINECONE_NAMESPACE", "cms3-logs")
+    PINECONE_CLOUD: str = os.getenv("PINECONE_CLOUD", "aws")
+    PINECONE_REGION: str = os.getenv("PINECONE_REGION", "us-east-1")
+    PINECONE_METRIC: str = os.getenv("PINECONE_METRIC", "cosine")
 
     # --- RAG ---
     RETRIEVER_TOP_K: int = 5

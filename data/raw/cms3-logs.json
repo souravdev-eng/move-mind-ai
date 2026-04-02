@@ -1,0 +1,3242 @@
+[
+  {
+    "id": "log-b37e3643-f910-42c6-b9a4-ec06849e713f",
+    "timestamp": "2026-04-02T06:52:29.027Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-cf1a4acf-a876-4e7d-ba57-2d7eead56285",
+    "previous_step_id": "step-582f5ca4-30f2-46a2-a251-75e973edcaac",
+    "step_order": 78,
+    "status": "success",
+    "action": "evaluate_ui_condition",
+    "page_path": "/ccflownew/quote/booking",
+    "customer_id": "7093495",
+    "input": {
+      "context_snapshot": {}
+    },
+    "configuration": {
+      "scope": "config",
+      "item_id": "moveStatus",
+      "condition": "{{isLaborJourney}} == true",
+      "condition_key": "condition",
+      "config_path": "condition",
+      "target": "../pricing"
+    },
+    "result": {
+      "decision_result": false
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "ui_condition",
+    "message": "UI condition evaluated",
+    "source": "ScriptedForm"
+  },
+  {
+    "id": "log-ab4a13b8-aabb-4dd0-9c1f-7247ea6c05ea",
+    "timestamp": "2026-04-02T06:52:29.027Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-4e35429f-ac81-4df9-9422-01e2f11272dc",
+    "previous_step_id": "step-50dc3e95-7430-421d-8c8b-639f1267f456",
+    "step_order": 75,
+    "status": "success",
+    "action": "evaluate_ui_condition",
+    "page_path": "/ccflownew/quote/booking",
+    "customer_id": "7093495",
+    "input": {
+      "context_snapshot": {}
+    },
+    "configuration": {
+      "scope": "conditions",
+      "item_id": "conditions[0].condition",
+      "condition": "{{hasskillsetpricing}} == true",
+      "condition_key": "condition",
+      "config_path": "conditions[0].condition",
+      "target": "../pricing"
+    },
+    "result": {
+      "decision_result": false
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "ui_condition",
+    "message": "UI condition evaluated",
+    "source": "ScriptedForm"
+  },
+  {
+    "id": "log-aa0d139f-140c-4304-8033-4450a53fe4a8",
+    "timestamp": "2026-04-02T06:52:29.027Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-c0e84062-9da0-4ed3-9442-dcbb38b249f9",
+    "previous_step_id": "step-4e35429f-ac81-4df9-9422-01e2f11272dc",
+    "step_order": 76,
+    "status": "success",
+    "action": "evaluate_ui_condition",
+    "page_path": "/ccflownew/quote/booking",
+    "customer_id": "7093495",
+    "input": {
+      "context_snapshot": {}
+    },
+    "configuration": {
+      "scope": "conditions",
+      "item_id": "conditions[1].condition",
+      "condition": "{{isLaborJourney}} == true",
+      "condition_key": "condition",
+      "config_path": "conditions[1].condition",
+      "target": "../pricing"
+    },
+    "result": {
+      "decision_result": false
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "ui_condition",
+    "message": "UI condition evaluated",
+    "source": "ScriptedForm"
+  },
+  {
+    "id": "log-12ffedd2-5cec-466b-a707-4720829dd4b7",
+    "timestamp": "2026-04-02T06:52:29.027Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-50dc3e95-7430-421d-8c8b-639f1267f456",
+    "previous_step_id": "step-81234a5c-5e43-423c-88c5-e5654a2cfe17",
+    "step_order": 74,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/quote/booking",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/quote/booking"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-11ae87a8-a56a-468c-90e0-4290138f0015",
+    "timestamp": "2026-04-02T06:52:29.027Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-582f5ca4-30f2-46a2-a251-75e973edcaac",
+    "previous_step_id": "step-c0e84062-9da0-4ed3-9442-dcbb38b249f9",
+    "step_order": 77,
+    "status": "success",
+    "action": "evaluate_ui_condition",
+    "page_path": "/ccflownew/quote/booking",
+    "customer_id": "7093495",
+    "input": {
+      "context_snapshot": {}
+    },
+    "configuration": {
+      "scope": "conditions",
+      "item_id": "conditions[2].condition",
+      "condition": "true == true",
+      "condition_key": "condition",
+      "config_path": "conditions[2].condition",
+      "target": "../pricing"
+    },
+    "result": {
+      "decision_result": true
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "ui_condition",
+    "message": "UI condition evaluated",
+    "source": "ScriptedForm"
+  },
+  {
+    "id": "log-f0fc4b87-bfce-489c-a4cd-6dd585965cd5",
+    "timestamp": "2026-04-02T06:52:28.973Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-81234a5c-5e43-423c-88c5-e5654a2cfe17",
+    "previous_step_id": "step-5078eba0-d370-491c-8e89-7f1ca02e95b4",
+    "step_order": 73,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/quote/conditions",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/quote/conditions"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-94db49c5-cbfc-4718-9105-a75f080e6bfe",
+    "timestamp": "2026-04-02T06:52:28.963Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-5078eba0-d370-491c-8e89-7f1ca02e95b4",
+    "previous_step_id": "step-51ad99c0-2592-4cc5-bc11-fecd8ce2e191",
+    "step_order": 72,
+    "status": "success",
+    "action": "gql_create_notes",
+    "page_path": "/ccflownew/quote/pricing",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "action_type": "gql_create_notes",
+      "source": "graphql",
+      "target_path": "conditions"
+    },
+    "result": {
+      "duration_ms": 3101
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "Dynamic action executed",
+    "source": "graphql"
+  },
+  {
+    "id": "log-9842d39d-0866-457b-b96f-49d91bf77165",
+    "timestamp": "2026-04-02T06:52:28.949Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-19a31599-4fa8-4ab5-86db-2c6098ce4ef5",
+    "previous_step_id": "step-5df98392-e187-416b-b43f-821f468f89f1",
+    "step_order": 70,
+    "status": "success",
+    "action": "graphql_request",
+    "page_path": "/ccflownew/quote/pricing",
+    "customer_id": "7093495",
+    "input": {
+      "variable_keys": [
+        "input"
+      ]
+    },
+    "configuration": {
+      "transport": "graphql",
+      "url": "https://fsvpanhv6zh4bbgncxe6pjls7y.appsync-api.us-east-1.amazonaws.com/graphql",
+      "auth_type": "bearer",
+      "timeout_ms": 10000,
+      "has_update_api_context": true
+    },
+    "result": {
+      "duration_ms": 3086
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "GraphQL request",
+    "source": "graphql"
+  },
+  {
+    "id": "log-0d0ff887-cdc8-422f-9578-8e101565bf32",
+    "timestamp": "2026-04-02T06:52:28.949Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-51ad99c0-2592-4cc5-bc11-fecd8ce2e191",
+    "previous_step_id": "step-19a31599-4fa8-4ab5-86db-2c6098ce4ef5",
+    "step_order": 71,
+    "status": "success",
+    "action": "patch_context",
+    "page_path": "/ccflownew/quote/pricing",
+    "customer_id": "7093495",
+    "input": {
+      "changed_keys": [
+        "dateCreated",
+        "comments",
+        "employeeName",
+        "employeeId",
+        "id",
+        "customerId"
+      ]
+    },
+    "configuration": {
+      "patch_source": "graphql"
+    },
+    "result": {
+      "changed_count": 6
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "context_update",
+    "message": "GraphQL context patch",
+    "source": "graphql"
+  },
+  {
+    "id": "log-ec7636bd-dcfe-4d83-97cf-c35aed88d4ae",
+    "timestamp": "2026-04-02T06:52:25.862Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-5df98392-e187-416b-b43f-821f468f89f1",
+    "previous_step_id": "step-90be52dc-841e-4194-a23d-474d91a1e67e",
+    "step_order": 69,
+    "status": "success",
+    "action": "gql_create_lead_new",
+    "page_path": "/ccflownew/quote/pricing",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "action_type": "gql_create_lead_new",
+      "source": "graphql",
+      "target_path": "conditions"
+    },
+    "result": {
+      "duration_ms": 2015
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "Dynamic action executed",
+    "source": "graphql"
+  },
+  {
+    "id": "log-c7ddd905-969c-4f7e-9d40-74df7cfabe93",
+    "timestamp": "2026-04-02T06:52:25.844Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-90be52dc-841e-4194-a23d-474d91a1e67e",
+    "previous_step_id": "step-386ab190-b39e-41f1-b56a-2252bad0a87b",
+    "step_order": 68,
+    "status": "success",
+    "action": "patch_context",
+    "page_path": "/ccflownew/quote/pricing",
+    "customer_id": "7093495",
+    "input": {
+      "changed_keys": [
+        "IsThirdParty",
+        "virtualEstCriteria",
+        "travelHrs",
+        "hourlyRate",
+        "storageUnits",
+        "comments",
+        "dipositAmt",
+        "moveStatusDesc",
+        "moveStatus",
+        "moveType"
+      ]
+    },
+    "configuration": {
+      "patch_source": "graphql"
+    },
+    "result": {
+      "changed_count": 10
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "context_update",
+    "message": "GraphQL context patch",
+    "source": "graphql"
+  },
+  {
+    "id": "log-33a45764-362c-44b7-95cd-b50d5148d37b",
+    "timestamp": "2026-04-02T06:52:25.844Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-386ab190-b39e-41f1-b56a-2252bad0a87b",
+    "previous_step_id": "step-c34dca89-ec2d-4e41-9e6c-4ba1c4f724fe",
+    "step_order": 67,
+    "status": "success",
+    "action": "graphql_request",
+    "page_path": "/ccflownew/quote/pricing",
+    "customer_id": "7093495",
+    "input": {
+      "variable_keys": [
+        "input"
+      ]
+    },
+    "configuration": {
+      "transport": "graphql",
+      "url": "https://fsvpanhv6zh4bbgncxe6pjls7y.appsync-api.us-east-1.amazonaws.com/graphql",
+      "auth_type": "bearer",
+      "timeout_ms": 10000,
+      "has_update_api_context": true
+    },
+    "result": {
+      "duration_ms": 1991
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "GraphQL request",
+    "source": "graphql"
+  },
+  {
+    "id": "log-6a4a904e-9f42-4959-a15a-653ec02341c6",
+    "timestamp": "2026-04-02T06:52:21.884Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-c34dca89-ec2d-4e41-9e6c-4ba1c4f724fe",
+    "previous_step_id": "step-7c0bd439-6065-4aaf-96fd-444e32fa4e4d",
+    "step_order": 66,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/quote/pricing",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/quote/pricing"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-62233109-917b-4ab7-bbe2-e371558236ed",
+    "timestamp": "2026-04-02T06:52:21.820Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-7c0bd439-6065-4aaf-96fd-444e32fa4e4d",
+    "previous_step_id": "step-3b40ba3d-09e9-4810-8cef-c10f5727f81f",
+    "step_order": 65,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/quote",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/quote"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-ac2c43bd-49af-4cb0-ad6f-0f38abb1e6d2",
+    "timestamp": "2026-04-02T06:52:21.812Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-3b40ba3d-09e9-4810-8cef-c10f5727f81f",
+    "previous_step_id": "step-581c4161-d77c-410e-9a68-64f1ca7fe5fe",
+    "step_order": 64,
+    "status": "success",
+    "action": "gql_get_price_details",
+    "page_path": "/ccflownew/pitch",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "action_type": "gql_get_price_details",
+      "source": "graphql",
+      "target_path": "quote"
+    },
+    "result": {
+      "duration_ms": 3143
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "Dynamic action executed",
+    "source": "graphql"
+  },
+  {
+    "id": "log-d8a00783-e272-4574-b9a6-8c638417854b",
+    "timestamp": "2026-04-02T06:52:21.802Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-581c4161-d77c-410e-9a68-64f1ca7fe5fe",
+    "previous_step_id": "step-1f894f89-2bd9-4b00-b425-cc1fb811d25f",
+    "step_order": 63,
+    "status": "success",
+    "action": "patch_context",
+    "page_path": "/ccflownew/pitch",
+    "customer_id": "7093495",
+    "input": {
+      "changed_keys": [
+        "rate_3men",
+        "rate_4men",
+        "noOfMen",
+        "rate_2men",
+        "hourlyRate"
+      ]
+    },
+    "configuration": {
+      "patch_source": "graphql"
+    },
+    "result": {
+      "changed_count": 5
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "context_update",
+    "message": "GraphQL context patch",
+    "source": "graphql"
+  },
+  {
+    "id": "log-f798ceea-2ea6-4c67-9c54-29815d0c4745",
+    "timestamp": "2026-04-02T06:52:21.801Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-1f894f89-2bd9-4b00-b425-cc1fb811d25f",
+    "previous_step_id": "step-f95d354f-82fa-45db-8ebc-ec3e2a091986",
+    "step_order": 62,
+    "status": "success",
+    "action": "graphql_request",
+    "page_path": "/ccflownew/pitch",
+    "customer_id": "7093495",
+    "input": {
+      "variable_keys": [
+        "input"
+      ]
+    },
+    "configuration": {
+      "transport": "graphql",
+      "url": "https://fsvpanhv6zh4bbgncxe6pjls7y.appsync-api.us-east-1.amazonaws.com/graphql",
+      "auth_type": "bearer",
+      "timeout_ms": 10000,
+      "has_update_api_context": true
+    },
+    "result": {
+      "duration_ms": 3128
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "GraphQL request",
+    "source": "graphql"
+  },
+  {
+    "id": "log-72477430-d7e0-4266-823f-7253bd697a5e",
+    "timestamp": "2026-04-02T06:52:17.314Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-f95d354f-82fa-45db-8ebc-ec3e2a091986",
+    "previous_step_id": "step-f9003235-1806-43e2-98b9-97624bca625b",
+    "step_order": 61,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/pitch",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/pitch"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-207886a5-dee9-4fc0-9242-4f8a1a5af622",
+    "timestamp": "2026-04-02T06:52:17.311Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-f9003235-1806-43e2-98b9-97624bca625b",
+    "previous_step_id": "step-50d00b63-ebb0-4da0-932f-03cc9b9feae0",
+    "step_order": 60,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/junk-normal-or-labour-check",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/junk-normal-or-labour-check"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-9f61c574-6ff6-4acb-8265-725b59fc0bf1",
+    "timestamp": "2026-04-02T06:52:17.308Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-50d00b63-ebb0-4da0-932f-03cc9b9feae0",
+    "previous_step_id": "step-43ecf3ef-c52e-418a-aac2-4bcf27221b2a",
+    "step_order": 59,
+    "status": "success",
+    "action": "gql_save_junk_transfer_details_mutation",
+    "page_path": "/ccflownew/junk-option",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "action_type": "gql_save_junk_transfer_details_mutation",
+      "source": "graphql",
+      "target_path": "junk-normal-or-labour-check"
+    },
+    "result": {
+      "duration_ms": 3530
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "Dynamic action executed",
+    "source": "graphql"
+  },
+  {
+    "id": "log-99858e3a-a1de-438a-95b9-8d5efbed1b95",
+    "timestamp": "2026-04-02T06:52:17.302Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-8fa9b75a-cc8c-4476-b668-a973b005330c",
+    "previous_step_id": "step-a326d5d2-a92e-488c-be27-b3eb8e0ab1f4",
+    "step_order": 57,
+    "status": "success",
+    "action": "graphql_request",
+    "page_path": "/ccflownew/junk-option",
+    "customer_id": "7093495",
+    "input": {
+      "variable_keys": [
+        "input"
+      ]
+    },
+    "configuration": {
+      "transport": "graphql",
+      "url": "https://fsvpanhv6zh4bbgncxe6pjls7y.appsync-api.us-east-1.amazonaws.com/graphql",
+      "auth_type": "bearer",
+      "timeout_ms": 10000,
+      "has_update_api_context": true
+    },
+    "result": {
+      "duration_ms": 3524
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "GraphQL request",
+    "source": "graphql"
+  },
+  {
+    "id": "log-696b5359-452a-4837-818c-15164db04227",
+    "timestamp": "2026-04-02T06:52:17.302Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-43ecf3ef-c52e-418a-aac2-4bcf27221b2a",
+    "previous_step_id": "step-8fa9b75a-cc8c-4476-b668-a973b005330c",
+    "step_order": 58,
+    "status": "success",
+    "action": "patch_context",
+    "page_path": "/ccflownew/junk-option",
+    "customer_id": "7093495",
+    "input": {
+      "changed_keys": [
+        "junkCid"
+      ]
+    },
+    "configuration": {
+      "patch_source": "graphql"
+    },
+    "result": {
+      "changed_count": 1
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "context_update",
+    "message": "GraphQL context patch",
+    "source": "graphql"
+  },
+  {
+    "id": "log-4e126047-0a34-4740-bf27-b6fcfe2787ef",
+    "timestamp": "2026-04-02T06:52:13.777Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-a326d5d2-a92e-488c-be27-b3eb8e0ab1f4",
+    "previous_step_id": "step-d334dc72-4273-4273-9ff0-f41a410164fa",
+    "step_order": 56,
+    "status": "success",
+    "action": "updateContext",
+    "page_path": "/ccflownew/junk-option",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "action_type": "updateContext",
+      "source": "hardcoded",
+      "target_path": "junk-normal-or-labour-check"
+    },
+    "result": {
+      "duration_ms": 6
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "Dynamic action executed",
+    "source": "hardcoded"
+  },
+  {
+    "id": "log-0d017ed0-06ae-4faa-89d8-c34cd36e443c",
+    "timestamp": "2026-04-02T06:52:13.771Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-d334dc72-4273-4273-9ff0-f41a410164fa",
+    "previous_step_id": "step-38af0f0c-f4cc-4965-b857-a486eda24992",
+    "step_order": 55,
+    "status": "success",
+    "action": "patch_context",
+    "page_path": "/ccflownew/junk-option",
+    "customer_id": "7093495",
+    "input": {
+      "changed_keys": [
+        "junkOption"
+      ]
+    },
+    "configuration": {},
+    "result": {
+      "changed_count": 1
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "context_update",
+    "message": "Context updated",
+    "source": "useDynamicActionExecutor"
+  },
+  {
+    "id": "log-10bb944f-dafd-4e92-b4a0-97b04e0afbc2",
+    "timestamp": "2026-04-02T06:52:13.010Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-38af0f0c-f4cc-4965-b857-a486eda24992",
+    "previous_step_id": "step-317e6ebf-0305-4e85-a5e7-29ef034e4d78",
+    "step_order": 54,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/junk-option",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/junk-option"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-d6e1eb25-14b6-4124-b29a-2c109293e89b",
+    "timestamp": "2026-04-02T06:52:12.996Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-317e6ebf-0305-4e85-a5e7-29ef034e4d78",
+    "previous_step_id": "step-c31c7905-9993-4746-840d-f815f838e5a1",
+    "step_order": 53,
+    "status": "success",
+    "action": "navigate",
+    "page_path": "/ccflownew/items",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "action_type": "navigate",
+      "source": "hardcoded",
+      "target_path": "junk-option"
+    },
+    "result": {
+      "duration_ms": 11
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "Dynamic action executed",
+    "source": "hardcoded"
+  },
+  {
+    "id": "log-b7467f5c-4fe1-4756-81ca-79989cc72316",
+    "timestamp": "2026-04-02T06:52:12.985Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-c31c7905-9993-4746-840d-f815f838e5a1",
+    "previous_step_id": "step-e3454ea1-7781-46a0-9101-d8a1a4649c1b",
+    "step_order": 52,
+    "status": "success",
+    "action": "navigate",
+    "page_path": "/ccflownew/items",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "from_path": "junk-option",
+      "to_path": "junk-option"
+    },
+    "result": {
+      "navigated": true
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "Navigate",
+    "source": "useDynamicActionExecutor"
+  },
+  {
+    "id": "log-c3706569-c9a4-47ff-904e-ffd28ae3062f",
+    "timestamp": "2026-04-02T06:52:07.987Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-334e319f-adcb-4fb2-bb8f-3cc385b391da",
+    "previous_step_id": "step-0fcdde47-a1d6-4757-8c68-01fe03168221",
+    "step_order": 50,
+    "status": "success",
+    "action": "evaluate_ui_condition",
+    "page_path": "/ccflownew/items",
+    "customer_id": "7093495",
+    "input": {
+      "context_snapshot": {
+        "moveSize": "4"
+      }
+    },
+    "configuration": {
+      "scope": "conditions",
+      "item_id": "conditions[2].condition",
+      "condition": "{{moveSize}} == 6",
+      "condition_key": "condition",
+      "config_path": "conditions[2].condition",
+      "target": "junk-option"
+    },
+    "result": {
+      "decision_result": false
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "ui_condition",
+    "message": "UI condition evaluated",
+    "source": "ScriptedForm"
+  },
+  {
+    "id": "log-8fdc9cf9-5dcc-443d-bc5b-f52e5e728420",
+    "timestamp": "2026-04-02T06:52:07.987Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-e3454ea1-7781-46a0-9101-d8a1a4649c1b",
+    "previous_step_id": "step-334e319f-adcb-4fb2-bb8f-3cc385b391da",
+    "step_order": 51,
+    "status": "success",
+    "action": "evaluate_ui_condition",
+    "page_path": "/ccflownew/items",
+    "customer_id": "7093495",
+    "input": {
+      "context_snapshot": {}
+    },
+    "configuration": {
+      "scope": "conditions",
+      "item_id": "conditions[3].condition",
+      "condition": "true == true",
+      "condition_key": "condition",
+      "config_path": "conditions[3].condition",
+      "target": "junk-option"
+    },
+    "result": {
+      "decision_result": true
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "ui_condition",
+    "message": "UI condition evaluated",
+    "source": "ScriptedForm"
+  },
+  {
+    "id": "log-8a0d0e48-f894-4245-b963-fbc0f753fcc5",
+    "timestamp": "2026-04-02T06:52:07.987Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-aead59e1-4494-43ad-a023-06a599244c30",
+    "previous_step_id": "step-829881b7-251f-4dd5-8c46-41903b01fa20",
+    "step_order": 48,
+    "status": "success",
+    "action": "evaluate_ui_condition",
+    "page_path": "/ccflownew/items",
+    "customer_id": "7093495",
+    "input": {
+      "context_snapshot": {
+        "moveSize": "4"
+      }
+    },
+    "configuration": {
+      "scope": "conditions",
+      "item_id": "conditions[0].condition",
+      "condition": "{{moveSize}} == 1",
+      "condition_key": "condition",
+      "config_path": "conditions[0].condition",
+      "target": "junk-option"
+    },
+    "result": {
+      "decision_result": false
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "ui_condition",
+    "message": "UI condition evaluated",
+    "source": "ScriptedForm"
+  },
+  {
+    "id": "log-5968414a-8ecb-4c86-9922-b0d4b37bc489",
+    "timestamp": "2026-04-02T06:52:07.987Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-0fcdde47-a1d6-4757-8c68-01fe03168221",
+    "previous_step_id": "step-aead59e1-4494-43ad-a023-06a599244c30",
+    "step_order": 49,
+    "status": "success",
+    "action": "evaluate_ui_condition",
+    "page_path": "/ccflownew/items",
+    "customer_id": "7093495",
+    "input": {
+      "context_snapshot": {
+        "moveSize": "4"
+      }
+    },
+    "configuration": {
+      "scope": "conditions",
+      "item_id": "conditions[1].condition",
+      "condition": "{{moveSize}} == 7",
+      "condition_key": "condition",
+      "config_path": "conditions[1].condition",
+      "target": "junk-option"
+    },
+    "result": {
+      "decision_result": false
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "ui_condition",
+    "message": "UI condition evaluated",
+    "source": "ScriptedForm"
+  },
+  {
+    "id": "log-1e51adc5-9f4f-4a27-940a-b231c20688a8",
+    "timestamp": "2026-04-02T06:52:07.987Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-829881b7-251f-4dd5-8c46-41903b01fa20",
+    "previous_step_id": "step-6df23634-2e17-4fb3-9bf9-8c9da97e571e",
+    "step_order": 47,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/items",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/items"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-65a7869c-83be-4e7f-980f-0ff0d3061c86",
+    "timestamp": "2026-04-02T06:52:07.899Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-6df23634-2e17-4fb3-9bf9-8c9da97e571e",
+    "previous_step_id": "step-5626b65c-aa68-4342-bba8-fdf46e3e0fd2",
+    "step_order": 46,
+    "status": "success",
+    "action": "navigate",
+    "page_path": "/ccflownew/next",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "action_type": "navigate",
+      "source": "hardcoded",
+      "target_path": "items"
+    },
+    "result": {
+      "duration_ms": 4
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "Dynamic action executed",
+    "source": "hardcoded"
+  },
+  {
+    "id": "log-b948f54b-35f0-41a3-af98-2b86fb074fae",
+    "timestamp": "2026-04-02T06:52:07.895Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-5626b65c-aa68-4342-bba8-fdf46e3e0fd2",
+    "previous_step_id": "step-ee870cc8-ac72-4211-b11a-6ea88388b2d3",
+    "step_order": 45,
+    "status": "success",
+    "action": "navigate",
+    "page_path": "/ccflownew/next",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "from_path": "items",
+      "to_path": "items"
+    },
+    "result": {
+      "navigated": true
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "Navigate",
+    "source": "useDynamicActionExecutor"
+  },
+  {
+    "id": "log-5b89fc74-fd31-4cf0-9ff5-718256584db0",
+    "timestamp": "2026-04-02T06:52:06.801Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-ee870cc8-ac72-4211-b11a-6ea88388b2d3",
+    "previous_step_id": "step-f0ea2287-44b9-4fe2-a8bb-58b327c727a0",
+    "step_order": 44,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/next",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/next"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-7a2e5ad5-9fcb-402c-91e5-58090b10164e",
+    "timestamp": "2026-04-02T06:52:06.798Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-f0ea2287-44b9-4fe2-a8bb-58b327c727a0",
+    "previous_step_id": "step-22a58756-3cb6-4d2c-9205-07abaf3d2107",
+    "step_order": 43,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/conditions",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/conditions"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-429ee812-c84f-4fb1-97d6-51c49e79a38e",
+    "timestamp": "2026-04-02T06:52:06.796Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-22a58756-3cb6-4d2c-9205-07abaf3d2107",
+    "previous_step_id": "step-ac14543d-aa9f-421a-b6cb-cfe3d3b0e654",
+    "step_order": 42,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/check-ist-flow",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/check-ist-flow"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-8792ba42-4453-4499-bc18-883403f18a13",
+    "timestamp": "2026-04-02T06:52:06.777Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-ac14543d-aa9f-421a-b6cb-cfe3d3b0e654",
+    "previous_step_id": "step-00439acf-543b-4387-b58e-fdd5688b1870",
+    "step_order": 41,
+    "status": "success",
+    "action": "gql_get_available_agentsfrom_flex_query",
+    "page_path": "/ccflownew/move-scope",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "action_type": "gql_get_available_agentsfrom_flex_query",
+      "source": "graphql",
+      "target_path": "check-ist-flow"
+    },
+    "result": {
+      "duration_ms": 3815
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "Dynamic action executed",
+    "source": "graphql"
+  },
+  {
+    "id": "log-d6519323-8f9b-4920-ac06-c7a66916b61e",
+    "timestamp": "2026-04-02T06:52:06.756Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-15801880-1741-44c9-8ab7-85ceec3a3f7b",
+    "previous_step_id": "step-cc83d453-e120-41c2-b447-99e6ba7efe75",
+    "step_order": 39,
+    "status": "success",
+    "action": "graphql_request",
+    "page_path": "/ccflownew/move-scope",
+    "customer_id": "7093495",
+    "input": {
+      "variable_keys": [
+        "input"
+      ]
+    },
+    "configuration": {
+      "transport": "graphql",
+      "url": "https://fsvpanhv6zh4bbgncxe6pjls7y.appsync-api.us-east-1.amazonaws.com/graphql",
+      "auth_type": "bearer",
+      "timeout_ms": 10000,
+      "has_update_api_context": true
+    },
+    "result": {
+      "duration_ms": 3793
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "GraphQL request",
+    "source": "graphql"
+  },
+  {
+    "id": "log-440a1be5-7aed-4ddc-bb05-e46f02cc7b15",
+    "timestamp": "2026-04-02T06:52:06.756Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-00439acf-543b-4387-b58e-fdd5688b1870",
+    "previous_step_id": "step-15801880-1741-44c9-8ab7-85ceec3a3f7b",
+    "step_order": 40,
+    "status": "success",
+    "action": "patch_context",
+    "page_path": "/ccflownew/move-scope",
+    "customer_id": "7093495",
+    "input": {
+      "changed_keys": [
+        "message",
+        "statusCode",
+        "full_name",
+        "availableWorkers",
+        "getAvailableAgentsFromFlex",
+        "sid"
+      ]
+    },
+    "configuration": {
+      "patch_source": "graphql"
+    },
+    "result": {
+      "changed_count": 6
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "context_update",
+    "message": "GraphQL context patch",
+    "source": "graphql"
+  },
+  {
+    "id": "log-d778981f-c133-4ec2-a7b1-6b7b53aa7b69",
+    "timestamp": "2026-04-02T06:52:02.962Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-cc83d453-e120-41c2-b447-99e6ba7efe75",
+    "previous_step_id": "step-06bef3ff-88c3-4fec-8116-eb31e7972446",
+    "step_order": 38,
+    "status": "success",
+    "action": "gql_create_lead_new",
+    "page_path": "/ccflownew/move-scope",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "action_type": "gql_create_lead_new",
+      "source": "graphql",
+      "target_path": "check-ist-flow"
+    },
+    "result": {
+      "duration_ms": 6983
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "Dynamic action executed",
+    "source": "graphql"
+  },
+  {
+    "id": "log-6b87585a-31ef-4a7e-88cf-430d9dcfd286",
+    "timestamp": "2026-04-02T06:52:02.954Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-c9ab005e-ae22-4f39-9219-296d44d2bcd1",
+    "previous_step_id": "step-4298f9fb-8b6b-4fa3-8e91-d36a3a6b24a9",
+    "step_order": 36,
+    "status": "success",
+    "action": "graphql_request",
+    "page_path": "/ccflownew/move-scope",
+    "customer_id": "7093495",
+    "input": {
+      "variable_keys": [
+        "input"
+      ]
+    },
+    "configuration": {
+      "transport": "graphql",
+      "url": "https://fsvpanhv6zh4bbgncxe6pjls7y.appsync-api.us-east-1.amazonaws.com/graphql",
+      "auth_type": "bearer",
+      "timeout_ms": 10000,
+      "has_update_api_context": true
+    },
+    "result": {
+      "duration_ms": 6274
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "GraphQL request",
+    "source": "graphql"
+  },
+  {
+    "id": "log-2b35db5e-70d5-48ec-b57c-2f1a7307f378",
+    "timestamp": "2026-04-02T06:52:02.954Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-06bef3ff-88c3-4fec-8116-eb31e7972446",
+    "previous_step_id": "step-c9ab005e-ae22-4f39-9219-296d44d2bcd1",
+    "step_order": 37,
+    "status": "success",
+    "action": "patch_context",
+    "page_path": "/ccflownew/move-scope",
+    "customer_id": "7093495",
+    "input": {
+      "changed_keys": [
+        "IsThirdParty",
+        "virtualEstCriteria",
+        "travelHrs",
+        "hourlyRate",
+        "storageUnits",
+        "comments",
+        "dipositAmt",
+        "moveStatusDesc",
+        "moveStatus",
+        "moveType"
+      ]
+    },
+    "configuration": {
+      "patch_source": "graphql"
+    },
+    "result": {
+      "changed_count": 10
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "context_update",
+    "message": "GraphQL context patch",
+    "source": "graphql"
+  },
+  {
+    "id": "log-dbb15c6d-cda3-42b6-bf0a-a5cf5b61743e",
+    "timestamp": "2026-04-02T06:51:49.407Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-4298f9fb-8b6b-4fa3-8e91-d36a3a6b24a9",
+    "previous_step_id": "step-73f9ea8f-f95e-4af9-8141-90790162538a",
+    "step_order": 35,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/move-scope",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/move-scope"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-3516cbd6-2c33-4012-8e4d-044b8a3448f1",
+    "timestamp": "2026-04-02T06:51:49.311Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-73f9ea8f-f95e-4af9-8141-90790162538a",
+    "previous_step_id": "step-1eccee8d-d692-442a-9ea9-71e8928a410e",
+    "step_order": 34,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/is-labor",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/is-labor"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-d8011add-66d5-4392-a8b5-57c9cac62bc3",
+    "timestamp": "2026-04-02T06:51:49.309Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-1eccee8d-d692-442a-9ea9-71e8928a410e",
+    "previous_step_id": "step-b6026845-66c8-4d63-924c-3ce98ffcd3b5",
+    "step_order": 33,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/skill-set-check",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/skill-set-check"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-61dd4056-46bc-4e9b-ae84-0bbd240595f8",
+    "timestamp": "2026-04-02T06:51:49.308Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-b6026845-66c8-4d63-924c-3ce98ffcd3b5",
+    "previous_step_id": "step-daf33fa7-5388-41f1-b81d-4dfd57a8ab5f",
+    "step_order": 32,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/isnj-journey",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/isnj-journey"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-94a35809-2054-4e7e-9025-65a8f94e8fe1",
+    "timestamp": "2026-04-02T06:51:49.307Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-daf33fa7-5388-41f1-b81d-4dfd57a8ab5f",
+    "previous_step_id": "step-0b54ad7c-e4c7-4347-8ef8-afd64adbac7e",
+    "step_order": 31,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/check-falt-rate-date",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/check-falt-rate-date"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-aa1e3cce-f620-465c-9f88-83e196943624",
+    "timestamp": "2026-04-02T06:51:49.296Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-0b54ad7c-e4c7-4347-8ef8-afd64adbac7e",
+    "previous_step_id": "step-7edebb92-1863-40eb-ae26-435d411d41e6",
+    "step_order": 30,
+    "status": "success",
+    "action": "navigate",
+    "page_path": "/ccflownew/date",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "action_type": "navigate",
+      "source": "hardcoded",
+      "target_path": "check-falt-rate-date"
+    },
+    "result": {
+      "duration_ms": 9
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "Dynamic action executed",
+    "source": "hardcoded"
+  },
+  {
+    "id": "log-aea179c5-aff5-4dc7-a503-636ba1472394",
+    "timestamp": "2026-04-02T06:51:49.287Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-7edebb92-1863-40eb-ae26-435d411d41e6",
+    "previous_step_id": "step-07f5b898-7b9f-4696-be22-68c1c80d73b1",
+    "step_order": 29,
+    "status": "success",
+    "action": "navigate",
+    "page_path": "/ccflownew/date",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "from_path": "check-falt-rate-date",
+      "to_path": "check-falt-rate-date"
+    },
+    "result": {
+      "navigated": true
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "Navigate",
+    "source": "useDynamicActionExecutor"
+  },
+  {
+    "id": "log-d1e8322f-0e8c-4917-a74b-081e0a46c6ba",
+    "timestamp": "2026-04-02T06:51:48.631Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-7cbd86a0-52e3-46a3-b3ff-59aac5203a5a",
+    "previous_step_id": "step-b5435797-637c-4dc6-ab24-971d33f99a13",
+    "step_order": 27,
+    "status": "success",
+    "action": "evaluate_ui_condition",
+    "page_path": "/ccflownew/date",
+    "customer_id": "7093495",
+    "input": {
+      "context_snapshot": {
+        "moveDate": "04/16/2026"
+      }
+    },
+    "configuration": {
+      "scope": "dynamicButtons",
+      "item_id": "dynamicButtons[2].btnProps.displayCondition",
+      "item_label": "EXACT DATE",
+      "condition": "{{moveDate}}",
+      "condition_key": "displayCondition",
+      "config_path": "dynamicButtons[2].btnProps.displayCondition",
+      "target": "check-falt-rate-date"
+    },
+    "result": {
+      "decision_result": true
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "ui_condition",
+    "message": "UI condition evaluated",
+    "source": "DatePicker"
+  },
+  {
+    "id": "log-7faf1451-49e5-4d7b-ab0c-16b32f2705a0",
+    "timestamp": "2026-04-02T06:51:48.631Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-b5435797-637c-4dc6-ab24-971d33f99a13",
+    "previous_step_id": "step-f026264a-b66e-4488-ad66-f4a682c09914",
+    "step_order": 26,
+    "status": "success",
+    "action": "evaluate_ui_condition",
+    "page_path": "/ccflownew/date",
+    "customer_id": "7093495",
+    "input": {
+      "context_snapshot": {
+        "moveDate": "04/16/2026"
+      }
+    },
+    "configuration": {
+      "scope": "dynamicButtons",
+      "item_id": "dynamicButtons[1].btnProps.displayCondition",
+      "item_label": "FLEXIBLE DATE",
+      "condition": "{{moveDate}}",
+      "condition_key": "displayCondition",
+      "config_path": "dynamicButtons[1].btnProps.displayCondition",
+      "target": "check-falt-rate-date"
+    },
+    "result": {
+      "decision_result": true
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "ui_condition",
+    "message": "UI condition evaluated",
+    "source": "DatePicker"
+  },
+  {
+    "id": "log-72d24cb8-ea2a-449e-bf29-05f7f0cd9ec9",
+    "timestamp": "2026-04-02T06:51:48.631Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-07f5b898-7b9f-4696-be22-68c1c80d73b1",
+    "previous_step_id": "step-7cbd86a0-52e3-46a3-b3ff-59aac5203a5a",
+    "step_order": 28,
+    "status": "success",
+    "action": "evaluate_ui_condition",
+    "page_path": "/ccflownew/date",
+    "customer_id": "7093495",
+    "input": {
+      "context_snapshot": {}
+    },
+    "configuration": {
+      "scope": "conditions",
+      "item_id": "conditions[0].condition",
+      "condition": "true == true",
+      "condition_key": "condition",
+      "config_path": "conditions[0].condition",
+      "target": "check-falt-rate-date"
+    },
+    "result": {
+      "decision_result": true
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "ui_condition",
+    "message": "UI condition evaluated",
+    "source": "DatePicker"
+  },
+  {
+    "id": "log-238b5214-8df8-49ab-b859-aa9a33d53cab",
+    "timestamp": "2026-04-02T06:51:48.631Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-f026264a-b66e-4488-ad66-f4a682c09914",
+    "previous_step_id": "step-4be154e2-7f99-4fec-abe8-df734f9cdc2d",
+    "step_order": 25,
+    "status": "success",
+    "action": "evaluate_ui_condition",
+    "page_path": "/ccflownew/date",
+    "customer_id": "7093495",
+    "input": {
+      "context_snapshot": {
+        "moveDate": "04/16/2026"
+      }
+    },
+    "configuration": {
+      "scope": "dynamicButtons",
+      "item_id": "dynamicButtons[0].btnProps.displayCondition",
+      "item_label": "I'M NOT SURE YET",
+      "condition": "!{{moveDate}}",
+      "condition_key": "displayCondition",
+      "config_path": "dynamicButtons[0].btnProps.displayCondition",
+      "target": "check-falt-rate-date"
+    },
+    "result": {
+      "decision_result": false
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "ui_condition",
+    "message": "UI condition evaluated",
+    "source": "DatePicker"
+  },
+  {
+    "id": "log-915e6fee-b5e6-4bb9-afdb-36e6c6a82963",
+    "timestamp": "2026-04-02T06:51:04.486Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-4be154e2-7f99-4fec-abe8-df734f9cdc2d",
+    "previous_step_id": "step-21ae3af1-42cc-4f6e-8116-8782135d75be",
+    "step_order": 24,
+    "status": "success",
+    "action": "gql_get_booked_out",
+    "page_path": "/ccflownew/date",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "action_type": "gql_get_booked_out",
+      "source": "graphql",
+      "target_path": "check-falt-rate-date"
+    },
+    "result": {
+      "duration_ms": 1740
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "Dynamic action executed",
+    "source": "graphql"
+  },
+  {
+    "id": "log-ecd6cea3-650b-48ff-9dfb-509c25fac4a3",
+    "timestamp": "2026-04-02T06:51:04.474Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-21ae3af1-42cc-4f6e-8116-8782135d75be",
+    "previous_step_id": "step-5cdcaec4-47e4-4d46-8455-8afe0cf8d5e5",
+    "step_order": 23,
+    "status": "success",
+    "action": "patch_context",
+    "page_path": "/ccflownew/date",
+    "customer_id": "7093495",
+    "input": {
+      "changed_keys": [
+        "dailySheetDate",
+        "activeBooking",
+        "branchId"
+      ]
+    },
+    "configuration": {
+      "patch_source": "graphql"
+    },
+    "result": {
+      "changed_count": 3
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "context_update",
+    "message": "GraphQL context patch",
+    "source": "graphql"
+  },
+  {
+    "id": "log-4708b63c-eac9-4683-a9b1-cbc52017c24f",
+    "timestamp": "2026-04-02T06:51:04.474Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-5cdcaec4-47e4-4d46-8455-8afe0cf8d5e5",
+    "previous_step_id": "step-e3cf3391-c651-48d7-a186-f52f3397ddd1",
+    "step_order": 22,
+    "status": "success",
+    "action": "graphql_request",
+    "page_path": "/ccflownew/date",
+    "customer_id": "7093495",
+    "input": {
+      "variable_keys": [
+        "input"
+      ]
+    },
+    "configuration": {
+      "transport": "graphql",
+      "url": "https://fsvpanhv6zh4bbgncxe6pjls7y.appsync-api.us-east-1.amazonaws.com/graphql",
+      "auth_type": "bearer",
+      "timeout_ms": 10000,
+      "has_update_api_context": true
+    },
+    "result": {
+      "duration_ms": 1728
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "GraphQL request",
+    "source": "graphql"
+  },
+  {
+    "id": "log-8c59274c-f30d-4c20-b1df-b07ff14def9f",
+    "timestamp": "2026-04-02T06:51:02.745Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-e3cf3391-c651-48d7-a186-f52f3397ddd1",
+    "previous_step_id": "step-3a6965f1-b893-4254-9dcc-99a1252c7535",
+    "step_order": 21,
+    "status": "success",
+    "action": "gql_get_property_details_by_address",
+    "page_path": "/ccflownew/date",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "action_type": "gql_get_property_details_by_address",
+      "source": "graphql",
+      "target_path": "check-falt-rate-date"
+    },
+    "result": {
+      "duration_ms": 10818
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "Dynamic action executed",
+    "source": "graphql"
+  },
+  {
+    "id": "log-f22b4636-f176-42f7-aadf-121a89a522f0",
+    "timestamp": "2026-04-02T06:51:02.742Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-3a6965f1-b893-4254-9dcc-99a1252c7535",
+    "previous_step_id": "step-c98da84c-11ae-4f7d-81a2-b2b7aa85a466",
+    "step_order": 20,
+    "status": "success",
+    "action": "patch_context",
+    "page_path": "/ccflownew/date",
+    "customer_id": "7093495",
+    "input": {
+      "changed_keys": [
+        "message",
+        "success",
+        "bedroom_count",
+        "square_feet"
+      ]
+    },
+    "configuration": {
+      "patch_source": "graphql"
+    },
+    "result": {
+      "changed_count": 4
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "context_update",
+    "message": "GraphQL context patch",
+    "source": "graphql"
+  },
+  {
+    "id": "log-2deb2860-add8-43a5-91e7-a214ff7b443d",
+    "timestamp": "2026-04-02T06:51:02.741Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-c98da84c-11ae-4f7d-81a2-b2b7aa85a466",
+    "previous_step_id": "step-58bec481-77ef-4d1d-b748-acf5bc032a9f",
+    "step_order": 19,
+    "status": "success",
+    "action": "graphql_request",
+    "page_path": "/ccflownew/date",
+    "customer_id": "7093495",
+    "input": {
+      "variable_keys": [
+        "input"
+      ]
+    },
+    "configuration": {
+      "transport": "graphql",
+      "url": "https://fsvpanhv6zh4bbgncxe6pjls7y.appsync-api.us-east-1.amazonaws.com/graphql",
+      "auth_type": "bearer",
+      "timeout_ms": 10000,
+      "has_update_api_context": true
+    },
+    "result": {
+      "duration_ms": 10094
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "GraphQL request",
+    "source": "graphql"
+  },
+  {
+    "id": "log-a569cf59-e299-4849-adec-889743f6ef26",
+    "timestamp": "2026-04-02T06:50:51.926Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-58bec481-77ef-4d1d-b748-acf5bc032a9f",
+    "previous_step_id": "step-342b7474-3c88-41aa-bf3f-55b52e4ecb69",
+    "step_order": 18,
+    "status": "success",
+    "action": "evaluate_ui_condition",
+    "page_path": "/ccflownew/date",
+    "customer_id": "7093495",
+    "input": {
+      "context_snapshot": {}
+    },
+    "configuration": {
+      "scope": "conditions",
+      "item_id": "conditions[0].condition",
+      "condition": "true == true",
+      "condition_key": "condition",
+      "config_path": "conditions[0].condition",
+      "target": "check-falt-rate-date"
+    },
+    "result": {
+      "decision_result": true
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "ui_condition",
+    "message": "UI condition evaluated",
+    "source": "DatePicker"
+  },
+  {
+    "id": "log-9ce9025f-18f7-471f-8414-6601562ecff9",
+    "timestamp": "2026-04-02T06:50:51.926Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-a478510a-08ba-4df4-a6ef-203fdbee6e38",
+    "previous_step_id": "step-caad6f72-7079-4630-aef5-b700610382ed",
+    "step_order": 15,
+    "status": "success",
+    "action": "evaluate_ui_condition",
+    "page_path": "/ccflownew/date",
+    "customer_id": "7093495",
+    "input": {
+      "context_snapshot": {}
+    },
+    "configuration": {
+      "scope": "dynamicButtons",
+      "item_id": "dynamicButtons[0].btnProps.displayCondition",
+      "item_label": "I'M NOT SURE YET",
+      "condition": "!{{moveDate}}",
+      "condition_key": "displayCondition",
+      "config_path": "dynamicButtons[0].btnProps.displayCondition",
+      "target": "check-falt-rate-date"
+    },
+    "result": {
+      "decision_result": true
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "ui_condition",
+    "message": "UI condition evaluated",
+    "source": "DatePicker"
+  },
+  {
+    "id": "log-5e2db492-d90f-422a-a9fb-fc158bd51863",
+    "timestamp": "2026-04-02T06:50:51.926Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-342b7474-3c88-41aa-bf3f-55b52e4ecb69",
+    "previous_step_id": "step-6e4a33e5-9127-4b98-9039-bd5024b0c4cc",
+    "step_order": 17,
+    "status": "success",
+    "action": "evaluate_ui_condition",
+    "page_path": "/ccflownew/date",
+    "customer_id": "7093495",
+    "input": {
+      "context_snapshot": {}
+    },
+    "configuration": {
+      "scope": "dynamicButtons",
+      "item_id": "dynamicButtons[2].btnProps.displayCondition",
+      "item_label": "EXACT DATE",
+      "condition": "{{moveDate}}",
+      "condition_key": "displayCondition",
+      "config_path": "dynamicButtons[2].btnProps.displayCondition",
+      "target": "check-falt-rate-date"
+    },
+    "result": {
+      "decision_result": false
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "ui_condition",
+    "message": "UI condition evaluated",
+    "source": "DatePicker"
+  },
+  {
+    "id": "log-061640ea-aa1c-41ca-b354-7ec137bae04c",
+    "timestamp": "2026-04-02T06:50:51.926Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-6e4a33e5-9127-4b98-9039-bd5024b0c4cc",
+    "previous_step_id": "step-a478510a-08ba-4df4-a6ef-203fdbee6e38",
+    "step_order": 16,
+    "status": "success",
+    "action": "evaluate_ui_condition",
+    "page_path": "/ccflownew/date",
+    "customer_id": "7093495",
+    "input": {
+      "context_snapshot": {}
+    },
+    "configuration": {
+      "scope": "dynamicButtons",
+      "item_id": "dynamicButtons[1].btnProps.displayCondition",
+      "item_label": "FLEXIBLE DATE",
+      "condition": "{{moveDate}}",
+      "condition_key": "displayCondition",
+      "config_path": "dynamicButtons[1].btnProps.displayCondition",
+      "target": "check-falt-rate-date"
+    },
+    "result": {
+      "decision_result": false
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "ui_condition",
+    "message": "UI condition evaluated",
+    "source": "DatePicker"
+  },
+  {
+    "id": "log-5aa817ed-1aeb-4fa9-930d-9f641826104e",
+    "timestamp": "2026-04-02T06:50:51.925Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-caad6f72-7079-4630-aef5-b700610382ed",
+    "previous_step_id": "step-92b25c1e-61b1-4495-871c-a6cf850dc24a",
+    "step_order": 14,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/date",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/date"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-557ca79a-b2a9-45b9-8e66-34b3caf304d6",
+    "timestamp": "2026-04-02T06:50:51.762Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-92b25c1e-61b1-4495-871c-a6cf850dc24a",
+    "previous_step_id": "step-62e4170b-ecd8-4e4b-a57d-d88ba34dc475",
+    "step_order": 13,
+    "status": "success",
+    "action": "navigate",
+    "page_path": "/ccflownew/service-interest",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "action_type": "navigate",
+      "source": "hardcoded",
+      "target_path": "date"
+    },
+    "result": {
+      "duration_ms": 6
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "Dynamic action executed",
+    "source": "hardcoded"
+  },
+  {
+    "id": "log-143a9ac2-a972-44cd-ae14-91eb227ea5bd",
+    "timestamp": "2026-04-02T06:50:51.756Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-62e4170b-ecd8-4e4b-a57d-d88ba34dc475",
+    "previous_step_id": "step-85a9d716-e72d-43d6-8907-e0782c4cfd75",
+    "step_order": 12,
+    "status": "success",
+    "action": "navigate",
+    "page_path": "/ccflownew/service-interest",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "from_path": "date",
+      "to_path": "date"
+    },
+    "result": {
+      "navigated": true
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "Navigate",
+    "source": "useDynamicActionExecutor"
+  },
+  {
+    "id": "log-198739de-842f-45e7-af71-3606a645f613",
+    "timestamp": "2026-04-02T06:44:27.232Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-85a9d716-e72d-43d6-8907-e0782c4cfd75",
+    "previous_step_id": "step-c58c031c-e49b-4044-a1e3-3b97952a3bb0",
+    "step_order": 11,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/service-interest",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/service-interest"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-cc56c3d0-38a6-4ba9-9ff4-a1e72bf31f57",
+    "timestamp": "2026-04-02T06:44:27.226Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-c58c031c-e49b-4044-a1e3-3b97952a3bb0",
+    "previous_step_id": "step-a33e7eea-dfb9-4d8d-bc10-5b3872c79d6f",
+    "step_order": 10,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/verify-branch",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/verify-branch"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-5b9d5352-1186-4abb-b519-89785e2f56bc",
+    "timestamp": "2026-04-02T06:44:27.213Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-a33e7eea-dfb9-4d8d-bc10-5b3872c79d6f",
+    "previous_step_id": "step-869f3321-8a53-444f-9127-d6bd5d1d2d18",
+    "step_order": 9,
+    "status": "success",
+    "action": "gql_get_available_agentsfrom_flex_query",
+    "page_path": "/ccflownew/address",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "action_type": "gql_get_available_agentsfrom_flex_query",
+      "source": "graphql",
+      "target_path": "verify-branch"
+    },
+    "result": {
+      "duration_ms": 4042
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "Dynamic action executed",
+    "source": "graphql"
+  },
+  {
+    "id": "log-46c63ab8-0d24-4e48-8ad0-60af8501549e",
+    "timestamp": "2026-04-02T06:44:27.207Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-869f3321-8a53-444f-9127-d6bd5d1d2d18",
+    "previous_step_id": "step-d7cbe960-4f68-40bc-8786-c891c9d8f0d6",
+    "step_order": 8,
+    "status": "success",
+    "action": "patch_context",
+    "page_path": "/ccflownew/address",
+    "customer_id": "7093495",
+    "input": {
+      "changed_keys": [
+        "message",
+        "statusCode",
+        "full_name",
+        "availableWorkers",
+        "getAvailableAgentsFromFlex",
+        "sid"
+      ]
+    },
+    "configuration": {
+      "patch_source": "graphql"
+    },
+    "result": {
+      "changed_count": 6
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "sid": "WKb038ce9450331e20d925c524085c2f97",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "context_update",
+    "message": "GraphQL context patch",
+    "source": "graphql"
+  },
+  {
+    "id": "log-1dbcead7-48d4-436b-82a6-e57249a2ab57",
+    "timestamp": "2026-04-02T06:44:27.207Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-d7cbe960-4f68-40bc-8786-c891c9d8f0d6",
+    "previous_step_id": "step-0c45432f-a7da-4c5e-a697-4da84d74f1fe",
+    "step_order": 7,
+    "status": "success",
+    "action": "graphql_request",
+    "page_path": "/ccflownew/address",
+    "customer_id": "7093495",
+    "input": {
+      "variable_keys": [
+        "input"
+      ]
+    },
+    "configuration": {
+      "transport": "graphql",
+      "url": "https://fsvpanhv6zh4bbgncxe6pjls7y.appsync-api.us-east-1.amazonaws.com/graphql",
+      "auth_type": "bearer",
+      "timeout_ms": 10000,
+      "has_update_api_context": true
+    },
+    "result": {
+      "duration_ms": 4028
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "sid": "WKb038ce9450331e20d925c524085c2f97",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "GraphQL request",
+    "source": "graphql"
+  },
+  {
+    "id": "log-89fad348-a654-459a-8b5f-8f4992a1c033",
+    "timestamp": "2026-04-02T06:44:05.920Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-0c45432f-a7da-4c5e-a697-4da84d74f1fe",
+    "previous_step_id": "step-557a92fd-511c-43b8-8bf6-0035d705876e",
+    "step_order": 6,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/address",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/address"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "sid": "WKb038ce9450331e20d925c524085c2f97",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-307dcc32-ac5f-46b5-97f5-f9c39c1bb080",
+    "timestamp": "2026-04-02T06:44:05.823Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-557a92fd-511c-43b8-8bf6-0035d705876e",
+    "previous_step_id": "step-2a16b805-6e7b-491f-913a-68055a62da53",
+    "step_order": 5,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/check-skill-set-flat-rate",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/check-skill-set-flat-rate"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "sid": "WKb038ce9450331e20d925c524085c2f97",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-8dd030b9-8367-4ea9-b33b-28f3bdeee62c",
+    "timestamp": "2026-04-02T06:44:05.811Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-2a16b805-6e7b-491f-913a-68055a62da53",
+    "previous_step_id": "step-d00be1e0-9b80-4910-9861-1f254c39b7f6",
+    "step_order": 4,
+    "status": "success",
+    "action": "updateContext",
+    "page_path": "/ccflownew/returning-customer",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "action_type": "updateContext",
+      "source": "hardcoded",
+      "target_path": "check-skill-set-flat-rate"
+    },
+    "result": {
+      "duration_ms": 3
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "sid": "WKb038ce9450331e20d925c524085c2f97",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "Dynamic action executed",
+    "source": "hardcoded"
+  },
+  {
+    "id": "log-0af221bc-633c-4897-ab83-ae3ac621555a",
+    "timestamp": "2026-04-02T06:44:05.808Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-d00be1e0-9b80-4910-9861-1f254c39b7f6",
+    "previous_step_id": "step-b8bc2c31-fda0-4644-92e5-91d13daf2b71",
+    "step_order": 3,
+    "status": "success",
+    "action": "patch_context",
+    "page_path": "/ccflownew/returning-customer",
+    "customer_id": "7093495",
+    "input": {
+      "changed_keys": [
+        "isReturningCustomer"
+      ]
+    },
+    "configuration": {},
+    "result": {
+      "changed_count": 1
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "sid": "WKb038ce9450331e20d925c524085c2f97",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "context_update",
+    "message": "Context updated",
+    "source": "useDynamicActionExecutor"
+  },
+  {
+    "id": "log-2e4d25df-f7f1-4923-bb15-2d3612b83ced",
+    "timestamp": "2026-04-02T06:44:02.505Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-b8bc2c31-fda0-4644-92e5-91d13daf2b71",
+    "previous_step_id": "step-2fc12c8c-33b0-47f9-9c51-af44cbaa3f5f",
+    "step_order": 2,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/returning-customer",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/returning-customer"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "sid": "WKb038ce9450331e20d925c524085c2f97",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-e31bddb0-90ac-4564-86f8-7f878fc75f4e",
+    "timestamp": "2026-04-02T06:44:02.430Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88",
+    "step_id": "step-2fc12c8c-33b0-47f9-9c51-af44cbaa3f5f",
+    "previous_step_id": null,
+    "step_order": 1,
+    "status": "success",
+    "action": "gql_lsa_lead_on_answer_call",
+    "page_path": "/ccflownew/name-and-phone",
+    "customer_id": "7093495",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "action_type": "gql_lsa_lead_on_answer_call",
+      "source": "graphql",
+      "target_path": "returning-customer"
+    },
+    "result": {
+      "duration_ms": 2457
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "sid": "WKb038ce9450331e20d925c524085c2f97",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "Dynamic action executed",
+    "source": "graphql"
+  },
+  {
+    "id": "log-8347e861-679f-4b26-bc0f-17132323b2b8",
+    "timestamp": "2026-04-02T06:44:02.425Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-0f5de6ed-0424-47cf-893f-9f13158ccbfb",
+    "step_id": "step-0eb5ee61-9f3c-4ab8-abe5-66145f581f17",
+    "previous_step_id": "step-3d3dceb3-614c-4c9e-92dd-a7492e70487a",
+    "step_order": 6,
+    "status": "success",
+    "action": "graphql_request",
+    "page_path": "/ccflownew/name-and-phone",
+    "input": {
+      "variable_keys": [
+        "input"
+      ]
+    },
+    "configuration": {
+      "transport": "graphql",
+      "url": "https://fsvpanhv6zh4bbgncxe6pjls7y.appsync-api.us-east-1.amazonaws.com/graphql",
+      "auth_type": "bearer",
+      "timeout_ms": 10000,
+      "has_update_api_context": true
+    },
+    "result": {
+      "duration_ms": 1971
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "sid": "WKb038ce9450331e20d925c524085c2f97",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "dynamic_action",
+    "message": "GraphQL request",
+    "source": "graphql"
+  },
+  {
+    "id": "log-54c4dd17-06de-4fad-9f15-ee1a6908a26e",
+    "timestamp": "2026-04-02T06:44:02.425Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-0f5de6ed-0424-47cf-893f-9f13158ccbfb",
+    "step_id": "step-229738e2-2bd7-4b9d-b719-195a56ee37cd",
+    "previous_step_id": "step-0eb5ee61-9f3c-4ab8-abe5-66145f581f17",
+    "step_order": 7,
+    "status": "success",
+    "action": "patch_context",
+    "page_path": "/ccflownew/name-and-phone",
+    "input": {
+      "changed_keys": [
+        "customerId"
+      ]
+    },
+    "configuration": {
+      "patch_source": "graphql"
+    },
+    "result": {
+      "changed_count": 1
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "sid": "WKb038ce9450331e20d925c524085c2f97",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "context_update",
+    "message": "GraphQL context patch",
+    "source": "graphql"
+  },
+  {
+    "id": "log-ce430c35-ccbd-4a0e-815f-9203793fc69d",
+    "timestamp": "2026-04-02T06:43:54.838Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-0f5de6ed-0424-47cf-893f-9f13158ccbfb",
+    "step_id": "step-3d3dceb3-614c-4c9e-92dd-a7492e70487a",
+    "previous_step_id": "step-ea3a83e0-2b94-43e1-86c8-a59c4d5e2a65",
+    "step_order": 5,
+    "status": "success",
+    "action": "evaluate_ui_condition",
+    "page_path": "/ccflownew/name-and-phone",
+    "input": {
+      "context_snapshot": {}
+    },
+    "configuration": {
+      "scope": "conditions",
+      "item_id": "conditions[0].condition",
+      "condition": "true == true",
+      "condition_key": "condition",
+      "config_path": "conditions[0].condition",
+      "target": "returning-customer"
+    },
+    "result": {
+      "decision_result": true
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "ui_condition",
+    "message": "UI condition evaluated",
+    "source": "ScriptedForm"
+  },
+  {
+    "id": "log-6fed348a-eff9-4a84-a8b3-90e36f8a4ec4",
+    "timestamp": "2026-04-02T06:43:54.838Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-0f5de6ed-0424-47cf-893f-9f13158ccbfb",
+    "step_id": "step-ea3a83e0-2b94-43e1-86c8-a59c4d5e2a65",
+    "previous_step_id": "step-3f27a68f-1b90-4e15-8530-82c0f6ce851f",
+    "step_order": 4,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/name-and-phone",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/name-and-phone"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  },
+  {
+    "id": "log-9728ad18-f109-4c81-85c0-f26889e4f214",
+    "timestamp": "2026-04-02T06:43:53.730Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-0f5de6ed-0424-47cf-893f-9f13158ccbfb",
+    "step_id": "step-3f27a68f-1b90-4e15-8530-82c0f6ce851f",
+    "previous_step_id": "step-022bf4d8-58c2-49c5-9415-4cf46f9d45ac",
+    "step_order": 3,
+    "status": "success",
+    "action": "evaluate_ui_condition",
+    "page_path": "/ccflownew/call-type",
+    "input": {
+      "context_snapshot": {}
+    },
+    "configuration": {
+      "scope": "conditions",
+      "item_id": "conditions[0].condition",
+      "condition": "true == true",
+      "condition_key": "condition",
+      "config_path": "conditions[0].condition"
+    },
+    "result": {
+      "decision_result": true
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9",
+      "user_type": "10"
+    },
+    "level": "info",
+    "eventType": "ui_condition",
+    "message": "UI condition evaluated",
+    "source": "ScriptedList"
+  },
+  {
+    "id": "log-156f41da-7554-458d-ba4e-394bcd58e768",
+    "timestamp": "2026-04-02T06:43:49.610Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-0f5de6ed-0424-47cf-893f-9f13158ccbfb",
+    "step_id": "step-022bf4d8-58c2-49c5-9415-4cf46f9d45ac",
+    "previous_step_id": "step-5d42c877-1a09-4a6a-bad6-077234913449",
+    "step_order": 2,
+    "status": "success",
+    "action": "legacy_log_message",
+    "page_path": "/ccflownew/call-type",
+    "input": {
+      "payload": {
+        "type": "mounting",
+        "details": ""
+      }
+    },
+    "configuration": {},
+    "result": {},
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9"
+    },
+    "level": "info",
+    "eventType": "application",
+    "message": "Legacy logMessage",
+    "source": "logMessage"
+  },
+  {
+    "id": "log-2afd42cd-0360-4f9d-9d86-245d8e56464a",
+    "timestamp": "2026-04-02T06:43:49.607Z",
+    "journey_id": "ccflownew",
+    "execution_id": "exec-0f5de6ed-0424-47cf-893f-9f13158ccbfb",
+    "step_id": "step-5d42c877-1a09-4a6a-bad6-077234913449",
+    "previous_step_id": null,
+    "step_order": 1,
+    "status": "success",
+    "action": "route_entered",
+    "page_path": "/ccflownew/call-type",
+    "input": {
+      "note": "not_captured"
+    },
+    "configuration": {
+      "search": ""
+    },
+    "result": {
+      "pathname": "/ccflownew/call-type"
+    },
+    "error_message": null,
+    "error_code": null,
+    "trace": {
+      "environment": "wip",
+      "app": "cms3",
+      "release": "development",
+      "session_id": "session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9"
+    },
+    "level": "info",
+    "eventType": "navigation",
+    "message": "Route entered",
+    "source": "router"
+  }
+]

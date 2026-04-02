@@ -10,6 +10,10 @@ def rerank_docs(state: GraphState) -> dict:
     compressor = get_reranker()
     doc_dicts = state.get("documents", [])
 
+    if not doc_dicts:
+        logger.info("[rerank] no candidates, skipping rerank")
+        return {"reranked_documents": []}
+
     # Convert dicts → Documents for the compressor
     docs = [dict_to_doc(d) for d in doc_dicts]
     reranked = compressor.compress_documents(docs, state["question"])
