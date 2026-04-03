@@ -1,28 +1,20 @@
-"""Shared graph state schema used by all nodes.
-
-Extends MessagesState so the graph supports conversational chat history
-(messages field with add_messages reducer) alongside RAG-specific fields.
-"""
-
-import operator
-from typing import Annotated
+"""Shared LangGraph state for the CMS3 debugging assistant."""
 
 from langgraph.graph import MessagesState
 
 
 class GraphState(MessagesState):
-    """State that flows through the RAG graph.
+    """State that flows through the CMS3 debugging graph."""
 
-    Inherited from MessagesState:
-        messages: Annotated[list[BaseMessage], add_messages]  — chat history
-
-    RAG-specific fields:
-        documents / reranked_documents are stored as plain dicts
-        (keys: page_content, metadata) for msgpack-safe serialization.
-    """
-
+    original_question: str
     question: str
     query_type: str
-    documents: Annotated[list[dict], operator.add]
-    reranked_documents: Annotated[list[dict], operator.add]
+    active_customer_id: str | None
+    active_execution_id: str | None
+    active_page_path: str | None
+    analysis_mode: str | None
+    api_view: str | None
+    requested_api_count: int | None
+    documents: list[dict]
+    reranked_documents: list[dict]
     answer: str

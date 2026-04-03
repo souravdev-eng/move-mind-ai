@@ -1,0 +1,84 @@
+{
+  "timestamp": "2026-04-02T14:34:22.767802",
+  "config": {
+    "embedding_model": "text-embedding-3-small",
+    "answer_model": "gpt-4o",
+    "judge_model": "gpt-4o-mini",
+    "index_name": "move-mind-ai",
+    "namespace": "cms3-logs"
+  },
+  "summary": {
+    "avg_groundedness": 1.0,
+    "avg_usefulness": 1.0,
+    "retrieval_scope_hit_rate": 1.0,
+    "avg_keyword_coverage": 0.6458333333333333,
+    "abstention_success_rate": 0.0
+  },
+  "results": [
+    {
+      "question": "For CID 7093495, what happened after /ccflownew/move-scope?",
+      "ground_truth": "After move-scope, the journey moved through check-ist-flow, conditions, next, items, junk-option, quote, pricing, conditions, and booking.",
+      "answer": "After the page /ccflownew/move-scope, the next recorded event in the logs is a route entry to the page /ccflownew/check-ist-flow. This is indicated by the route path in the execution summary, which shows the sequence of pages visited during the journey.",
+      "retrieval_scope_hit": true,
+      "keyword_coverage": 0.25,
+      "abstain_ok": null,
+      "judge": {
+        "groundedness": 1,
+        "usefulness": 1,
+        "reason": "The answer is supported by the retrieved logs, specifically the execution summary that details the route path after /ccflownew/move-scope, confirming the next page as /ccflownew/check-ist-flow. Additionally, it provides practical information for debugging the journey flow."
+      }
+    },
+    {
+      "question": "For CID 7093495, which UI condition evaluated to true on /ccflownew/date?",
+      "ground_truth": "The condition !{{moveDate}} evaluated to true and targeted check-falt-rate-date.",
+      "answer": "For CID 7093495, the UI conditions that evaluated to true on /ccflownew/date are:\n\n1. Step 15: Condition `!{{moveDate}}` evaluated to true.\n2. Step 18: Condition `true == true` evaluated to true.\n3. Step 26: Condition `{{moveDate}}` evaluated to true.\n4. Step 27: Condition `{{moveDate}}` evaluated to true.\n5. Step 28: Condition `true == true` evaluated to true.",
+      "retrieval_scope_hit": true,
+      "keyword_coverage": 0.6666666666666666,
+      "abstain_ok": null,
+      "judge": {
+        "groundedness": 1,
+        "usefulness": 1,
+        "reason": "The answer correctly identifies multiple UI conditions that evaluated to true based on the retrieved logs, including the specific conditions mentioned in the execution summary. This information is directly relevant for debugging the question."
+      }
+    },
+    {
+      "question": "For CID 7093495, which page was entered right after /ccflownew/returning-customer?",
+      "ground_truth": "The next entered page was /ccflownew/check-skill-set-flat-rate.",
+      "answer": "The page entered right after /ccflownew/returning-customer for CID 7093495 was /ccflownew/check-skill-set-flat-rate.",
+      "retrieval_scope_hit": true,
+      "keyword_coverage": 1.0,
+      "abstain_ok": null,
+      "judge": {
+        "groundedness": 1,
+        "usefulness": 1,
+        "reason": "The answer is directly supported by the retrieved logs, which indicate the sequence of pages entered, confirming that /ccflownew/check-skill-set-flat-rate follows /ccflownew/returning-customer."
+      }
+    },
+    {
+      "question": "For CID 7093495, why did it end up on /ccflownew/quote/booking?",
+      "ground_truth": "The logs show the journey progressed through the quote flow and reached quote booking after prior route transitions and condition checks in that path.",
+      "answer": "The logs indicate that the journey for CID 7093495 followed a specific route path that eventually led to /ccflownew/quote/booking. The route path included several steps, starting from /ccflownew/returning-customer and passing through various other pages such as /ccflownew/check-skill-set-flat-rate, /ccflownew/address, /ccflownew/verify-branch, and so on, until it reached /ccflownew/quote/booking. Each step in the journey was marked as successful, and the final navigation to /ccflownew/quote/booking was also successful, as indicated by the \"route_entered\" action with a status of success.\n\nThe specific reason for ending up on /ccflownew/quote/booking is not detailed in the logs, but it is part of the defined route path for the journey.",
+      "retrieval_scope_hit": true,
+      "keyword_coverage": 0.6666666666666666,
+      "abstain_ok": null,
+      "judge": {
+        "groundedness": 1,
+        "usefulness": 1,
+        "reason": "The answer is supported by the retrieved logs, which detail the successful route path leading to /ccflownew/quote/booking. It provides a clear explanation of the journey's progression through various steps, making it useful for understanding how the journey reached that specific page."
+      }
+    },
+    {
+      "question": "For CID 44456, why are we seeing a failure?",
+      "ground_truth": "The sample dataset does not contain failure evidence for CID 44456, so the system should say it lacks enough information.",
+      "answer": "The logs provided do not contain any information regarding CID 44456 or any associated failure. Without specific logs or error messages related to CID 44456, I cannot determine the cause of the failure. Please provide the relevant logs for further analysis.",
+      "retrieval_scope_hit": null,
+      "keyword_coverage": null,
+      "abstain_ok": false,
+      "judge": {
+        "groundedness": 1,
+        "usefulness": 1,
+        "reason": "The answer correctly states that the logs do not contain information about CID 44456, which is supported by the retrieved context. It also prompts for additional logs, making it practically useful for further debugging."
+      }
+    }
+  ]
+}

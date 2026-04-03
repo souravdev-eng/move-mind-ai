@@ -1,3 +1,5 @@
+"""Node: rerank_docs - rerank retrieved CMS3 evidence with FlashRank."""
+
 from app.chains.reranker_chain import get_reranker
 from app.graphs.state import GraphState
 from app.utils.helpers import dict_to_doc, doc_to_dict, get_logger
@@ -6,19 +8,20 @@ logger = get_logger(__name__)
 
 
 def rerank_docs(state: GraphState) -> dict:
-    """Rerank retrieved documents using FlashRank."""
-    compressor = get_reranker()
-    doc_dicts = state.get("documents", [])
+    """Rerank retrieved chunks and keep the highest-signal evidence."""
+    if any(
+        item.get("metadata", {}).get("chunk_type") == "api_timeline_summary"
+        for item in state.get("documents", [])
+    ):
+        logger.info("[rerank] structured API timeline query, preserving ordered context")
+        return {"reranked_documents": state.get("documents", [])}
 
-    if not doc_dicts:
+    documents = [dict_to_doc(item) for item in state.get("documents", [])]
+    if not documents:
         logger.info("[rerank] no candidates, skipping rerank")
         return {"reranked_documents": []}
 
-    # Convert dicts → Documents for the compressor
-    docs = [dict_to_doc(d) for d in doc_dicts]
-    reranked = compressor.compress_documents(docs, state["question"])
-
-    # Convert back to dicts for state storage
-    result = [doc_to_dict(d) for d in reranked]
-    logger.info("[rerank] %d → %d docs", len(doc_dicts), len(result))
-    return {"reranked_documents": result}
+    reranked = get_reranker().compress_documents(documents, state["question"])
+    reranked_documents = [doc_to_dict(document) for document in reranked]
+    logger.info("[rerank] %d -> %d chunks", len(documents), len(reranked_documents))
+    return {"reranked_documents": reranked_documents}

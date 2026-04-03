@@ -1,48 +1,46 @@
-"""Reusable prompt templates for chains and agents.
-
-Convention:
-    _SYSTEM_*  → raw system-prompt text (editable, readable)
-    *_PROMPT   → compiled ChatPromptTemplate (importable by chains)
-"""
+"""Reusable prompt templates for the CMS3 debugging assistant."""
 
 from langchain_core.prompts import ChatPromptTemplate
 
-# ── System prompt text ───────────────────────────────────────────────────────
+_CLASSIFIER_PROMPT = (
+    "You are a query classifier. Decide if the user question is a standalone "
+    "CMS3 debugging request or a follow-up that depends on prior chat history.\n"
+    "If the user uses references like 'there', 'it', 'that page', 'next', "
+    "'previous', or asks a short follow-up without repeating the CID or route, "
+    "classify it as rewrite.\n"
+    "Respond with ONLY one word: retrieve or rewrite."
+)
 
-_SYSTEM_RAG = """You are a helpful assistant. Use the following context to answer the user's question. 
-If you don't know the answer, say so.
+_REWRITE_PROMPT = (
+    "Rewrite the follow-up question as a standalone CMS3 debugging question. "
+    "Resolve references like 'there', 'it', and 'that route' using the prior chat history. "
+    "Keep customer IDs, route paths, and flow context explicit. "
+    "Respond with ONLY the rewritten question."
+)
 
-Context:
-{context}"""
+_ANSWER_PROMPT = (
+    "You are a CMS3 debugging assistant for the Admin Tool.\n"
+    "Answer based ONLY on the provided logs.\n"
+    "If the logs do not contain enough evidence, say so clearly and do not guess.\n"
+    "Focus on customer IDs, routes, conditions, targets, and concrete log evidence.\n"
+    "When possible, explain the journey step or condition that supports the answer.\n"
+    "Answer like a helpful debugging assistant: start with the direct answer, then briefly cite the evidence.\n"
+    "For API questions, distinguish between `graphql_request` transport events and named `gql_*` operations.\n"
+    "If the user asks for API names, prefer the ordered named `gql_*` operations.\n"
+    "If the user asks for counts and the two interpretations differ, say both explicitly.\n"
+    "If the user asks for bullet points or order, preserve the order shown in the logs.\n"
+    "Active debug context:\n{debug_context}\n\n"
+    "Resolved debugging question used for retrieval:\n{effective_question}\n\n"
+    "Context schema:\n{context_schema}\n\n"
+    "Context:\n{context}"
+)
 
-
-_SYSTEM_ANSWER = """You are a senior technical assistant for the AMS Admin Tool team.
-
-Rules:
-- Answer based ONLY on the provided context. Do not use prior knowledge.
-- If the context doesn't contain enough information, say "I don't have enough information in the docs to answer this" — never guess or hallucinate.
-- Be specific: reference file names, component names, and technical details from the context.
-- Use markdown formatting: headings, bullet points, code blocks where appropriate.
-- When referencing information, cite the source in brackets, e.g. [architecture/overview.md > State Management].
-- Keep answers concise but thorough — prefer structured responses over walls of text.
-
-Context:
-{context}"""
-
-_SYSTEM_CONVERSATIONAL = "You are a helpful AI assistant."
-
-_CLASSIFIER_PROMPT = """You are a query classifier. Your job is to understand the question based on the chat history and classify it as either rewrite or retrieve.
-
-If the user is asking a follow-up question that references prior conversation, respond with: rewrite
-If the user is asking a new standalone question, respond with: retrieve
-
-Respond with ONLY the word `rewrite` or `retrieve`, nothing else."""
-
-_REWRITE_PROMPT = """You are a question rewriter. Given the chat history and a follow-up question, rewrite it as a standalone question that is specific and detailed enough to retrieve relevant information from the knowledge base.
-
-Respond with ONLY the rewritten question, nothing else."""
-
-# ── Compiled templates ───────────────────────────────────────────────────────
+CMS3_CONTEXT_SCHEMA = (
+    "- execution_summary: one chunk summarizing a journey path and condition checks.\n"
+    "- event: one raw CMS3 log event with metadata such as step_order, action, page_path, and decision_result.\n"
+    "- api_timeline_summary: a structured journey-level API summary that distinguishes "
+    "`graphql_request` transport events from named `gql_*` operations and preserves their order."
+)
 
 
 CLASSIFY_PROMPT = ChatPromptTemplate.from_messages(
@@ -61,26 +59,10 @@ QUERY_REWRITE_PROMPT = ChatPromptTemplate.from_messages(
     ]
 )
 
-RAG_PROMPT = ChatPromptTemplate.from_messages(
-    [
-        ("system", _SYSTEM_RAG),
-        ("human", "{question}"),
-    ]
-)
-
-
 ANSWER_PROMPT = ChatPromptTemplate.from_messages(
     [
-        ("system", _SYSTEM_ANSWER),
+        ("system", _ANSWER_PROMPT),
         ("placeholder", "{chat_history}"),
         ("human", "{question}"),
-    ]
-)
-
-CONVERSATIONAL_PROMPT = ChatPromptTemplate.from_messages(
-    [
-        ("system", _SYSTEM_CONVERSATIONAL),
-        ("placeholder", "{chat_history}"),
-        ("human", "{input}"),
     ]
 )

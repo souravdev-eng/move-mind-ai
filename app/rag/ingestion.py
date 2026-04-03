@@ -1,15 +1,6 @@
-"""Ingestion pipeline — load CMS3 log chunks, embed them, and upsert to Pinecone.
+"""CMS3 ingestion pipeline for preprocessing, embedding, and Pinecone upsert."""
 
-Usage:
-    python -m app.rag.ingestion                           # default: data/processed/cms3_log_chunks.json
-    python -m app.rag.ingestion --source path/to/chunks.json
-
-Pipeline (runs after the preprocessing notebook):
-    data/processed/cms3_log_chunks.json
-      → Load Document objects (page_content + enriched metadata)
-      → Embed with OpenAI embeddings
-      → Upsert into Pinecone
-"""
+from __future__ import annotations
 
 import hashlib
 import json
@@ -20,21 +11,22 @@ from langchain_core.documents import Document
 from app.config import settings
 from app.rag.chunks_loader import load_processed_chunks
 from app.rag.pinecone_store import get_vectorstore
-from app.utils.helpers import get_logger
+from app.rag.preprocessing import (
+    build_chunk_documents,
+    export_chunk_documents,
+    load_raw_logs,
+)
+from app.utils.helpers import get_logger, sanitize_metadata_value
 
 logger = get_logger(__name__)
 
-# Resolve paths relative to the project root
-PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
-DEFAULT_CHUNKS_PATH = PROJECT_ROOT / "data" / "processed" / "cms3_log_chunks.json"
 
-
-def _build_document_ids(documents: list) -> list[str]:
-    """Create stable vector IDs so repeated ingests overwrite instead of duplicating."""
+def _build_document_ids(documents: list[Document]) -> list[str]:
+    """Create stable vector ids so repeated ingests overwrite instead of duplicating."""
     ids: list[str] = []
-    for doc in documents:
+    for document in documents:
         payload = json.dumps(
-            {"page_content": doc.page_content, "metadata": doc.metadata},
+            {"page_content": document.page_content, "metadata": document.metadata},
             sort_keys=True,
             default=str,
         )
@@ -42,93 +34,107 @@ def _build_document_ids(documents: list) -> list[str]:
     return ids
 
 
-def _sanitize_metadata_value(value):
-    """Normalize metadata into Pinecone-compatible scalar values."""
-    if value is None:
-        return None
-    if hasattr(value, "item"):
-        value = value.item()
-    if isinstance(value, (str, int, float, bool)):
-        return value
-    if isinstance(value, list):
-        sanitized = [_sanitize_metadata_value(item) for item in value]
-        return [item for item in sanitized if item is not None]
-    return str(value)
-
-
 def _sanitize_documents_for_pinecone(documents: list[Document]) -> list[Document]:
     """Drop null metadata values before Pinecone upsert."""
     sanitized_documents: list[Document] = []
-    for doc in documents:
+    for document in documents:
         metadata = {
             key: sanitized
-            for key, value in doc.metadata.items()
-            if (sanitized := _sanitize_metadata_value(value)) is not None
+            for key, value in document.metadata.items()
+            if (sanitized := sanitize_metadata_value(value)) is not None
         }
         sanitized_documents.append(
-            Document(page_content=doc.page_content, metadata=metadata)
+            Document(page_content=document.page_content, metadata=metadata)
         )
     return sanitized_documents
 
 
-def build_vectorstore(chunks_path: Path | str = DEFAULT_CHUNKS_PATH):
-    """End-to-end ingestion: load chunks → embed → upsert into Pinecone.
+def _looks_like_processed_chunks(payload: object) -> bool:
+    """Check if a JSON file already contains processed chunk objects."""
+    if not isinstance(payload, list) or not payload:
+        return False
+    sample = payload[0]
+    return isinstance(sample, dict) and {"page_content", "metadata"} <= set(sample)
 
-    Args:
-        chunks_path: Path to the JSON file exported by the preprocessing notebook.
 
-    Returns:
-        The Pinecone-backed vector store.
-    """
-    chunks_path = Path(chunks_path)
+def load_documents_for_ingestion(
+    source_path: str | Path,
+    *,
+    source_format: str = "auto",
+    export_processed: bool = False,
+    processed_output_path: str | Path | None = None,
+) -> list[Document]:
+    """Load ingestion documents from processed chunks or raw CMS3 logs."""
+    source_path = Path(source_path)
 
-    # ── 1. Load ──────────────────────────────────────────────────────────
-    logger.info("Loading chunks from %s", chunks_path)
-    documents = load_processed_chunks(chunks_path)
-    logger.info("Loaded %d chunks", len(documents))
+    if source_format == "processed":
+        return load_processed_chunks(source_path)
+
+    if source_format == "raw":
+        raw_logs = load_raw_logs(source_path)
+        documents = build_chunk_documents(raw_logs)
+    else:
+        payload = json.loads(source_path.read_text())
+        if _looks_like_processed_chunks(payload):
+            return load_processed_chunks(source_path)
+        documents = build_chunk_documents(payload)
+
+    if export_processed:
+        export_target = Path(processed_output_path or settings.PROCESSED_CHUNKS_PATH)
+        export_chunk_documents(documents, export_target)
+
+    return documents
+
+
+def build_vectorstore(
+    source_path: str | Path | None = None,
+    *,
+    source_format: str = "auto",
+    export_processed: bool = False,
+    processed_output_path: str | Path | None = None,
+):
+    """End-to-end ingestion from raw logs or processed chunks into Pinecone."""
+    source_path = Path(source_path or settings.PROCESSED_CHUNKS_PATH)
+
+    logger.info("Preparing ingestion documents from %s", source_path)
+    documents = load_documents_for_ingestion(
+        source_path,
+        source_format=source_format,
+        export_processed=export_processed,
+        processed_output_path=processed_output_path,
+    )
+    logger.info("Loaded %d ingestion chunks", len(documents))
+
     documents = _sanitize_documents_for_pinecone(documents)
+    vectorstore = get_vectorstore()
 
-    # ── 2. Embed + Upsert ────────────────────────────────────────────────
     logger.info(
         "Upserting %d chunks into Pinecone index '%s' (namespace='%s')",
         len(documents),
         settings.PINECONE_INDEX_NAME,
         settings.PINECONE_NAMESPACE,
     )
-    vectorstore = get_vectorstore()
-    ids = _build_document_ids(documents)
-    vectorstore.add_documents(documents=documents, ids=ids)
-    logger.info(
-        "Pinecone upsert complete for index '%s' (namespace='%s')",
-        settings.PINECONE_INDEX_NAME,
-        settings.PINECONE_NAMESPACE,
-    )
-
+    vectorstore.add_documents(documents=documents, ids=_build_document_ids(documents))
+    logger.info("Pinecone upsert complete")
     return vectorstore
 
 
 def verify_vectorstore() -> None:
-    """Quick sanity check — query Pinecone and inspect the top matches."""
+    """Run a CMS3-specific sanity query against Pinecone."""
     vectorstore = get_vectorstore()
-    logger.info(
-        "Verification query against Pinecone index '%s' (namespace='%s')",
-        settings.PINECONE_INDEX_NAME,
-        settings.PINECONE_NAMESPACE,
-    )
-
-    # Test similarity search
     results = vectorstore.similarity_search(
-        "For this customer, why did the flow move after move scope?",
+        "For CID 7093495, why did the journey move after /ccflownew/move-scope?",
         k=3,
     )
-    logger.info("Test query returned %d results:", len(results))
-    for i, doc in enumerate(results):
+    logger.info("Verification query returned %d results", len(results))
+    for index, document in enumerate(results, start=1):
         logger.info(
-            "  [%d] %s — %s (%.80s...)",
-            i,
-            doc.metadata.get("customer_id", "?"),
-            doc.metadata.get("chunk_type", "?"),
-            doc.page_content,
+            "[%d] type=%s cid=%s page=%s preview=%.90s",
+            index,
+            document.metadata.get("chunk_type", "?"),
+            document.metadata.get("customer_id", "?"),
+            document.metadata.get("page_path", "?"),
+            document.page_content,
         )
 
 
@@ -136,22 +142,44 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(
-        description="Embed CMS3 log chunks and upsert them into Pinecone."
+        description="Preprocess CMS3 logs if needed, then upsert chunks into Pinecone."
     )
     parser.add_argument(
         "--source",
         type=str,
-        default=str(DEFAULT_CHUNKS_PATH),
-        help="Path to the processed chunks JSON file.",
+        default=settings.PROCESSED_CHUNKS_PATH,
+        help="Path to raw CMS3 logs or processed chunks JSON.",
+    )
+    parser.add_argument(
+        "--source-format",
+        choices=["auto", "raw", "processed"],
+        default="auto",
+        help="How to interpret the input source.",
+    )
+    parser.add_argument(
+        "--export-processed",
+        action="store_true",
+        help="Export processed chunks when ingesting from raw logs.",
+    )
+    parser.add_argument(
+        "--processed-output",
+        type=str,
+        default=settings.PROCESSED_CHUNKS_PATH,
+        help="Where to export processed chunks when --export-processed is used.",
     )
     parser.add_argument(
         "--verify",
         action="store_true",
-        help="Run a verification query after building the index.",
+        help="Run a verification query after the upsert finishes.",
     )
     args = parser.parse_args()
 
-    build_vectorstore(args.source)
+    build_vectorstore(
+        source_path=args.source,
+        source_format=args.source_format,
+        export_processed=args.export_processed,
+        processed_output_path=args.processed_output,
+    )
 
     if args.verify:
         verify_vectorstore()
