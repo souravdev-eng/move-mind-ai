@@ -34,10 +34,10 @@
 
 | # | Task | Audit Ref | Status |
 |---|------|-----------|--------|
-| 1.1 | Fix `tests/test_chains.py` — align imports with real module paths | T-01 | 🔴 Not Started |
-| 1.2 | Fix `tests/test_graphs.py` — `build_agent_graph` → `build_rag_graph` | T-02 | 🔴 Not Started |
-| 1.3 | Fix `tests/test_rag.py` — align with real function names in `app/rag/ingestion.py` | T-03 | 🔴 Not Started |
-| 1.4 | Fix `scripts/ingest.py` — call `build_vectorstore()` not `ingest()` | T-04 | 🔴 Not Started |
+| 1.1 | Fix `tests/test_chains.py` — align imports with real module paths | T-01 | 🟢 Done |
+| 1.2 | Fix `tests/test_graphs.py` — `build_agent_graph` → `build_rag_graph` | T-02 | 🟢 Done |
+| 1.3 | Fix `tests/test_rag.py` — align with real function names in `app/rag/ingestion.py` | T-03 | 🟢 Done |
+| 1.4 | Fix `scripts/ingest.py` — call `build_vectorstore()` not `ingest()` | T-04 | 🟢 Done |
 | 1.5 | Smoke test: full question → answer pipeline end to end | — | 🔴 Not Started |
 
 ---

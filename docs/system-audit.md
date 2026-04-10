@@ -123,10 +123,10 @@ Issues within the parts that already exist.
 
 | ID | File | Issue | Status |
 |----|------|-------|--------|
-| T-01 | `tests/test_chains.py` | Imports `app.chains.base.build_simple_chain` — module does not exist | 🔴 Missing |
-| T-02 | `tests/test_graphs.py` | Imports `build_agent_graph` — actual function is `build_rag_graph()` | 🔴 Missing |
-| T-03 | `tests/test_rag.py` | Imports `split_documents`, `load_documents` — neither exists in `app.rag.ingestion` | 🔴 Missing |
-| T-04 | `scripts/ingest.py` | Calls `ingest()` which does not exist. Should call `build_vectorstore()` | 🔴 Missing |
+| T-01 | `tests/test_chains.py` | Imports `app.chains.base.build_simple_chain` — module does not exist | 🟢 Done |
+| T-02 | `tests/test_graphs.py` | Imports `build_agent_graph` — actual function is `build_rag_graph()` | 🟢 Done |
+| T-03 | `tests/test_rag.py` | Imports `split_documents`, `load_documents` — neither exists in `app.rag.ingestion` | 🟢 Done |
+| T-04 | `scripts/ingest.py` | Calls `ingest()` which does not exist. Should call `build_vectorstore()` | 🟢 Done |
 | T-05 | `app/config.py` | LangSmith tracing configured but not wired into graph runs | 🟠 Partial |
 | T-06 | `app/tools/search.py` | `web_search()` always returns stub — never integrated | ⚪ Deferred |
 | T-07 | `app/` | No evaluation harness. README describes Ragas but no code implements it | 🔴 Missing |
