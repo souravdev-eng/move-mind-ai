@@ -78,20 +78,27 @@
 
 | # | Task | Audit Ref | Status |
 |---|------|-----------|--------|
-| 4.1 | Create `app/eval/runner.py` — drives each golden question through the graph | T-07 | 🔴 Not Started |
-| 4.2 | Create `app/eval/metrics.py` — computes Ragas scores (faithfulness, relevancy, precision, recall) | T-07 | 🔴 Not Started |
-| 4.3 | Create `app/eval/report.py` — writes JSON + human-readable summary | T-07 | 🔴 Not Started |
-| 4.4 | Run eval against full golden dataset | T-08 | 🔴 Not Started |
-| 4.5 | Commit baseline results to `data/eval/baseline_results.json` | T-08 | 🔴 Not Started |
+| 4.1 | Create `app/eval/runner.py` — drives each golden question through the graph | T-07 | 🟢 Done |
+| 4.2 | Create `app/eval/metrics.py` — computes Ragas scores (faithfulness, relevancy, precision, recall) | T-07 | 🟢 Done |
+| 4.3 | Create `app/eval/report.py` — writes JSON + human-readable summary | T-07 | 🟢 Done |
+| 4.4 | Run eval against full golden dataset | T-08 | 🟢 Done |
+| 4.5 | Commit baseline results to `data/eval/baseline_results.json` | T-08 | 🟢 Done |
 
-### Metrics Targets
+### Metrics Targets vs Baseline
 
-| Metric | What It Measures | Target |
-|--------|-----------------|--------|
-| Faithfulness | Answer grounded in retrieved context (no hallucination) | > 0.80 |
-| Answer Relevancy | Answer actually answers the question | > 0.75 |
-| Context Precision | Retrieved chunks are relevant (low noise) | > 0.70 |
-| Context Recall | All needed info was retrieved | > 0.65 |
+| Metric | Baseline | Target | Status |
+|--------|----------|--------|--------|
+| jargon_leak_rate | **0.000** | < 0.10 | ✅ Perfect |
+| keyword_hit_rate | 0.606 | > 0.80 | ⚠️ Below |
+| Faithfulness | 0.637 | > 0.80 | ⚠️ Below |
+| Answer Relevancy | 0.512 | > 0.70 | ⚠️ Below |
+
+**Baseline findings (2026-04-10):**
+- Jargon leak is zero across all 27 questions — manager prompt works perfectly
+- cid_lookup is strong (kw=0.892, faith=0.953) — straightforward factual queries work well
+- root_cause faithfulness is low (0.348) — LLM reasons beyond retrieved evidence on "why" questions
+- multi_turn keyword_hit lowest (0.370) — context not fully carrying forward in follow-ups
+- keyword misses are partly a vocabulary issue (synonyms used vs exact expected words)
 
 ---
 
