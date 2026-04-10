@@ -93,16 +93,33 @@ def format_docs(docs: list[dict | Document], separator: str = "\n\n---\n\n") -> 
 
 
 def question_needs_reasoning(question: str) -> bool:
-    """Heuristic for when the answer path should use the reasoning model preset."""
+    """
+    Heuristic for when to use the o3 thinking model instead of gpt-4o.
+
+    o3 is ~10x more expensive than gpt-4o. Only trigger it for questions
+    that genuinely require multi-step causal reasoning across the logs —
+    not for simple "why" lookups that gpt-4o handles fine.
+
+    Triggers on explicit deep-reasoning signals only:
+    - "root cause" — manager explicitly wants a diagnosis
+    - "caused by" / "what caused" — causal chain analysis
+    - "chain of events" — sequence reconstruction across steps
+    - "diagnose" / "deep dive" / "technical analysis" — explicit deep request
+    - "estimator flow" — domain-specific complex flow
+
+    Does NOT trigger on: "why", "reason", "explain", "failure" alone —
+    these are too common in normal manager questions that gpt-4o handles well.
+    """
     text = question.lower()
     reasoning_markers = (
-        "why",
-        "failure",
         "root cause",
-        "reason",
-        "caused",
+        "caused by",
+        "what caused",
+        "chain of events",
+        "diagnose",
+        "deep dive",
+        "technical analysis",
         "estimator flow",
-        "explain",
     )
     return any(marker in text for marker in reasoning_markers)
 
