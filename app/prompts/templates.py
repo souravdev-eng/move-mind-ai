@@ -159,6 +159,75 @@ Use bullet points for multi-step evidence.
 </output_format>
 """
 
+# ---------------------------------------------------------------------------
+# Issue classifier — bug vs business condition (used in classify_issue node)
+# ---------------------------------------------------------------------------
+_ISSUE_CLASSIFIER_PROMPT = """\
+You are an issue classifier for a customer service platform.
+
+<task>
+Read the plain-English explanation of what happened and the raw log evidence below.
+Decide whether this is a genuine system bug or an intentional business condition.
+</task>
+
+<definitions>
+bug:
+  The system behaved incorrectly. Examples:
+  - An error code was recorded in the logs
+  - A journey step failed or threw an exception
+  - The customer was blocked unexpectedly with no business rule to explain it
+  - A required step was skipped or repeated abnormally
+  - Data was missing, corrupt, or returned incorrectly
+
+business_condition:
+  The system behaved exactly as designed, but the outcome may be confusing.
+  Examples:
+  - The journey followed a rules-based path based on the customer's data
+  - A condition evaluated to False and the customer was redirected — this is intentional
+  - The customer did not meet eligibility criteria configured by the business team
+  - All steps completed successfully; the outcome is a result of deliberate configuration
+
+unknown:
+  There is not enough evidence in the logs to make a confident classification.
+</definitions>
+
+<rules>
+1. Base your classification ONLY on the log evidence provided — do not guess.
+2. If all journey steps have status "success" and no error codes are present,
+   lean toward business_condition unless behaviour is clearly unexpected.
+3. Confidence should reflect how clearly the evidence supports your decision:
+   - 0.9–1.0: clear, unambiguous evidence
+   - 0.7–0.9: strong evidence with minor uncertainty
+   - 0.5–0.7: some evidence but ambiguous
+   - below 0.5: use "unknown" instead
+4. The reason must be one sentence in plain English — no technical jargon.
+</rules>
+
+<explanation>
+{answer}
+</explanation>
+
+<log_evidence>
+{context}
+</log_evidence>
+
+<output_format>
+Respond with ONLY valid JSON in this exact structure:
+{{
+  "issue_type": "bug" | "business_condition" | "unknown",
+  "confidence": <float between 0.0 and 1.0>,
+  "reason": "<one sentence plain English reason>"
+}}
+</output_format>
+"""
+
+ISSUE_CLASSIFIER_PROMPT = ChatPromptTemplate.from_messages(
+    [
+        ("system", _ISSUE_CLASSIFIER_PROMPT),
+        ("human", "Classify this issue."),
+    ]
+)
+
 CMS3_CONTEXT_SCHEMA = (
     "- execution_summary: one chunk summarizing a journey path and condition checks.\n"
     "- event: one raw CMS3 log event with metadata such as step_order, action, page_path, and decision_result.\n"

@@ -108,11 +108,11 @@
 
 | # | Task | Audit Ref | Status |
 |---|------|-----------|--------|
-| 5.1 | Design classification prompt — signals that distinguish a bug from a business condition | P-04 | 🔴 Not Started |
-| 5.2 | Add `classify_issue` node to LangGraph (runs after `generate_answer`) | P-04 | 🔴 Not Started |
-| 5.3 | Add `issue_type` to `GraphState` (`"bug"` \| `"business_condition"` \| `"unknown"`) | P-04 | 🔴 Not Started |
-| 5.4 | Include `issue_type` + confidence in manager response | P-04 | 🔴 Not Started |
-| 5.5 | Add 5 classification Q&As to golden dataset, re-run eval | T-08 | 🔴 Not Started |
+| 5.1 | Design classification prompt — signals that distinguish a bug from a business condition | P-04 | 🟢 Done |
+| 5.2 | Add `classify_issue` node to LangGraph (runs after `generate_answer`) | P-04 | 🟢 Done |
+| 5.3 | Add `issue_type` to `GraphState` (`"bug"` \| `"business_condition"` \| `"unknown"`) | P-04 | 🟢 Done |
+| 5.4 | Include `issue_type` + confidence in manager response | P-04 | 🟢 Done |
+| 5.5 | Add 5 classification Q&As to golden dataset, re-run eval | T-08 | ⚪ Deferred — OpenAI quota exhausted by baseline eval run. Re-run when quota is topped up. |
 
 ---
 

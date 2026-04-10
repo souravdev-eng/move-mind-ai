@@ -22,3 +22,8 @@ class GraphState(MessagesState):
     # "manager": plain English for non-technical manager (default)
     # "developer": technical deep-dive for inside a Jira ticket (Week 2)
     explanation_mode: str
+    # Issue classification — set by classify_issue node after generate_answer
+    # "bug" | "business_condition" | "unknown"
+    issue_type: str | None
+    issue_confidence: float | None
+    issue_classification_reason: str | None

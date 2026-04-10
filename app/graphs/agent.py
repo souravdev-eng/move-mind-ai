@@ -4,6 +4,7 @@ from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, StateGraph
 
 from app.graphs.constants import (
+    NODE_CLASSIFY_ISSUE,
     NODE_CLASSIFY_QUESTION,
     NODE_GENERATE_ANSWER,
     NODE_RERANK_DOCS,
@@ -11,6 +12,7 @@ from app.graphs.constants import (
     NODE_RETRIEVE_DOCS,
     NODE_REWRITE_QUESTION,
 )
+from app.graphs.nodes.classify_issue import classify_issue
 from app.graphs.nodes.classify_question import classify_question
 from app.graphs.nodes.generate_answer import generate_answer
 from app.graphs.nodes.resolve_context import resolve_context
@@ -38,6 +40,7 @@ def build_rag_graph():
     workflow.add_node(NODE_RETRIEVE_DOCS, retrieve_docs)
     workflow.add_node(NODE_RERANK_DOCS, rerank_docs)
     workflow.add_node(NODE_GENERATE_ANSWER, generate_answer)
+    workflow.add_node(NODE_CLASSIFY_ISSUE, classify_issue)
 
     workflow.set_entry_point(NODE_CLASSIFY_QUESTION)
     workflow.add_conditional_edges(
@@ -52,6 +55,7 @@ def build_rag_graph():
     workflow.add_edge(NODE_RESOLVE_CONTEXT, NODE_RETRIEVE_DOCS)
     workflow.add_edge(NODE_RETRIEVE_DOCS, NODE_RERANK_DOCS)
     workflow.add_edge(NODE_RERANK_DOCS, NODE_GENERATE_ANSWER)
-    workflow.add_edge(NODE_GENERATE_ANSWER, END)
+    workflow.add_edge(NODE_GENERATE_ANSWER, NODE_CLASSIFY_ISSUE)
+    workflow.add_edge(NODE_CLASSIFY_ISSUE, END)
 
     return workflow.compile(checkpointer=MemorySaver())

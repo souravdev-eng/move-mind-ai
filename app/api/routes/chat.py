@@ -10,6 +10,7 @@ from fastapi.responses import StreamingResponse
 
 from app.api.dependencies import get_rag_graph
 from app.graphs.constants import (
+    NODE_CLASSIFY_ISSUE,
     NODE_CLASSIFY_QUESTION,
     NODE_GENERATE_ANSWER,
     NODE_RERANK_DOCS,
@@ -83,6 +84,9 @@ async def chat(request: ChatRequest):
         retrieved_count=len(documents),
         reranked_count=len(reranked_documents),
         sources=_docs_to_sources(source_documents),
+        issue_type=result.get("issue_type"),
+        issue_confidence=result.get("issue_confidence"),
+        issue_classification_reason=result.get("issue_classification_reason"),
     )
 
 
@@ -93,6 +97,7 @@ _STATUS_NODES = {
     NODE_RETRIEVE_DOCS,
     NODE_RERANK_DOCS,
     NODE_GENERATE_ANSWER,
+    NODE_CLASSIFY_ISSUE,
 }
 
 
@@ -107,6 +112,10 @@ async def _stream_response(question: str, config: dict, thread_id: str):
     emitted_token = False
 
     yield f"data: {json.dumps({'type': 'session', 'session_id': thread_id})}\n\n"
+
+    issue_type: str | None = None
+    issue_confidence: float | None = None
+    issue_classification_reason: str | None = None
 
     async for event in graph.astream_events(
         {"question": question, "original_question": question},
@@ -168,6 +177,12 @@ async def _stream_response(question: str, config: dict, thread_id: str):
             output = event.get("data", {}).get("output", {})
             final_answer = output.get("answer", "") or ""
 
+        elif kind == "on_chain_end" and name == NODE_CLASSIFY_ISSUE:
+            output = event.get("data", {}).get("output", {})
+            issue_type = output.get("issue_type")
+            issue_confidence = output.get("issue_confidence")
+            issue_classification_reason = output.get("issue_classification_reason")
+
     if final_answer and not emitted_token:
         yield f"data: {json.dumps({'type': 'token', 'content': final_answer})}\n\n"
 
@@ -183,6 +198,9 @@ async def _stream_response(question: str, config: dict, thread_id: str):
                 "retrieved_count": len(documents),
                 "reranked_count": len(reranked_documents),
                 "sources": [source.model_dump() for source in sources],
+                "issue_type": issue_type,
+                "issue_confidence": issue_confidence,
+                "issue_classification_reason": issue_classification_reason,
             }
         )
         + "\n\n"
