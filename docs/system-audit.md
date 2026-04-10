@@ -89,7 +89,7 @@ Answer + sources (streaming SSE)
 
 | # | Capability | Status | Current Reality |
 |---|-----------|--------|----------------|
-| P-01 | Plain English explanation of the issue (for manager) | 🟠 Partial | Answer prompt exists but is not tuned for a non-technical manager audience — it includes technical chunk metadata |
+| P-01 | Plain English explanation of the issue (for manager) | 🟢 Done | MANAGER_ANSWER_PROMPT added with strict no-jargon rules and What happened / Why / What this means format |
 | P-02 | Structured issue intake (CID + logs submitted by manager) | 🔴 Missing | Only a free-text chat input. No CID field, no log upload, no structured submission |
 | P-03 | Real-time log ingestion at submission time | 🔴 Missing | Batch-only. All logs pre-indexed offline via scripts. No live ingest API |
 | P-04 | Issue classification: real bug vs. business/config condition | 🔴 Missing | `classify_question.py` classifies query type (retrieve/rewrite), not issue type |

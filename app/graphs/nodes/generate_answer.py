@@ -99,17 +99,21 @@ def generate_answer(state: GraphState) -> dict:
 
     context = format_docs(context_documents)
     effective_question = state["question"]
-    chain = get_answer_chain(effective_question)
-    answer = chain.invoke(
-        {
-            "question": original_question,
-            "effective_question": effective_question,
-            "debug_context": _debug_context_summary(state),
-            "context_schema": CMS3_CONTEXT_SCHEMA,
-            "context": context,
-            "chat_history": state.get("messages", []),
-        }
-    )
+    explanation_mode = state.get("explanation_mode") or "manager"
+    chain = get_answer_chain(effective_question, explanation_mode=explanation_mode)
+
+    invoke_kwargs = {
+        "question": original_question,
+        "effective_question": effective_question,
+        "debug_context": _debug_context_summary(state),
+        "context": context,
+        "chat_history": state.get("messages", []),
+    }
+    # Developer prompt uses context_schema; manager prompt does not expose it
+    if explanation_mode == "developer":
+        invoke_kwargs["context_schema"] = CMS3_CONTEXT_SCHEMA
+
+    answer = chain.invoke(invoke_kwargs)
 
     logger.info("[generate] answer ready (%d chars)", len(answer))
     return {

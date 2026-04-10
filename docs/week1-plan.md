@@ -48,10 +48,10 @@
 
 | # | Task | Audit Ref | Status |
 |---|------|-----------|--------|
-| 2.1 | Rewrite `ANSWER_PROMPT` with manager persona — no jargon, narrative format | P-01 | 🔴 Not Started |
-| 2.2 | Separate "plain English summary" from "technical evidence" in response structure | P-01 | 🔴 Not Started |
-| 2.3 | Add `explanation_mode` to `GraphState` (`"manager"` \| `"developer"`) — foundation for dual mode | P-01, P-06 | 🔴 Not Started |
-| 2.4 | Manual spot-check: run 5 real CID questions, review plain English quality | — | 🔴 Not Started |
+| 2.1 | Rewrite `ANSWER_PROMPT` with manager persona — no jargon, narrative format | P-01 | 🟢 Done |
+| 2.2 | Separate "plain English summary" from "technical evidence" in response structure | P-01 | 🟢 Done |
+| 2.3 | Add `explanation_mode` to `GraphState` (`"manager"` \| `"developer"`) — foundation for dual mode | P-01, P-06 | 🟢 Done |
+| 2.4 | Manual spot-check: run 5 real CID questions, review plain English quality | — | 🟢 Done |
 
 ---
 
