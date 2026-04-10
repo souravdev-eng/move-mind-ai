@@ -39,3 +39,8 @@ dev = [
     "ruff==0.15.6",
     "ipykernel==7.2.0",
 ]
+
+[tool.pytest.ini_options]
+markers = [
+    "integration: marks tests as end-to-end integration tests requiring live API keys (deselect with '-m not integration')",
+]
