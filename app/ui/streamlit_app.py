@@ -17,6 +17,7 @@ load_dotenv()
 
 from app.graphs.agent import build_rag_graph
 from app.graphs.constants import (
+    NODE_CLASSIFY_ISSUE,
     NODE_CLASSIFY_QUESTION,
     NODE_GENERATE_ANSWER,
     NODE_RERANK_DOCS,
@@ -31,10 +32,17 @@ logger = get_logger(__name__)
 STATUS_LABELS = {
     NODE_CLASSIFY_QUESTION: "Classifying query...",
     NODE_REWRITE_QUESTION: "Rewriting follow-up...",
-    NODE_RESOLVE_CONTEXT: "Resolving debugging context...",
-    NODE_RETRIEVE_DOCS: "Retrieving CMS3 evidence...",
+    NODE_RESOLVE_CONTEXT: "Resolving context...",
+    NODE_RETRIEVE_DOCS: "Retrieving evidence...",
     NODE_RERANK_DOCS: "Reranking evidence...",
-    NODE_GENERATE_ANSWER: "Generating grounded answer...",
+    NODE_GENERATE_ANSWER: "Generating explanation...",
+    NODE_CLASSIFY_ISSUE: "Classifying issue type...",
+}
+
+_ISSUE_BADGE = {
+    "bug": ("🔴 Bug", "error"),
+    "business_condition": ("🟡 Business Condition", "warning"),
+    "unknown": ("⚪ Unknown", "info"),
 }
 
 st.set_page_config(
@@ -59,26 +67,46 @@ if "last_sources" not in st.session_state:
 if "last_counts" not in st.session_state:
     st.session_state.last_counts = {"retrieved": 0, "reranked": 0}
 
+if "last_classification" not in st.session_state:
+    st.session_state.last_classification = None
+
 
 def reset_chat() -> None:
     """Reset chat state and allocate a new memory thread."""
     st.session_state.messages = []
     st.session_state.last_sources = []
     st.session_state.last_counts = {"retrieved": 0, "reranked": 0}
+    st.session_state.last_classification = None
     st.session_state.thread_id = str(uuid.uuid4())
 
 
 with st.sidebar:
-    st.title("CMS3 Debugger")
-    st.caption("Hybrid Pinecone retrieval + FlashRank reranking")
+    st.title("Move Mind AI")
+    st.caption("Manager investigation assistant")
     st.code(st.session_state.thread_id, language=None)
 
-    if st.button("Clear chat", use_container_width=True):
+    if st.button("New investigation", use_container_width=True):
         reset_chat()
         st.rerun()
 
+    # Issue classification result
     st.divider()
-    st.markdown("**Latest retrieval stats**")
+    st.markdown("**Issue Classification**")
+    clf = st.session_state.last_classification
+    if clf and clf.get("issue_type"):
+        label, kind = _ISSUE_BADGE.get(clf["issue_type"], ("⚪ Unknown", "info"))
+        st.markdown(f"### {label}")
+        confidence = clf.get("issue_confidence")
+        if confidence is not None:
+            st.progress(confidence, text=f"Confidence: {int(confidence * 100)}%")
+        reason = clf.get("issue_classification_reason", "")
+        if reason:
+            st.caption(reason)
+    else:
+        st.info("Ask about an issue to see classification.")
+
+    st.divider()
+    st.markdown("**Retrieval stats**")
     st.write(f"Retrieved: {st.session_state.last_counts['retrieved']}")
     st.write(f"Reranked: {st.session_state.last_counts['reranked']}")
 
@@ -134,6 +162,7 @@ if prompt := st.chat_input("Ask about a CID, route transition, or failure..."):
         retrieved_documents = []
         reranked_documents = []
         answer = ""
+        classification = {}
 
         for event in graph.stream(
             {"question": prompt, "original_question": prompt},
@@ -154,8 +183,26 @@ if prompt := st.chat_input("Ask about a CID, route transition, or failure..."):
                 elif node_name == NODE_GENERATE_ANSWER:
                     answer = output.get("answer", "")
 
+                elif node_name == NODE_CLASSIFY_ISSUE:
+                    classification = {
+                        "issue_type": output.get("issue_type"),
+                        "issue_confidence": output.get("issue_confidence"),
+                        "issue_classification_reason": output.get("issue_classification_reason"),
+                    }
+
         status.update(label="Done", state="complete", expanded=False)
         answer_placeholder.markdown(answer)
+
+        # Show classification inline below the answer
+        if classification.get("issue_type"):
+            label, _ = _ISSUE_BADGE.get(classification["issue_type"], ("⚪ Unknown", "info"))
+            confidence = classification.get("issue_confidence", 0)
+            reason = classification.get("issue_classification_reason", "")
+            st.markdown(
+                f"---\n**Classification:** {label} &nbsp;·&nbsp; "
+                f"**Confidence:** {int(confidence * 100)}%  \n"
+                f"*{reason}*"
+            )
 
     st.session_state.messages.append({"role": "assistant", "content": answer})
     st.session_state.last_sources = reranked_documents or retrieved_documents
@@ -163,4 +210,5 @@ if prompt := st.chat_input("Ask about a CID, route transition, or failure..."):
         "retrieved": len(retrieved_documents),
         "reranked": len(reranked_documents),
     }
+    st.session_state.last_classification = classification
     st.rerun()
