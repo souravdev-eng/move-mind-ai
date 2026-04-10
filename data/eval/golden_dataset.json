@@ -1,0 +1,493 @@
+[
+  {
+    "id": "CID-001",
+    "category": "cid_lookup",
+    "question": "What happened to CID 7093495?",
+    "expected_keywords": [
+      "returning customer",
+      "booking",
+      "78",
+      "successful",
+      "quote"
+    ],
+    "expected_not_contains": [
+      "decision_result",
+      "graphql_request",
+      "gql_",
+      "chunk_type",
+      "step_order",
+      "evaluate_ui_condition",
+      "execution_id"
+    ],
+    "notes": "Should describe a full successful journey through the ccflownew flow ending at the booking page. No technical jargon."
+  },
+  {
+    "id": "CID-002",
+    "category": "cid_lookup",
+    "question": "Can you give me a summary of what the customer with ID 7093495 went through?",
+    "expected_keywords": [
+      "address",
+      "date",
+      "pricing",
+      "booking",
+      "quote"
+    ],
+    "expected_not_contains": [
+      "decision_result",
+      "graphql",
+      "chunk_type",
+      "step_order"
+    ],
+    "notes": "Summary should cover key stages: address check, date selection, items, pricing, booking."
+  },
+  {
+    "id": "CID-003",
+    "category": "cid_lookup",
+    "question": "Did CID 7093495 complete their journey successfully?",
+    "expected_keywords": [
+      "successful",
+      "completed",
+      "78"
+    ],
+    "expected_not_contains": [
+      "decision_result",
+      "graphql",
+      "evaluate_ui_condition"
+    ],
+    "notes": "All 78 steps were successful. Answer should confirm this clearly in plain English."
+  },
+  {
+    "id": "CID-004",
+    "category": "cid_lookup",
+    "question": "Where did the customer 7093495 start and where did they end up?",
+    "expected_keywords": [
+      "returning customer",
+      "booking",
+      "quote",
+      "start"
+    ],
+    "expected_not_contains": [
+      "route_entered",
+      "gql_",
+      "step_order",
+      "decision_result"
+    ],
+    "notes": "Start: returning-customer page. End: quote/booking page. Plain English journey overview."
+  },
+  {
+    "id": "CID-005",
+    "category": "cid_lookup",
+    "question": "How many steps did the journey have for CID 7093495?",
+    "expected_keywords": [
+      "78"
+    ],
+    "expected_not_contains": [
+      "step_order",
+      "chunk_type",
+      "graphql"
+    ],
+    "notes": "78 steps total, all successful. Simple factual answer."
+  },
+  {
+    "id": "CID-006",
+    "category": "cid_lookup",
+    "question": "What pages did CID 7093495 visit during their journey?",
+    "expected_keywords": [
+      "address",
+      "date",
+      "items",
+      "pricing",
+      "booking"
+    ],
+    "expected_not_contains": [
+      "/ccflownew/",
+      "route_entered",
+      "decision_result",
+      "chunk_type"
+    ],
+    "notes": "Should list pages in human-readable form, not raw route paths."
+  },
+  {
+    "id": "ROOT-001",
+    "category": "root_cause",
+    "question": "Why did the journey for CID 7093495 end at the booking page?",
+    "expected_keywords": [
+      "booking",
+      "condition",
+      "requirement",
+      "normal",
+      "designed"
+    ],
+    "expected_not_contains": [
+      "hasskillsetpricing",
+      "isLaborJourney",
+      "decision_result",
+      "evaluate_ui_condition",
+      "True",
+      "False"
+    ],
+    "notes": "The journey ended at booking because the customer did not meet the skill-set or labour-only conditions. Should be explained as a business rule, not a bug."
+  },
+  {
+    "id": "ROOT-002",
+    "category": "root_cause",
+    "question": "Why was CID 7093495 not able to proceed past the quote booking screen?",
+    "expected_keywords": [
+      "requirement",
+      "rule",
+      "pricing"
+    ],
+    "expected_not_contains": [
+      "hasskillsetpricing",
+      "isLaborJourney",
+      "decision_result",
+      "evaluate_ui_condition"
+    ],
+    "notes": "The booking screen checks require special skill-set pricing or labour-only job. Customer met neither. This is intentional business logic."
+  },
+  {
+    "id": "ROOT-003",
+    "category": "root_cause",
+    "question": "What caused the journey to stop for customer 7093495?",
+    "expected_keywords": [
+      "booking",
+      "normal",
+      "expected"
+    ],
+    "expected_not_contains": [
+      "decision_result",
+      "graphql",
+      "gql_",
+      "evaluate_ui_condition"
+    ],
+    "notes": "Journey did not stop due to an error — all 78 steps succeeded. It reached its natural end point at booking."
+  },
+  {
+    "id": "ROOT-004",
+    "category": "root_cause",
+    "question": "Why did CID 7093495 go through a junk option page?",
+    "expected_keywords": [
+      "junk",
+      "item",
+      "option",
+      "selection"
+    ],
+    "expected_not_contains": [
+      "decision_result",
+      "evaluate_ui_condition",
+      "route_entered",
+      "step_order"
+    ],
+    "notes": "Customer was routed to junk-option because the items conditions evaluated that this was a junk removal journey type."
+  },
+  {
+    "id": "ROOT-005",
+    "category": "root_cause",
+    "question": "Why was a lead created during the journey for CID 7093495?",
+    "expected_keywords": [
+      "interest",
+      "registered",
+      "lead",
+      "details"
+    ],
+    "expected_not_contains": [
+      "gql_create_lead_new",
+      "graphql_request",
+      "step_order"
+    ],
+    "notes": "gql_create_lead_new was called twice — at move-scope (step 38) and quote/pricing (step 69). Should explain in plain English: a customer record was created when they showed interest."
+  },
+  {
+    "id": "ROOT-006",
+    "category": "root_cause",
+    "question": "Why did the customer go through the address page during their journey?",
+    "expected_keywords": [
+      "address",
+      "property",
+      "location"
+    ],
+    "expected_not_contains": [
+      "gql_get_property_details_by_address",
+      "graphql_request",
+      "step_order",
+      "route_entered"
+    ],
+    "notes": "Address page was reached at step 6. Property details were looked up. Plain English: the system checked the customer's address and property details."
+  },
+  {
+    "id": "BIZ-001",
+    "category": "business_condition",
+    "question": "Is the behaviour at the booking page for CID 7093495 normal or a bug?",
+    "expected_keywords": [
+      "normal",
+      "expected",
+      "designed",
+      "rule"
+    ],
+    "expected_not_contains": [
+      "decision_result",
+      "hasskillsetpricing",
+      "evaluate_ui_condition"
+    ],
+    "notes": "This is normal — the journey is designed to stop here unless the customer meets specific criteria. Should say 'What this means: this is expected behaviour'."
+  },
+  {
+    "id": "BIZ-002",
+    "category": "business_condition",
+    "question": "Why was CID 7093495 checked for skill set at the beginning of the journey?",
+    "expected_keywords": [
+      "skill",
+      "check",
+      "type"
+    ],
+    "expected_not_contains": [
+      "route_entered",
+      "step_order",
+      "evaluate_ui_condition",
+      "decision_result"
+    ],
+    "notes": "Customer passed through check-skill-set-flat-rate page early (step 5). This is a routing check to determine journey type."
+  },
+  {
+    "id": "BIZ-003",
+    "category": "business_condition",
+    "question": "Why did the customer 7093495 go through so many checks on the date page?",
+    "expected_keywords": [
+      "date",
+      "availability",
+      "check"
+    ],
+    "expected_not_contains": [
+      "evaluate_ui_condition",
+      "decision_result",
+      "graphql_request",
+      "gql_get_booked_out"
+    ],
+    "notes": "Steps 15-28 on date page: multiple conditions checked (availability, booking status). Should explain: the system was checking date availability and booking constraints."
+  },
+  {
+    "id": "BIZ-004",
+    "category": "business_condition",
+    "question": "Was there anything unusual about how CID 7093495's journey was handled?",
+    "expected_keywords": [
+      "normal",
+      "expected",
+      "standard"
+    ],
+    "expected_not_contains": [
+      "decision_result",
+      "graphql",
+      "step_order",
+      "chunk_type"
+    ],
+    "notes": "Nothing unusual — all 78 steps successful, standard ccflownew journey path."
+  },
+  {
+    "id": "BIZ-005",
+    "category": "business_condition",
+    "question": "Why did the system create notes for customer 7093495?",
+    "expected_keywords": [
+      "notes",
+      "record",
+      "pricing",
+      "saved"
+    ],
+    "expected_not_contains": [
+      "gql_create_notes",
+      "graphql_request",
+      "step_order",
+      "route_entered"
+    ],
+    "notes": "gql_create_notes was called at step 72 on quote/pricing page. Plain English: notes were saved about the customer's quote details."
+  },
+  {
+    "id": "API-001",
+    "category": "api_timeline",
+    "question": "How many API calls were made during the journey of CID 7093495?",
+    "expected_keywords": [
+      "9",
+      "10",
+      "request",
+      "call"
+    ],
+    "expected_not_contains": [
+      "graphql_request",
+      "gql_",
+      "step_order",
+      "chunk_type"
+    ],
+    "notes": "9 transport-level graphql_request events + 10 named operations. Answer should clarify both if asked generally."
+  },
+  {
+    "id": "API-002",
+    "category": "api_timeline",
+    "question": "What data was looked up during the journey for CID 7093495?",
+    "expected_keywords": [
+      "address",
+      "availability",
+      "price",
+      "details"
+    ],
+    "expected_not_contains": [
+      "gql_get_property_details_by_address",
+      "gql_get_booked_out",
+      "gql_get_price_details",
+      "graphql_request"
+    ],
+    "notes": "Named operations: property details, booked-out check, price details, agent availability. Translate to business language."
+  },
+  {
+    "id": "API-003",
+    "category": "api_timeline",
+    "question": "Was a lead registered for CID 7093495 during the journey?",
+    "expected_keywords": [
+      "lead",
+      "registered",
+      "interest",
+      "twice"
+    ],
+    "expected_not_contains": [
+      "gql_create_lead_new",
+      "graphql_request",
+      "step_order"
+    ],
+    "notes": "gql_create_lead_new was called twice — at move-scope and quote/pricing. Should confirm yes, and explain when in plain English."
+  },
+  {
+    "id": "API-004",
+    "category": "api_timeline",
+    "question": "Was pricing information retrieved for CID 7093495?",
+    "expected_keywords": [
+      "price",
+      "pricing",
+      "retrieved",
+      "quote"
+    ],
+    "expected_not_contains": [
+      "gql_get_price_details",
+      "graphql_request",
+      "step_order"
+    ],
+    "notes": "gql_get_price_details called at step 64 on pitch page. Plain English: yes, pricing details were retrieved."
+  },
+  {
+    "id": "API-005",
+    "category": "api_timeline",
+    "question": "Were agent availability checks done for customer 7093495?",
+    "expected_keywords": [
+      "agent",
+      "availability",
+      "checked"
+    ],
+    "expected_not_contains": [
+      "gql_get_available_agentsfrom_flex_query",
+      "graphql_request",
+      "step_order"
+    ],
+    "notes": "gql_get_available_agentsfrom_flex_query was called twice — at address (step 9) and move-scope (step 41). Plain English: yes, agent availability was checked at two points."
+  },
+  {
+    "id": "MULTI-001",
+    "category": "multi_turn",
+    "turn": 2,
+    "depends_on": "CID-001",
+    "prior_question": "What happened to CID 7093495?",
+    "question": "Why did the journey stop there?",
+    "expected_keywords": [
+      "booking",
+      "requirement",
+      "rule",
+      "normal"
+    ],
+    "expected_not_contains": [
+      "hasskillsetpricing",
+      "isLaborJourney",
+      "decision_result",
+      "evaluate_ui_condition"
+    ],
+    "notes": "Follow-up after learning the journey ended at booking. Should rewrite to include CID and page, then explain the business rule."
+  },
+  {
+    "id": "MULTI-002",
+    "category": "multi_turn",
+    "turn": 2,
+    "depends_on": "CID-001",
+    "prior_question": "What happened to CID 7093495?",
+    "question": "Were there any errors?",
+    "expected_keywords": [
+      "no",
+      "successful",
+      "error",
+      "normal"
+    ],
+    "expected_not_contains": [
+      "status_counts",
+      "decision_result",
+      "chunk_type"
+    ],
+    "notes": "All 78 steps were successful. Answer should clearly say no errors were found."
+  },
+  {
+    "id": "MULTI-003",
+    "category": "multi_turn",
+    "turn": 2,
+    "depends_on": "CID-004",
+    "prior_question": "Where did the customer 7093495 start and where did they end up?",
+    "question": "What happened in between?",
+    "expected_keywords": [
+      "address",
+      "date",
+      "items",
+      "pricing"
+    ],
+    "expected_not_contains": [
+      "route_entered",
+      "step_order",
+      "decision_result",
+      "graphql"
+    ],
+    "notes": "Should describe the key stages in between start and end: address, date, skill check, items, junk, pitch, pricing."
+  },
+  {
+    "id": "MULTI-004",
+    "category": "multi_turn",
+    "turn": 2,
+    "depends_on": "ROOT-001",
+    "prior_question": "Why did the journey for CID 7093495 end at the booking page?",
+    "question": "Should we raise a bug for this?",
+    "expected_keywords": [
+      "business",
+      "rule",
+      "designed",
+      "normal",
+      "condition"
+    ],
+    "expected_not_contains": [
+      "decision_result",
+      "hasskillsetpricing",
+      "evaluate_ui_condition"
+    ],
+    "notes": "This is a business condition, not a bug. Answer should help the manager understand this is by design, and whether a ticket makes sense depends on whether the rule itself needs changing."
+  },
+  {
+    "id": "MULTI-005",
+    "category": "multi_turn",
+    "turn": 2,
+    "depends_on": "API-001",
+    "prior_question": "How many API calls were made during the journey of CID 7093495?",
+    "question": "Which one was called first?",
+    "expected_keywords": [
+      "first",
+      "call",
+      "answer",
+      "lead",
+      "start"
+    ],
+    "expected_not_contains": [
+      "gql_lsa_lead_on_answer_call",
+      "step_order",
+      "graphql_request"
+    ],
+    "notes": "First call was gql_lsa_lead_on_answer_call at step 1. Plain English: the first action was registering that the agent answered the customer's call."
+  }
+]

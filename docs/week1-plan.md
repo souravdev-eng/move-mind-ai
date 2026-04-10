@@ -61,12 +61,12 @@
 
 | # | Task | Category | Status |
 |---|------|----------|--------|
-| 3.1 | Define `data/eval/golden_dataset.json` schema (`question`, `expected_answer`, `category`, `cid`) | — | 🔴 Not Started |
-| 3.2 | Write 6 CID investigation questions — "What happened to CID X?" | CID Lookup | 🔴 Not Started |
-| 3.3 | Write 6 root cause questions — "Why was this journey blocked?" | Root Cause | 🔴 Not Started |
-| 3.4 | Write 5 business condition questions — "Why did this agent get this message?" | Business Condition | 🔴 Not Started |
-| 3.5 | Write 5 API timeline questions — "What APIs were called in this journey?" | API Timeline | 🔴 Not Started |
-| 3.6 | Write 5 multi-turn follow-up questions — depend on prior turn context | Multi-turn | 🔴 Not Started |
+| 3.1 | Define `data/eval/golden_dataset.json` schema (`question`, `expected_answer`, `category`, `cid`) | — | 🟢 Done |
+| 3.2 | Write 6 CID investigation questions — "What happened to CID X?" | CID Lookup | 🟢 Done |
+| 3.3 | Write 6 root cause questions — "Why was this journey blocked?" | Root Cause | 🟢 Done |
+| 3.4 | Write 5 business condition questions — "Why did this agent get this message?" | Business Condition | 🟢 Done |
+| 3.5 | Write 5 API timeline questions — "What APIs were called in this journey?" | API Timeline | 🟢 Done |
+| 3.6 | Write 5 multi-turn follow-up questions — depend on prior turn context | Multi-turn | 🟢 Done |
 
 **Target: 27 golden Q&A pairs across 5 categories.**
 
