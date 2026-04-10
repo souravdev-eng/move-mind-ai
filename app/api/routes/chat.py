@@ -103,6 +103,8 @@ async def _stream_response(question: str, config: dict, thread_id: str):
     reranked_documents: list[dict] = []
     query_type: str | None = None
     effective_question = question
+    final_answer = ""
+    emitted_token = False
 
     yield f"data: {json.dumps({'type': 'session', 'session_id': thread_id})}\n\n"
 
@@ -157,9 +159,17 @@ async def _stream_response(question: str, config: dict, thread_id: str):
         elif kind == "on_chat_model_stream" and NODE_GENERATE_ANSWER in tags:
             chunk = event.get("data", {}).get("chunk")
             if chunk and getattr(chunk, "content", None):
+                emitted_token = True
                 yield (
                     f"data: {json.dumps({'type': 'token', 'content': chunk.content})}\n\n"
                 )
+
+        elif kind == "on_chain_end" and name == NODE_GENERATE_ANSWER:
+            output = event.get("data", {}).get("output", {})
+            final_answer = output.get("answer", "") or ""
+
+    if final_answer and not emitted_token:
+        yield f"data: {json.dumps({'type': 'token', 'content': final_answer})}\n\n"
 
     sources = _docs_to_sources(reranked_documents or documents)
     yield (

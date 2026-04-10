@@ -26,11 +26,14 @@ PID_UI=$!
 cleanup() {
     echo ""
     echo "Shutting down..."
-    kill $PID_API $PID_UI 2>/dev/null
-    wait $PID_API $PID_UI 2>/dev/null
+    kill $PID_API 2>/dev/null
+    wait $PID_API 2>/dev/null
+    kill $PID_UI 2>/dev/null
+    wait $PID_UI 2>/dev/null
     echo "Done."
 }
 trap cleanup SIGINT SIGTERM
 
 # Wait for either to exit
-wait $PID_API $PID_UI
+wait $PID_API
+wait $PID_UI
