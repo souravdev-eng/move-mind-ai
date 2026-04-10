@@ -174,6 +174,22 @@ Issues within the parts that already exist.
 | Issue fingerprinting + deduplication | P-08 — "We've seen this before" |
 | Recurring issue flagging + priority scoring | P-09 — Don't keep fixing the same thing |
 
+### Layer 5 — Latency & Cost Optimization
+*Must tackle before go-live. Current pipeline is too expensive and too slow for daily manager use.*
+
+| What | Impact | Effort |
+|------|--------|--------|
+| Narrow o3 trigger heuristic — only use thinking model for genuine deep root cause, not every "why" | High cost reduction (o3 = 10x gpt-4o price) | Low |
+| OpenAI prompt caching — long system prompts repeat every query; caching gives ~50% token cost reduction automatically | Medium cost reduction | Low |
+| Context truncation — truncate each retrieved chunk to ~500 chars before passing to LLM; reduces token count by ~60% with minimal quality loss | Medium cost + latency | Low |
+| Semantic caching — cache answers to near-identical questions (same CID, same question type) | High latency + cost for repeat queries | Medium |
+| Parallelise classify_issue — run alongside generate_answer instead of after it | ~3s latency reduction per query | Medium |
+
+**Current benchmarks (from smoke test):**
+- Regular question (gpt-4o): ~8–12s end-to-end
+- Root cause question (o3): ~25–45s end-to-end
+- Target for go-live: < 10s for all query types
+
 ---
 
 ## Decisions & Notes
