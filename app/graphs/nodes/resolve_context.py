@@ -13,6 +13,7 @@ from app.rag.retrieval import (
     question_targets_api_timeline,
 )
 from app.utils.helpers import get_logger
+from langsmith import traceable
 
 logger = get_logger(__name__)
 
@@ -51,7 +52,7 @@ def _extract_requested_api_count(question: str) -> int | None:
     match = COUNT_PATTERN.search(question)
     return int(match.group(1)) if match else None
 
-
+@traceable(run_type="llm")
 def resolve_context(state: GraphState) -> dict:
     """Resolve persistent debugging scope such as CID, route, and API intent."""
     question = state["question"]

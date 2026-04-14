@@ -3,10 +3,12 @@
 from app.chains.classify_chain import get_classify_chain
 from app.graphs.state import GraphState
 from app.utils.helpers import (get_logger, question_needs_context_resolution)
+from langsmith import traceable
 
 logger = get_logger(__name__)
 
 
+@traceable(run_type="llm")
 def classify_question(state: GraphState) -> dict:
     """Classify the question as standalone retrieval or follow-up rewrite."""
     if question_needs_context_resolution(

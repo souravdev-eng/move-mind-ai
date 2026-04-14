@@ -3,10 +3,12 @@
 from app.chains.reranker_chain import get_reranker
 from app.graphs.state import GraphState
 from app.utils.helpers import dict_to_doc, doc_to_dict, get_logger
+from langsmith import traceable
 
 logger = get_logger(__name__)
 
 
+@traceable(run_type="retriever")
 def rerank_docs(state: GraphState) -> dict:
     """Rerank retrieved chunks and keep the highest-signal evidence."""
     if any(

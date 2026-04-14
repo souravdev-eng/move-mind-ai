@@ -3,10 +3,12 @@
 from app.graphs.state import GraphState
 from app.rag.retrieval import retrieve_candidates
 from app.utils.helpers import doc_to_dict, get_logger
+from langsmith import traceable
 
 logger = get_logger(__name__)
 
 
+@traceable(run_type="retriever")
 def retrieve_docs(state: GraphState) -> dict:
     """Fetch relevant summary and event chunks for the current question."""
     documents = retrieve_candidates(

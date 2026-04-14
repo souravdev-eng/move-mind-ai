@@ -58,4 +58,6 @@ def build_rag_graph():
     workflow.add_edge(NODE_GENERATE_ANSWER, NODE_CLASSIFY_ISSUE)
     workflow.add_edge(NODE_CLASSIFY_ISSUE, END)
 
-    return workflow.compile(checkpointer=MemorySaver())
+    compiled_workflow = workflow.compile(checkpointer=MemorySaver())
+    compiled_workflow.get_graph().draw_mermaid_png(output_file_path="graph.png")
+    return compiled_workflow
