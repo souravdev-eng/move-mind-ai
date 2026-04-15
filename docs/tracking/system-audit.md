@@ -127,7 +127,12 @@ Issues within the parts that already exist.
 | T-02 | `tests/test_graphs.py` | Imports `build_agent_graph` — actual function is `build_rag_graph()` | 🟢 Done |
 | T-03 | `tests/test_rag.py` | Imports `split_documents`, `load_documents` — neither exists in `app.rag.ingestion` | 🟢 Done |
 | T-04 | `scripts/ingest.py` | Calls `ingest()` which does not exist. Should call `build_vectorstore()` | 🟢 Done |
-| T-05 | `app/config.py` | LangSmith tracing configured but not wired into graph runs | 🟠 Partial |
+| T-05 | `app/config.py` | LangSmith tracing configured but not wired into graph runs | 🟢 Done |
+| T-09 | `app/obs/` | Cost, token, cid, issue_type attached to every root run via `invoke_with_observability` | 🟢 Done |
+| T-10 | `app/eval/diff.py` | Regression gate diffs overall metrics vs `baseline_results.json`; `scripts/check_regression.sh` enforces | 🟢 Done |
+| T-11 | `app/eval/langsmith_evaluators.py` + `scripts/run_langsmith_eval.py` | Golden dataset becomes `golden-v1` in LangSmith with keyword/jargon/groundedness evaluators | 🟢 Done |
+| T-12 | `docs/features/observability.md` | Debugging runbook for traces, costs, regression gate | 🟢 Done (dogfood pending) |
+| T-13 | Online evaluator + Monitor alert | Blocked on real production traffic | ⚪ Deferred |
 | T-06 | `app/tools/search.py` | `web_search()` always returns stub — never integrated | ⚪ Deferred |
 | T-07 | `app/` | No evaluation harness. README describes Ragas but no code implements it | 🔴 Missing |
 | T-08 | — | No golden eval dataset — cannot measure reliability | 🔴 Missing |

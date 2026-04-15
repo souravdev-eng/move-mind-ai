@@ -6,8 +6,10 @@ import json
 import re
 
 from langchain_core.output_parsers import StrOutputParser
+from langsmith import traceable
 
 from app.graphs.state import GraphState
+from app.obs.tracing import attach_span_metadata
 from app.prompts.templates import ISSUE_CLASSIFIER_PROMPT
 from app.utils.helpers import format_docs, get_llm, get_logger
 
@@ -36,6 +38,7 @@ def _parse_classification(raw: str) -> dict:
         return {"issue_type": "unknown", "confidence": 0.0, "reason": "Classification parsing failed."}
 
 
+@traceable(run_type="llm")
 def classify_issue(state: GraphState) -> dict:
     """
     Classify the reported issue as a bug, business_condition, or unknown.
@@ -70,6 +73,13 @@ def classify_issue(state: GraphState) -> dict:
         result["issue_type"],
         result["confidence"],
         result["reason"][:80],
+    )
+
+    attach_span_metadata(
+        {
+            "issue_type": result["issue_type"],
+            "issue_confidence": result["confidence"],
+        }
     )
 
     return {

@@ -33,8 +33,8 @@ Without these answers we are flying blind. Any agentic loop we add next week wil
 ## Part A — What You Need To Learn (Concepts)
 
 > Read / skim these before writing code. Each maps to one or more tasks in Part B.
-> **For packages, docs links, YouTube search queries, and courses per concept, see `docs/week2-learning-resources.md`.**
-> **For chapter-level reading from books you already own, see `docs/book-map.md`.**
+> **For packages, docs links, YouTube search queries, and courses per concept, see `docs/tracking/week2-learning-resources.md`.**
+> **For chapter-level reading from books you already own, see `docs/tracking/book-map.md`.**
 
 ### A.1 — Tracing vs Logging vs Metrics vs Evaluation
 
@@ -124,8 +124,8 @@ This is what separates a notebook-grade project from a production system.
 - [ ] `scripts/run_eval.sh` uploads results to LangSmith and writes a diff against `baseline_results.json`
 - [ ] CI (or local pre-commit) blocks commits where faithfulness / relevancy drops > 3%
 - [ ] Online judge grades 10% of real runs for faithfulness; results visible in LangSmith
-- [ ] `docs/observability.md` documents: how to view a trace, how to read the dashboard, how to debug a bad answer using the trace
-- [ ] `docs/system-audit.md` statuses updated
+- [ ] `docs/features/observability.md` documents: how to view a trace, how to read the dashboard, how to debug a bad answer using the trace
+- [ ] `docs/tracking/system-audit.md` statuses updated
 
 ---
 
@@ -188,7 +188,7 @@ This is what separates a notebook-grade project from a production system.
 | 4.3 | Add `scripts/check_regression.sh` — exits non-zero on gate failure | This is what CI calls | 🔴 Not Started |
 | 4.4 | Add a pre-push git hook (optional) or a GitHub Action that runs `check_regression.sh` | Whichever the workflow tolerates | 🔴 Not Started |
 | 4.5 | Deliberate-break test: intentionally regress `ANSWER_PROMPT`, confirm the gate fails | Critical — an untested gate is no gate | 🔴 Not Started |
-| 4.6 | Update `data/eval/baseline_results.json` only via explicit commit with justification | Document this rule in `docs/observability.md` | 🔴 Not Started |
+| 4.6 | Update `data/eval/baseline_results.json` only via explicit commit with justification | Document this rule in `docs/features/observability.md` | 🔴 Not Started |
 
 **What you will learn:** why "tests pass" is a weaker signal than "quality did not regress" in AI systems; how to design guardrails that fail loudly.
 
@@ -200,11 +200,11 @@ This is what separates a notebook-grade project from a production system.
 
 | # | Task | Notes | Status |
 |---|------|-------|--------|
-| 5.1 | Configure a LangSmith online evaluator: sample 10% of runs in `move-mind-prod`, run the groundedness judge | Set up in UI, document the config in `docs/observability.md` | 🔴 Not Started |
+| 5.1 | Configure a LangSmith online evaluator: sample 10% of runs in `move-mind-prod`, run the groundedness judge | Set up in UI, document the config in `docs/features/observability.md` | 🔴 Not Started |
 | 5.2 | Create a LangSmith Monitor: alert (email or Slack) if rolling 24h faithfulness < 0.70 | Surfaces drift early | 🔴 Not Started |
-| 5.3 | Write `docs/observability.md` — sections: Trace Anatomy, How to Debug a Bad Answer, Reading the Dashboard, Running Eval Locally, Interpreting the Regression Gate | Short, example-driven, screenshots OK | 🔴 Not Started |
+| 5.3 | Write `docs/features/observability.md` — sections: Trace Anatomy, How to Debug a Bad Answer, Reading the Dashboard, Running Eval Locally, Interpreting the Regression Gate | Short, example-driven, screenshots OK | 🔴 Not Started |
 | 5.4 | Dogfood the doc: pick one real failing run from earlier in the week, walk through the doc's debugging recipe, fix anything that trips you up | The doc is correct when you stop needing to edit it mid-walkthrough | 🔴 Not Started |
-| 5.5 | Update `docs/system-audit.md` to mark observability items resolved | — | 🔴 Not Started |
+| 5.5 | Update `docs/tracking/system-audit.md` to mark observability items resolved | — | 🔴 Not Started |
 
 **What you will learn:** the habit that separates mid-level from senior — shipping the docs that make *other people* (and future-you) productive on the system you just built.
 
@@ -218,8 +218,8 @@ This is what separates a notebook-grade project from a production system.
 - [ ] `scripts/check_regression.sh` exits non-zero on drop, green on improvement
 - [ ] `app/obs/pricing.py` + cost-per-run attribute on every trace
 - [ ] Online groundedness judge active on 10% sample
-- [ ] `docs/observability.md` complete and dogfooded
-- [ ] `docs/system-audit.md` updated
+- [ ] `docs/features/observability.md` complete and dogfooded
+- [ ] `docs/tracking/system-audit.md` updated
 
 ---
 

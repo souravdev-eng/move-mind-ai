@@ -1,6 +1,6 @@
 # Week 2 — Learning Resources (Visual Learner Path)
 
-> Companion to `docs/week2-plan.md`. For each concept in Part A and each task in Part B, this doc gives you:
+> Companion to `docs/tracking/week2-plan.md`. For each concept in Part A and each task in Part B, this doc gives you:
 > - **Stack** — exact package / SDK / CLI to install and use
 > - **Docs** — the one canonical page to bookmark
 > - **YouTube search queries** — type these verbatim into YouTube; sort by "This year" for freshness

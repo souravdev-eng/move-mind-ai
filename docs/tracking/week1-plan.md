@@ -24,7 +24,7 @@
 - [ ] Golden dataset committed (`data/eval/golden_dataset.json`) — min 27 Q&A pairs
 - [ ] Baseline eval metrics committed (`data/eval/baseline_results.json`)
 - [ ] Issue classifier working and included in manager response
-- [ ] `docs/system-audit.md` statuses updated for every completed item
+- [ ] `docs/tracking/system-audit.md` statuses updated for every completed item
 
 ---
 

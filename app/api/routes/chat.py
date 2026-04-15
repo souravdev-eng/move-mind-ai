@@ -19,16 +19,29 @@ from app.graphs.constants import (
     NODE_REWRITE_QUESTION,
 )
 from app.models.schemas import ChatRequest, ChatResponse, SourceDocument
+from app.obs.tracing import (
+    build_run_config,
+    enrich_run_from_state,
+    invoke_with_observability,
+)
 from app.utils.helpers import get_logger
 
 router = APIRouter()
 logger = get_logger(__name__)
 
 
-def _thread_config(session_id: str | None) -> tuple[dict, str]:
-    """Build the LangGraph thread config and return the concrete session id."""
+def _run_config(
+    session_id: str | None, question: str, explanation_mode: str
+) -> tuple[dict, str, str]:
+    """Build an observability-aware RunnableConfig; returns (config, thread_id, run_id)."""
     thread_id = session_id or str(uuid.uuid4())
-    return {"configurable": {"thread_id": thread_id}}, thread_id
+    config, run_id = build_run_config(
+        thread_id,
+        env="dev",
+        explanation_mode=explanation_mode,
+        question=question,
+    )
+    return config, thread_id, run_id
 
 
 def _docs_to_sources(documents: list[dict]) -> list[SourceDocument]:
@@ -58,18 +71,23 @@ def _docs_to_sources(documents: list[dict]) -> list[SourceDocument]:
 @router.post("/chat", response_model=ChatResponse)
 async def chat(request: ChatRequest):
     """Run the CMS3 debugging graph and return the answer plus evidence."""
-    config, thread_id = _thread_config(request.session_id)
+    explanation_mode = "manager"
+    config, thread_id, run_id = _run_config(
+        request.session_id, request.message, explanation_mode
+    )
 
     if request.stream:
         return StreamingResponse(
-            _stream_response(request.message, config, thread_id),
+            _stream_response(request.message, config, thread_id, run_id),
             media_type="text/event-stream",
         )
 
     graph = get_rag_graph()
-    result = graph.invoke(
+    result = invoke_with_observability(
+        graph,
         {"question": request.message, "original_question": request.message},
         config=config,
+        run_id=run_id,
     )
 
     documents = result.get("documents", [])
@@ -101,7 +119,7 @@ _STATUS_NODES = {
 }
 
 
-async def _stream_response(question: str, config: dict, thread_id: str):
+async def _stream_response(question: str, config: dict, thread_id: str, run_id: str):
     """SSE generator with node statuses, streamed answer tokens, and final evidence."""
     graph = get_rag_graph()
     documents: list[dict] = []
@@ -110,6 +128,7 @@ async def _stream_response(question: str, config: dict, thread_id: str):
     effective_question = question
     final_answer = ""
     emitted_token = False
+    active_customer_id: str | None = None
 
     yield f"data: {json.dumps({'type': 'session', 'session_id': thread_id})}\n\n"
 
@@ -177,6 +196,10 @@ async def _stream_response(question: str, config: dict, thread_id: str):
             output = event.get("data", {}).get("output", {})
             final_answer = output.get("answer", "") or ""
 
+        elif kind == "on_chain_end" and name == NODE_RESOLVE_CONTEXT:
+            output = event.get("data", {}).get("output", {})
+            active_customer_id = output.get("active_customer_id") or active_customer_id
+
         elif kind == "on_chain_end" and name == NODE_CLASSIFY_ISSUE:
             output = event.get("data", {}).get("output", {})
             issue_type = output.get("issue_type")
@@ -205,4 +228,15 @@ async def _stream_response(question: str, config: dict, thread_id: str):
         )
         + "\n\n"
     )
+
+    enrich_run_from_state(
+        run_id,
+        {
+            "active_customer_id": active_customer_id,
+            "issue_type": issue_type,
+            "issue_confidence": issue_confidence,
+            "query_type": query_type,
+        },
+    )
+
     yield "data: [DONE]\n\n"

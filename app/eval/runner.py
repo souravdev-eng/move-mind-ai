@@ -8,17 +8,27 @@ from pathlib import Path
 from typing import Any
 
 from app.graphs.agent import build_rag_graph
+from app.obs.tracing import build_run_config, invoke_with_observability
 from app.utils.helpers import get_logger
 
 logger = get_logger(__name__)
 
 
-def _invoke(graph, question: str, session_id: str) -> dict:
+def _invoke(graph, question: str, session_id: str, qid: str | None = None) -> dict:
     """Run one question through the graph and return the result dict."""
-    config = {"configurable": {"thread_id": session_id}}
-    return graph.invoke(
+    config, run_id = build_run_config(
+        session_id,
+        env="eval",
+        explanation_mode="manager",
+        question=question,
+        extra_metadata={"eval_qid": qid} if qid else None,
+        extra_tags=[f"qid:{qid}"] if qid else None,
+    )
+    return invoke_with_observability(
+        graph,
         {"question": question, "original_question": question},
         config=config,
+        run_id=run_id,
     )
 
 
@@ -51,9 +61,9 @@ def run_eval(dataset_path: str | Path) -> list[dict[str, Any]]:
         if category == "multi_turn" and item.get("prior_question"):
             # Warm up the session with the prior question first
             logger.info("  → priming session with prior question: %s", item["prior_question"][:60])
-            _invoke(graph, item["prior_question"], session_id)
+            _invoke(graph, item["prior_question"], session_id, qid=f"{qid}-prime")
 
-        result = _invoke(graph, question, session_id)
+        result = _invoke(graph, question, session_id, qid=qid)
 
         contexts = [
             doc["page_content"]

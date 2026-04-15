@@ -1,9 +1,12 @@
 """Node: retrieve_docs - fetch CMS3 log chunks with metadata-scoped hybrid retrieval."""
 
+from langsmith import traceable
+
+from app.config import settings
 from app.graphs.state import GraphState
+from app.obs.tracing import attach_span_metadata
 from app.rag.retrieval import retrieve_candidates
 from app.utils.helpers import doc_to_dict, get_logger
-from langsmith import traceable
 
 logger = get_logger(__name__)
 
@@ -23,4 +26,12 @@ def retrieve_docs(state: GraphState) -> dict:
         },
     )
     logger.info("[retrieve] %d candidate chunks", len(documents))
+    attach_span_metadata(
+        {
+            "k_summary": settings.RETRIEVER_SUMMARY_K,
+            "k_event": settings.RETRIEVER_EVENT_K,
+            "num_returned": len(documents),
+            "analysis_mode": state.get("analysis_mode") or "general",
+        }
+    )
     return {"documents": [doc_to_dict(document) for document in documents]}
