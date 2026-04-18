@@ -5,9 +5,13 @@ from pathlib import Path
 from dotenv import load_dotenv
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-load_dotenv()
-
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = PROJECT_ROOT.parent
+
+# Prefer backend-local .env, fall back to monorepo root .env
+_env_path = PROJECT_ROOT / ".env" if (PROJECT_ROOT / ".env").exists() else REPO_ROOT / ".env"
+
+load_dotenv(dotenv_path=_env_path)
 
 
 class Settings(BaseSettings):
@@ -50,7 +54,7 @@ class Settings(BaseSettings):
     LANGCHAIN_PROJECT_PROD: str | None = None
 
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=str(_env_path),
         env_file_encoding="utf-8",
         extra="ignore",
     )
