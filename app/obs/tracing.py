@@ -19,11 +19,13 @@ the graph still runs and the caller still gets `result`.
 from __future__ import annotations
 
 import os
+import time
 import uuid
+from contextlib import nullcontext
 from typing import Any
 
 from langchain_core.callbacks.usage import get_usage_metadata_callback
-from langsmith import get_current_run_tree
+from langsmith import get_current_run_tree, tracing_context
 
 from app.config import settings
 from app.obs.pricing import cost_from_usage
@@ -127,12 +129,46 @@ def _enrichment_from_result(result: dict) -> tuple[dict, list[str]]:
 def enrich_run_from_state(run_id: str | None, state: dict) -> None:
     """Post-hoc: push cid / issue_type / query_type onto the root run.
 
-    Used by the streaming path, which can't use `invoke_with_observability`.
+    Used when the streaming path lacks token/latency data (legacy callers).
+    Prefer `enrich_run_from_stream` when cost + latency are available.
     """
     if not run_id:
         return
     metadata, tags = _enrichment_from_result(state)
     _update_run(run_id, metadata=metadata, tags=tags)
+
+
+def enrich_run_from_stream(
+    run_id: str | None,
+    state: dict,
+    usage_metadata: dict | None,
+    latency_ms: int | None,
+) -> None:
+    """Post-hoc enrichment for the streaming path.
+
+    Combines graph state (cid/issue/query_type) with token/cost totals computed
+    from the usage callback and the measured end-to-end latency.
+    """
+    if not run_id:
+        return
+    metadata, tags = _enrichment_from_result(state)
+    usage_totals = cost_from_usage(usage_metadata or {})
+    metadata.update(usage_totals)
+    if latency_ms is not None:
+        metadata["latency_ms"] = latency_ms
+    _update_run(run_id, metadata=metadata, tags=tags)
+
+
+def project_scope(env: str):
+    """Return a `tracing_context(project_name=...)` scope for the given env.
+
+    Falls back to a no-op context when LangSmith tracing is disabled. Used by
+    both the blocking and streaming paths to route runs into per-env projects.
+    """
+    if not _tracing_enabled():
+        return nullcontext()
+    project = settings.langsmith_project_for(env)
+    return tracing_context(project_name=project)
 
 
 def invoke_with_observability(
@@ -142,16 +178,21 @@ def invoke_with_observability(
     *,
     run_id: str | None = None,
 ) -> dict:
-    """Invoke the graph while collecting tokens/cost and patching the root run.
+    """Invoke the graph while collecting tokens/cost/latency and patching the root run.
 
     `run_id` must match `config["run_id"]` when tracing updates are desired.
     """
-    with get_usage_metadata_callback() as cb:
+    env = (config.get("metadata") or {}).get("env", "dev")
+
+    t0 = time.perf_counter()
+    with project_scope(env), get_usage_metadata_callback() as cb:
         result = graph.invoke(inputs, config=config)
+    latency_ms = int((time.perf_counter() - t0) * 1000)
 
     usage_totals = cost_from_usage(cb.usage_metadata or {})
     run_meta, run_tags = _enrichment_from_result(result)
     run_meta.update(usage_totals)
+    run_meta["latency_ms"] = latency_ms
 
     if run_id:
         _update_run(run_id, metadata=run_meta, tags=run_tags)

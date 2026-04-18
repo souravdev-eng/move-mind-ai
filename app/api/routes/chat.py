@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 import json
+import time
 import uuid
 
 from fastapi import APIRouter
 from fastapi.responses import StreamingResponse
+from langchain_core.callbacks.usage import get_usage_metadata_callback
 
 from app.api.dependencies import get_rag_graph
 from app.graphs.constants import (
@@ -21,8 +23,9 @@ from app.graphs.constants import (
 from app.models.schemas import ChatRequest, ChatResponse, SourceDocument
 from app.obs.tracing import (
     build_run_config,
-    enrich_run_from_state,
+    enrich_run_from_stream,
     invoke_with_observability,
+    project_scope,
 )
 from app.utils.helpers import get_logger
 
@@ -136,75 +139,83 @@ async def _stream_response(question: str, config: dict, thread_id: str, run_id: 
     issue_confidence: float | None = None
     issue_classification_reason: str | None = None
 
-    async for event in graph.astream_events(
-        {"question": question, "original_question": question},
-        config=config,
-        version="v2",
-    ):
-        kind = event["event"]
-        name = event.get("name", "")
-        tags = event.get("tags", [])
+    env = (config.get("metadata") or {}).get("env", "dev")
+    t0 = time.perf_counter()
 
-        if kind == "on_chain_start" and name in _STATUS_NODES:
-            yield f"data: {json.dumps({'type': 'status', 'node': name})}\n\n"
+    with project_scope(env), get_usage_metadata_callback() as cb:
+        async for event in graph.astream_events(
+            {"question": question, "original_question": question},
+            config=config,
+            version="v2",
+        ):
+            kind = event["event"]
+            name = event.get("name", "")
+            tags = event.get("tags", [])
 
-        elif kind == "on_chain_end" and name == NODE_CLASSIFY_QUESTION:
-            output = event.get("data", {}).get("output", {})
-            query_type = output.get("query_type")
+            if kind == "on_chain_start" and name in _STATUS_NODES:
+                yield f"data: {json.dumps({'type': 'status', 'node': name})}\n\n"
 
-        elif kind == "on_chain_end" and name == NODE_REWRITE_QUESTION:
-            output = event.get("data", {}).get("output", {})
-            effective_question = output.get("question", effective_question)
+            elif kind == "on_chain_end" and name == NODE_CLASSIFY_QUESTION:
+                output = event.get("data", {}).get("output", {})
+                query_type = output.get("query_type")
 
-        elif kind == "on_chain_end" and name == NODE_RETRIEVE_DOCS:
-            output = event.get("data", {}).get("output", {})
-            documents = output.get("documents", [])
-            yield (
-                "data: "
-                + json.dumps(
-                    {
-                        "type": "retrieval",
-                        "retrieved_count": len(documents),
-                    }
-                )
-                + "\n\n"
-            )
+            elif kind == "on_chain_end" and name == NODE_REWRITE_QUESTION:
+                output = event.get("data", {}).get("output", {})
+                effective_question = output.get("question", effective_question)
 
-        elif kind == "on_chain_end" and name == NODE_RERANK_DOCS:
-            output = event.get("data", {}).get("output", {})
-            reranked_documents = output.get("reranked_documents", [])
-            yield (
-                "data: "
-                + json.dumps(
-                    {
-                        "type": "rerank",
-                        "reranked_count": len(reranked_documents),
-                    }
-                )
-                + "\n\n"
-            )
-
-        elif kind == "on_chat_model_stream" and NODE_GENERATE_ANSWER in tags:
-            chunk = event.get("data", {}).get("chunk")
-            if chunk and getattr(chunk, "content", None):
-                emitted_token = True
+            elif kind == "on_chain_end" and name == NODE_RETRIEVE_DOCS:
+                output = event.get("data", {}).get("output", {})
+                documents = output.get("documents", [])
                 yield (
-                    f"data: {json.dumps({'type': 'token', 'content': chunk.content})}\n\n"
+                    "data: "
+                    + json.dumps(
+                        {
+                            "type": "retrieval",
+                            "retrieved_count": len(documents),
+                        }
+                    )
+                    + "\n\n"
                 )
 
-        elif kind == "on_chain_end" and name == NODE_GENERATE_ANSWER:
-            output = event.get("data", {}).get("output", {})
-            final_answer = output.get("answer", "") or ""
+            elif kind == "on_chain_end" and name == NODE_RERANK_DOCS:
+                output = event.get("data", {}).get("output", {})
+                reranked_documents = output.get("reranked_documents", [])
+                yield (
+                    "data: "
+                    + json.dumps(
+                        {
+                            "type": "rerank",
+                            "reranked_count": len(reranked_documents),
+                        }
+                    )
+                    + "\n\n"
+                )
 
-        elif kind == "on_chain_end" and name == NODE_RESOLVE_CONTEXT:
-            output = event.get("data", {}).get("output", {})
-            active_customer_id = output.get("active_customer_id") or active_customer_id
+            elif kind == "on_chat_model_stream" and NODE_GENERATE_ANSWER in tags:
+                chunk = event.get("data", {}).get("chunk")
+                if chunk and getattr(chunk, "content", None):
+                    emitted_token = True
+                    yield (
+                        f"data: {json.dumps({'type': 'token', 'content': chunk.content})}\n\n"
+                    )
 
-        elif kind == "on_chain_end" and name == NODE_CLASSIFY_ISSUE:
-            output = event.get("data", {}).get("output", {})
-            issue_type = output.get("issue_type")
-            issue_confidence = output.get("issue_confidence")
-            issue_classification_reason = output.get("issue_classification_reason")
+            elif kind == "on_chain_end" and name == NODE_GENERATE_ANSWER:
+                output = event.get("data", {}).get("output", {})
+                final_answer = output.get("answer", "") or ""
+
+            elif kind == "on_chain_end" and name == NODE_RESOLVE_CONTEXT:
+                output = event.get("data", {}).get("output", {})
+                active_customer_id = (
+                    output.get("active_customer_id") or active_customer_id
+                )
+
+            elif kind == "on_chain_end" and name == NODE_CLASSIFY_ISSUE:
+                output = event.get("data", {}).get("output", {})
+                issue_type = output.get("issue_type")
+                issue_confidence = output.get("issue_confidence")
+                issue_classification_reason = output.get("issue_classification_reason")
+
+    latency_ms = int((time.perf_counter() - t0) * 1000)
 
     if final_answer and not emitted_token:
         yield f"data: {json.dumps({'type': 'token', 'content': final_answer})}\n\n"
@@ -229,7 +240,7 @@ async def _stream_response(question: str, config: dict, thread_id: str, run_id: 
         + "\n\n"
     )
 
-    enrich_run_from_state(
+    enrich_run_from_stream(
         run_id,
         {
             "active_customer_id": active_customer_id,
@@ -237,6 +248,8 @@ async def _stream_response(question: str, config: dict, thread_id: str, run_id: 
             "issue_confidence": issue_confidence,
             "query_type": query_type,
         },
+        cb.usage_metadata or {},
+        latency_ms,
     )
 
     yield "data: [DONE]\n\n"

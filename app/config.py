@@ -45,12 +45,24 @@ class Settings(BaseSettings):
     LANGCHAIN_TRACING_V2: bool = False
     LANGCHAIN_API_KEY: str | None = None
     LANGCHAIN_PROJECT: str = "move-mind-ai"
+    LANGCHAIN_PROJECT_DEV: str | None = None
+    LANGCHAIN_PROJECT_EVAL: str | None = None
+    LANGCHAIN_PROJECT_PROD: str | None = None
 
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
         extra="ignore",
     )
+
+    def langsmith_project_for(self, env: str) -> str:
+        """Resolve the LangSmith project name for a given env, falling back to LANGCHAIN_PROJECT."""
+        per_env = {
+            "dev": self.LANGCHAIN_PROJECT_DEV,
+            "eval": self.LANGCHAIN_PROJECT_EVAL,
+            "prod": self.LANGCHAIN_PROJECT_PROD,
+        }.get(env)
+        return per_env or self.LANGCHAIN_PROJECT
 
 
 settings = Settings()

@@ -104,8 +104,11 @@ def generate_answer(state: GraphState) -> dict:
     explanation_mode = state.get("explanation_mode") or "manager"
     chain = get_answer_chain(effective_question, explanation_mode=explanation_mode)
 
+    # Manager prompt (hub-style) uses a single {question} slot that must receive the
+    # resolved question. Developer prompt still exposes both {question} (raw) and
+    # {effective_question} (resolved) separately.
     invoke_kwargs = {
-        "question": original_question,
+        "question": effective_question if explanation_mode == "manager" else original_question,
         "effective_question": effective_question,
         "debug_context": _debug_context_summary(state),
         "context": context,

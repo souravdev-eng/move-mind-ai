@@ -51,35 +51,49 @@ def main() -> int:
         dataset = existing
         print(f"Reusing existing dataset {DATASET_NAME} ({dataset.id})")
 
-    existing_qids = {
-        ex.outputs.get("id") for ex in client.list_examples(dataset_id=dataset.id)
+    existing_by_id = {
+        ex.outputs.get("id"): ex
+        for ex in client.list_examples(dataset_id=dataset.id)
         if ex.outputs
     }
 
-    to_upload = [ex for ex in examples if ex["id"] not in existing_qids]
-    if not to_upload:
-        print("All examples already present — nothing to upload.")
-        return 0
-
-    inputs = [{"question": ex["question"]} for ex in to_upload]
-    outputs = [
-        {
-            "id": ex["id"],
-            "category": ex["category"],
-            "expected_keywords": ex.get("expected_keywords", []),
-            "expected_not_contains": ex.get("expected_not_contains", []),
-            "notes": ex.get("notes", ""),
-            "prior_question": ex.get("prior_question"),
-        }
-        for ex in to_upload
+    to_create = [ex for ex in examples if ex["id"] not in existing_by_id]
+    to_update = [
+        (existing_by_id[ex["id"]], ex)
+        for ex in examples
+        if ex["id"] in existing_by_id
+        and not existing_by_id[ex["id"]].outputs.get("answer")
     ]
 
-    client.create_examples(
-        inputs=inputs,
-        outputs=outputs,
-        dataset_id=dataset.id,
-    )
-    print(f"Uploaded {len(to_upload)} new examples to {DATASET_NAME}.")
+    if to_create:
+        inputs = [{"question": ex["question"]} for ex in to_create]
+        outputs = [
+            {
+                "id": ex["id"],
+                "category": ex["category"],
+                "expected_keywords": ex.get("expected_keywords", []),
+                "expected_not_contains": ex.get("expected_not_contains", []),
+                "notes": ex.get("notes", ""),
+                "prior_question": ex.get("prior_question"),
+                "answer": ex.get("ground_truth", ""),
+            }
+            for ex in to_create
+        ]
+        client.create_examples(inputs=inputs, outputs=outputs, dataset_id=dataset.id)
+        print(f"Created {len(to_create)} new examples in {DATASET_NAME}.")
+    else:
+        print("No new examples to create.")
+
+    if to_update:
+        for langsmith_ex, local_ex in to_update:
+            client.update_example(
+                example_id=langsmith_ex.id,
+                outputs={**langsmith_ex.outputs, "answer": local_ex.get("ground_truth", "")},
+            )
+        print(f"Updated {len(to_update)} existing examples with ground_truth answer.")
+    else:
+        print("All existing examples already have an answer — nothing to update.")
+
     return 0
 
 

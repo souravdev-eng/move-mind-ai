@@ -13,6 +13,7 @@ per-example drill-down to traces.
 from __future__ import annotations
 
 import os
+import subprocess
 import sys
 import uuid
 from datetime import datetime, timezone
@@ -23,6 +24,22 @@ from app.graphs.agent import build_rag_graph
 from app.obs.tracing import build_run_config, invoke_with_observability
 
 DATASET_NAME = "golden-v1"
+
+
+def _git_short_sha() -> str:
+    """Return the current short commit SHA, or 'nogit' when unavailable."""
+    try:
+        proc = subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"],
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=2,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return "nogit"
+    sha = proc.stdout.strip()
+    return sha or "nogit"
 
 
 def main() -> int:
@@ -64,7 +81,8 @@ def main() -> int:
             "query_type": result.get("query_type"),
         }
 
-    experiment_prefix = f"golden-v1-{datetime.now(timezone.utc).strftime('%Y%m%d-%H%M%S')}"
+    ts = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
+    experiment_prefix = f"golden-v1-{ts}-{_git_short_sha()}"
     print(f"Starting LangSmith experiment: {experiment_prefix}")
 
     results = evaluate(

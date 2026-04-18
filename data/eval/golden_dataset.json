@@ -19,7 +19,8 @@
       "evaluate_ui_condition",
       "execution_id"
     ],
-    "notes": "Should describe a full successful journey through the ccflownew flow ending at the booking page. No technical jargon."
+    "notes": "Should describe a full successful journey through the ccflownew flow ending at the booking page. No technical jargon.",
+    "ground_truth": "Customer 7093495 was a returning customer who went through a complete journey of 78 steps, all of which were completed successfully. The journey took them through key stages including address verification, date selection, item selection — including a junk removal option — and a pricing and quote review, ending at the booking page."
   },
   {
     "id": "CID-002",
@@ -38,7 +39,8 @@
       "chunk_type",
       "step_order"
     ],
-    "notes": "Summary should cover key stages: address check, date selection, items, pricing, booking."
+    "notes": "Summary should cover key stages: address check, date selection, items, pricing, booking.",
+    "ground_truth": "Customer 7093495 went through a complete booking journey. Starting as a returning customer, their address and property details were checked, then they selected a move date with availability confirmed. They chose their items including a junk removal option, reviewed pricing and a quote, and ended at the booking page."
   },
   {
     "id": "CID-003",
@@ -54,7 +56,8 @@
       "graphql",
       "evaluate_ui_condition"
     ],
-    "notes": "All 78 steps were successful. Answer should confirm this clearly in plain English."
+    "notes": "All 78 steps were successful. Answer should confirm this clearly in plain English.",
+    "ground_truth": "Yes, customer 7093495 completed their journey successfully. All 78 steps were completed without any errors or failures."
   },
   {
     "id": "CID-004",
@@ -72,7 +75,8 @@
       "step_order",
       "decision_result"
     ],
-    "notes": "Start: returning-customer page. End: quote/booking page. Plain English journey overview."
+    "notes": "Start: returning-customer page. End: quote/booking page. Plain English journey overview.",
+    "ground_truth": "Customer 7093495 started their journey on the returning customer page and ended up at the quote booking page. In between, they went through address verification, date selection, item and junk option selection, and a pricing stage."
   },
   {
     "id": "CID-005",
@@ -86,7 +90,8 @@
       "chunk_type",
       "graphql"
     ],
-    "notes": "78 steps total, all successful. Simple factual answer."
+    "notes": "78 steps total, all successful. Simple factual answer.",
+    "ground_truth": "The journey for customer 7093495 had 78 steps in total, and all of them were completed successfully."
   },
   {
     "id": "CID-006",
@@ -105,7 +110,8 @@
       "decision_result",
       "chunk_type"
     ],
-    "notes": "Should list pages in human-readable form, not raw route paths."
+    "notes": "Should list pages in human-readable form, not raw route paths.",
+    "ground_truth": "During their journey, customer 7093495 visited the returning customer page, a skill set check page, the address page, the date selection page, the items page, the junk option page, the quote and pricing page, and finally the booking page."
   },
   {
     "id": "ROOT-001",
@@ -126,7 +132,8 @@
       "True",
       "False"
     ],
-    "notes": "The journey ended at booking because the customer did not meet the skill-set or labour-only conditions. Should be explained as a business rule, not a bug."
+    "notes": "The journey ended at booking because the customer did not meet the skill-set or labour-only conditions. Should be explained as a business rule, not a bug.",
+    "ground_truth": "The journey for customer 7093495 ended at the booking page because this is the normal, designed outcome for customers who do not meet specific conditions. The system checks whether a customer requires special skill-set pricing or is on a labour-only job. Since this customer met neither requirement, the journey reached its natural end point at the booking page. This is expected behaviour, not an error."
   },
   {
     "id": "ROOT-002",
@@ -143,7 +150,8 @@
       "decision_result",
       "evaluate_ui_condition"
     ],
-    "notes": "The booking screen checks require special skill-set pricing or labour-only job. Customer met neither. This is intentional business logic."
+    "notes": "The booking screen checks require special skill-set pricing or labour-only job. Customer met neither. This is intentional business logic.",
+    "ground_truth": "Customer 7093495 could not proceed past the quote booking screen because a business rule requires either special skill-set pricing or a labour-only job type to advance further. This customer met neither requirement, so the journey correctly stopped at the booking screen. This is intentional business logic, not a bug."
   },
   {
     "id": "ROOT-003",
@@ -160,7 +168,8 @@
       "gql_",
       "evaluate_ui_condition"
     ],
-    "notes": "Journey did not stop due to an error — all 78 steps succeeded. It reached its natural end point at booking."
+    "notes": "Journey did not stop due to an error — all 78 steps succeeded. It reached its natural end point at booking.",
+    "ground_truth": "The journey did not stop due to an error. All 78 steps were completed successfully. The journey reached its natural and expected end point at the booking page, which is the normal outcome for this type of customer."
   },
   {
     "id": "ROOT-004",
@@ -178,7 +187,8 @@
       "route_entered",
       "step_order"
     ],
-    "notes": "Customer was routed to junk-option because the items conditions evaluated that this was a junk removal journey type."
+    "notes": "Customer was routed to junk-option because the items conditions evaluated that this was a junk removal journey type.",
+    "ground_truth": "Customer 7093495 was routed to the junk option page because, based on their item selections, the system identified this as a junk removal journey. The items the customer selected triggered the junk option path, which is the expected routing for this type of move."
   },
   {
     "id": "ROOT-005",
@@ -195,7 +205,8 @@
       "graphql_request",
       "step_order"
     ],
-    "notes": "gql_create_lead_new was called twice — at move-scope (step 38) and quote/pricing (step 69). Should explain in plain English: a customer record was created when they showed interest."
+    "notes": "gql_create_lead_new was called twice — at move-scope (step 38) and quote/pricing (step 69). Should explain in plain English: a customer record was created when they showed interest.",
+    "ground_truth": "A lead was created for customer 7093495 because the system registered their interest at two points during the journey — once when they provided their move details, and again when they reached the quote and pricing stage. This is standard practice so the team can follow up with the customer if needed."
   },
   {
     "id": "ROOT-006",
@@ -212,7 +223,8 @@
       "step_order",
       "route_entered"
     ],
-    "notes": "Address page was reached at step 6. Property details were looked up. Plain English: the system checked the customer's address and property details."
+    "notes": "Address page was reached at step 6. Property details were looked up. Plain English: the system checked the customer's address and property details.",
+    "ground_truth": "The customer went through the address page so the system could verify their property details and location. This is a standard part of the booking journey — the address information is needed to check availability, assess the property, and provide an accurate quote."
   },
   {
     "id": "BIZ-001",
@@ -229,7 +241,8 @@
       "hasskillsetpricing",
       "evaluate_ui_condition"
     ],
-    "notes": "This is normal — the journey is designed to stop here unless the customer meets specific criteria. Should say 'What this means: this is expected behaviour'."
+    "notes": "This is normal — the journey is designed to stop here unless the customer meets specific criteria. Should say 'What this means: this is expected behaviour'.",
+    "ground_truth": "The behaviour at the booking page is completely normal and expected. The journey is designed to stop here for customers who do not meet specific criteria, such as special skill-set pricing or a labour-only job type. What this means: this is expected behaviour, not a bug."
   },
   {
     "id": "BIZ-002",
@@ -246,7 +259,8 @@
       "evaluate_ui_condition",
       "decision_result"
     ],
-    "notes": "Customer passed through check-skill-set-flat-rate page early (step 5). This is a routing check to determine journey type."
+    "notes": "Customer passed through check-skill-set-flat-rate page early (step 5). This is a routing check to determine journey type.",
+    "ground_truth": "The skill set check at the beginning of the journey is a standard routing step. The system checks whether the customer requires flat-rate skill-set pricing in order to determine which journey type to route them through. This check happens early so the customer is directed to the correct path from the start."
   },
   {
     "id": "BIZ-003",
@@ -263,7 +277,8 @@
       "graphql_request",
       "gql_get_booked_out"
     ],
-    "notes": "Steps 15-28 on date page: multiple conditions checked (availability, booking status). Should explain: the system was checking date availability and booking constraints."
+    "notes": "Steps 15-28 on date page: multiple conditions checked (availability, booking status). Should explain: the system was checking date availability and booking constraints.",
+    "ground_truth": "The multiple checks on the date page were all part of the system verifying date availability and booking constraints. The system needed to confirm the chosen move date was available, check for any booking conflicts, and validate other scheduling conditions. These checks are normal and ensure the customer is offered a valid date."
   },
   {
     "id": "BIZ-004",
@@ -280,7 +295,8 @@
       "step_order",
       "chunk_type"
     ],
-    "notes": "Nothing unusual — all 78 steps successful, standard ccflownew journey path."
+    "notes": "Nothing unusual — all 78 steps successful, standard ccflownew journey path.",
+    "ground_truth": "No, there was nothing unusual about how this customer's journey was handled. All 78 steps were completed successfully, and the journey followed the standard expected path through the booking flow."
   },
   {
     "id": "BIZ-005",
@@ -298,7 +314,8 @@
       "step_order",
       "route_entered"
     ],
-    "notes": "gql_create_notes was called at step 72 on quote/pricing page. Plain English: notes were saved about the customer's quote details."
+    "notes": "gql_create_notes was called at step 72 on quote/pricing page. Plain English: notes were saved about the customer's quote details.",
+    "ground_truth": "Notes were created for customer 7093495 to record their quote and pricing details. These were saved at the pricing stage of the journey as a standard record of what was quoted to the customer, useful for follow-up and reference."
   },
   {
     "id": "API-001",
@@ -316,7 +333,8 @@
       "step_order",
       "chunk_type"
     ],
-    "notes": "9 transport-level graphql_request events + 10 named operations. Answer should clarify both if asked generally."
+    "notes": "9 transport-level graphql_request events + 10 named operations. Answer should clarify both if asked generally.",
+    "ground_truth": "During the journey of customer 7093495, a total of 9 transport-level data requests were made, which carried 10 named operations. These covered tasks such as looking up property details, checking date availability, retrieving pricing details, and registering customer interest."
   },
   {
     "id": "API-002",
@@ -334,7 +352,8 @@
       "gql_get_price_details",
       "graphql_request"
     ],
-    "notes": "Named operations: property details, booked-out check, price details, agent availability. Translate to business language."
+    "notes": "Named operations: property details, booked-out check, price details, agent availability. Translate to business language.",
+    "ground_truth": "During the journey, the system looked up several pieces of information: the customer's property details based on their address, date availability and booking conflicts, pricing details for the quote, and agent availability at two points in the journey."
   },
   {
     "id": "API-003",
@@ -351,7 +370,8 @@
       "graphql_request",
       "step_order"
     ],
-    "notes": "gql_create_lead_new was called twice — at move-scope and quote/pricing. Should confirm yes, and explain when in plain English."
+    "notes": "gql_create_lead_new was called twice — at move-scope and quote/pricing. Should confirm yes, and explain when in plain English.",
+    "ground_truth": "Yes, a lead was registered for customer 7093495, and it was registered twice during the journey — once when the customer provided their move details, and again when they reached the quote and pricing stage. Their interest was recorded at two key points."
   },
   {
     "id": "API-004",
@@ -368,7 +388,8 @@
       "graphql_request",
       "step_order"
     ],
-    "notes": "gql_get_price_details called at step 64 on pitch page. Plain English: yes, pricing details were retrieved."
+    "notes": "gql_get_price_details called at step 64 on pitch page. Plain English: yes, pricing details were retrieved.",
+    "ground_truth": "Yes, pricing information was retrieved for customer 7093495. The pricing details were fetched during the pitch stage of the journey, which allowed the system to present an accurate quote to the customer."
   },
   {
     "id": "API-005",
@@ -384,7 +405,8 @@
       "graphql_request",
       "step_order"
     ],
-    "notes": "gql_get_available_agentsfrom_flex_query was called twice — at address (step 9) and move-scope (step 41). Plain English: yes, agent availability was checked at two points."
+    "notes": "gql_get_available_agentsfrom_flex_query was called twice — at address (step 9) and move-scope (step 41). Plain English: yes, agent availability was checked at two points.",
+    "ground_truth": "Yes, agent availability was checked for customer 7093495 at two separate points during the journey — once during the address verification stage, and again during the move details stage. This ensures an available agent can be assigned to the customer's job."
   },
   {
     "id": "MULTI-001",
@@ -405,7 +427,8 @@
       "decision_result",
       "evaluate_ui_condition"
     ],
-    "notes": "Follow-up after learning the journey ended at booking. Should rewrite to include CID and page, then explain the business rule."
+    "notes": "Follow-up after learning the journey ended at booking. Should rewrite to include CID and page, then explain the business rule.",
+    "ground_truth": "The journey for customer 7093495 stopped at the booking page because this is the designed outcome for customers who do not meet specific business requirements. To proceed further, a customer would need special skill-set pricing or be on a labour-only job. Since this customer met neither condition, the journey naturally concluded at the booking page. This is expected behaviour, not a bug."
   },
   {
     "id": "MULTI-002",
@@ -425,7 +448,8 @@
       "decision_result",
       "chunk_type"
     ],
-    "notes": "All 78 steps were successful. Answer should clearly say no errors were found."
+    "notes": "All 78 steps were successful. Answer should clearly say no errors were found.",
+    "ground_truth": "No, there were no errors in the journey for customer 7093495. All 78 steps were completed successfully, and the journey followed the normal expected path from start to finish."
   },
   {
     "id": "MULTI-003",
@@ -446,7 +470,8 @@
       "decision_result",
       "graphql"
     ],
-    "notes": "Should describe the key stages in between start and end: address, date, skill check, items, junk, pitch, pricing."
+    "notes": "Should describe the key stages in between start and end: address, date, skill check, items, junk, pitch, pricing.",
+    "ground_truth": "Between the start and end of the journey, customer 7093495 went through several key stages: their address was verified and property details were checked, they selected a move date with availability confirmed, a skill set check determined the journey type, they chose their items including a junk removal option, and then went through a pitch and pricing stage before arriving at the booking page."
   },
   {
     "id": "MULTI-004",
@@ -467,7 +492,8 @@
       "hasskillsetpricing",
       "evaluate_ui_condition"
     ],
-    "notes": "This is a business condition, not a bug. Answer should help the manager understand this is by design, and whether a ticket makes sense depends on whether the rule itself needs changing."
+    "notes": "This is a business condition, not a bug. Answer should help the manager understand this is by design, and whether a ticket makes sense depends on whether the rule itself needs changing.",
+    "ground_truth": "No, this is not a bug and does not need a bug report. The behaviour is by design — it is a business rule that determines when a customer can proceed past the booking page. If the team believes the rule itself needs to change, a business requirement or change request would be the appropriate way to raise it. As it stands, the system is working as intended."
   },
   {
     "id": "MULTI-005",
@@ -488,6 +514,7 @@
       "step_order",
       "graphql_request"
     ],
-    "notes": "First call was gql_lsa_lead_on_answer_call at step 1. Plain English: the first action was registering that the agent answered the customer's call."
+    "notes": "First call was gql_lsa_lead_on_answer_call at step 1. Plain English: the first action was registering that the agent answered the customer's call.",
+    "ground_truth": "The first call made during the journey was to register that the agent had answered the customer's call. This happened right at the very start of the journey and is the standard first action the system takes when a customer engagement begins."
   }
 ]
