@@ -2,7 +2,6 @@
 __pycache__/
 *.py[oc]
 build/
-dist/
 wheels/
 *.egg-info
 
@@ -21,6 +20,11 @@ data/processed/*
 # Jupyter
 .ipynb_checkpoints/
 
+# Node / Frontend
+node_modules/
+dist/
+.pnpm-store/
+
 # IDE
 .vscode/
 .idea/
@@ -28,4 +32,3 @@ data/processed/*
 # OS
 .DS_Store
 Thumbs.db
-.env
