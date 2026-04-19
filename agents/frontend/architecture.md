@@ -10,12 +10,12 @@ Use this when creating new components or files to decide placement and structure
 
 ## Atomic Classification
 
-| Complexity           | Directory        | Example                                | Storybook? |
-| -------------------- | ---------------- | -------------------------------------- | ---------- |
-| Single UI element    | `src/atoms/`     | Button, Badge, StatusDot, TypingDots   | Planned    |
-| Composition of atoms | `src/molecules/` | ChatInput, SourceCard, AgentNodeBadge  | Planned    |
-| Complex feature      | `src/organisms/` | ChatThread, AgentPipeline, SourcePanel | No         |
-| Route-level view     | `src/pages/`     | ChatPage                               | No         |
+| Complexity           | Directory        | Example                                            | Storybook? |
+| -------------------- | ---------------- | -------------------------------------------------- | ---------- |
+| Single UI element    | `src/atoms/`     | StatusBadge, ConfidenceChip, KPIStat               | Planned    |
+| Composition of atoms | `src/molecules/` | PageHeader, SectionTabs, EmptyState, ToolCallBlock | Planned    |
+| Complex feature      | `src/organisms/` | MessageList, EvidenceDrawer, DescriptorForm        | No         |
+| Route-level view     | `src/pages/`     | DashboardPage, InvestigatePage, AppShell           | No         |
 
 ## Code Placement
 
@@ -52,18 +52,32 @@ ComponentName/
 
 ```
 src/
-├── atoms/                # Button, Badge, StatusDot, TypingDots, StreamingCursor
-├── molecules/            # ChatInput, SourceCard, AgentNodeBadge, IssueClassBadge
-├── organisms/            # ChatThread, AgentPipeline, SourcePanel, MessageBubble
-├── pages/                # ChatPage
-├── api/                  # chatClient.ts — REST + SSE client to /api/v1/chat
-├── context/              # ChatContext.tsx — messages, session_id, streaming state
-├── hooks/                # useChat.ts, useSSEStream.ts, useAgentPipeline.ts
-├── interfaces/           # types.ts — Message, SSEEvent, SourceDocument, AgentNode
-├── utils/                # formatters, markdown parsers, etc.
+├── atoms/                # Single UI elements: StatusBadge, ConfidenceChip, KPIStat
+├── molecules/            # Composed UI: PageHeader, SectionTabs, EmptyState,
+│                         #   ToolCallBlock, DescriptorField
+├── organisms/            # Complex features: MessageList, EvidenceDrawer,
+│                         #   ScopePanel, DescriptorForm
+├── pages/                # Route-level views — each follows the ComponentName/ subdir pattern
+│   ├── shell/            #   AppShell/, TopBar/, LeftRail/, Breadcrumbs/, OrgSwitcher/, ProjectSwitcher/
+│   ├── dashboard/        #   DashboardPage/
+│   ├── onboarding/       #   OnboardingWizard/
+│   ├── ComingSoonPage/
+│   └── project/
+│       ├── logs/         #   ConnectorsPage/, IngestionRunsPage/, SchemaPage/, LogsTabs/
+│       ├── integrations/ #   IntegrationsHub/, JiraPage/
+│       ├── code-context/ #   McpServersPage/, McpServerDetailPage/
+│       └── ...           #   OverviewPage/, InvestigatePage/, ConversationsPage/, SettingsPage/
+├── api/                  # (reserved) chatClient.ts — REST + SSE client
+├── context/              # (reserved) ChatContext.tsx — global chat state
+├── hooks/                # useActiveProject.ts, useSimulatedStream.ts
+├── interfaces/           # domain.ts — all domain types (Org, Project, ChatMessage…)
+├── mocks/                # Static fixture data for all domain entities
+├── utils/                # (reserved) formatters, parsers
+├── test/                 # setup.ts, renderApp.tsx
+├── router.tsx            # createBrowserRouter route tree
 ├── App.tsx
 ├── index.tsx
-└── theme.ts
+└── theme/                # MUI theme tokens and ThemeProvider
 ```
 
 ## Data Flow
