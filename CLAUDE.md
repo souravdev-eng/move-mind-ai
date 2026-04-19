@@ -117,9 +117,22 @@ Key facts when editing the graph:
 
 React 19 + MUI v6 + rsbuild + TypeScript, tested with Vitest + Testing Library. Current state under `frontend/src/` is an early scaffold (`App.tsx`, `theme.ts`, `index.tsx`) — the backend is still served primarily by the legacy Streamlit UI (`backend/app/ui/streamlit_app.py`), which this frontend is replacing.
 
-Before making frontend changes, read the relevant rulebook in `agents/frontend/` — these files are the project's conventions for architecture, state management, streaming (SSE from `/api/v1/chat`), styling, testing, TypeScript, UI/UX, observability, and component patterns. Treat them as binding, not advisory.
+Before making frontend changes, open `agents/frontend/README.md` — it is the router that maps task type (component, styling, state, streaming, testing, observability, code review, etc.) to the specific rulebook(s) you must load. The rulebooks are **binding**, not advisory, and encode this project's audit and accessibility posture. If a rulebook is silent on a decision, stop and ask rather than setting a new precedent.
+
+**Minimum load for any frontend change:** `agents/frontend/architecture.md` + `agents/frontend/typescript.md`. Load additional rulebooks per the routing table in `agents/frontend/README.md`.
 
 Backend URL comes from `RSBUILD_APP_API_URL` (rsbuild convention — env vars must be prefixed `RSBUILD_` to be exposed to client code).
+
+### Audit & security posture
+
+This repo is built to pass third-party audit from day one. Non-negotiables:
+
+- **No secrets in code or commits.** `gitleaks` runs pre-commit; CI re-checks.
+- **Strict TypeScript.** `any` is a lint error. No `// @ts-ignore` without an accompanying issue link and expiry.
+- **Accessibility is a correctness concern**, not a polish item — `jsx-a11y` violations fail lint.
+- **Dependencies are audited.** `pnpm audit` runs in CI; high/critical advisories fail the build.
+- **Conventional commits + branch naming** are enforced locally (husky) and in CI. Branches follow `<type>/<kebab-description>` with types matching conventional-commit types (`feat|fix|chore|docs|refactor|test|perf|ci|build|revert`).
+- **Commits appear under the author's personal identity** for this repo (repo-local git config); never the corporate global identity.
 
 ## Conventions
 

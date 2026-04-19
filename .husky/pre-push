@@ -1,0 +1,31 @@
+#!/usr/bin/env sh
+# Enforce branch-name convention: <type>/<kebab-description>
+# where type ∈ feat|fix|chore|docs|refactor|test|perf|ci|build|revert|style
+# Exempt: main, master, develop, release/*, hotfix/*
+
+BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null || echo "")
+PROTECTED_RE='^(main|master|develop)$'
+RELEASE_RE='^(release|hotfix)/[a-z0-9._-]+$'
+CONVENTIONAL_RE='^(feat|fix|chore|docs|refactor|test|perf|ci|build|revert|style)/[a-z0-9][a-z0-9-]*$'
+
+if [ -z "$BRANCH" ]; then
+  exit 0
+fi
+
+if echo "$BRANCH" | grep -Eq "$PROTECTED_RE"; then
+  exit 0
+fi
+
+if echo "$BRANCH" | grep -Eq "$RELEASE_RE"; then
+  exit 0
+fi
+
+if echo "$BRANCH" | grep -Eq "$CONVENTIONAL_RE"; then
+  exit 0
+fi
+
+echo "pre-push: branch name '$BRANCH' does not follow convention."
+echo "  expected: <type>/<kebab-description>  (e.g. feat/theme-light-dark)"
+echo "  types: feat, fix, chore, docs, refactor, test, perf, ci, build, revert, style"
+echo "  or: release/<name>, hotfix/<name>, or main/master/develop"
+exit 1

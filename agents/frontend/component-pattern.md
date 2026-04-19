@@ -5,6 +5,27 @@ description: Component and hook patterns for creating or editing React component
 
 # Component Pattern Rules
 
+## Hook dependency policy (`react-hooks/exhaustive-deps`)
+
+ESLint runs `exhaustive-deps` as a **warning**, not an error. Its suggestions are frequently wrong for memoized callbacks, refs, and objects created inside render — blindly adding the suggested dep can trigger infinite re-render loops or memory leaks.
+
+**How to handle a warning:**
+
+1. **Ask first: is the dep stable?** Function from `useCallback` with correct deps? Ref? Primitive prop? If yes — add it. The warning is correct.
+2. **Is the dep an object/array literal created in render?** Don't add it directly; memoize it with `useMemo` / `useCallback`, then add the memoized value.
+3. **Is the effect meant to run once on mount or on a subset of deps only?** Disable the rule *with a reason*:
+
+   ```tsx
+   // eslint-disable-next-line react-hooks/exhaustive-deps -- initial fetch only; `filters` changes handled by separate effect
+   useEffect(() => { fetchOnce(); }, []);
+   ```
+
+   Rule: disable comment MUST include ` -- <reason>`. No reason → PR rejected. Generic reasons ("not needed", "safe") are not acceptable — name the specific invariant.
+
+4. **Never silently delete the warning** by adding a fake dep (like a stable `true`) or by removing the effect. Fix the root cause or document the exception.
+
+If you find yourself disabling `exhaustive-deps` more than once in the same file, the component has a state-shape problem — refactor into a reducer or extract the effect into a custom hook.
+
 ## Standard Component Structure
 
 ```tsx
