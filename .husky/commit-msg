@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+pnpm --silent --prefix frontend exec commitlint --edit "$1"

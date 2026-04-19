@@ -24,6 +24,7 @@ data/processed/*
 node_modules/
 dist/
 .pnpm-store/
+coverage/
 
 # IDE
 .vscode/

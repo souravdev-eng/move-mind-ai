@@ -1,0 +1,25 @@
+# Gitleaks configuration for Move Mind AI.
+# Extends the default gitleaks ruleset with repo-specific allowlists.
+# Run locally: gitleaks protect --staged --config .gitleaks.toml
+# Run on full history: gitleaks detect --config .gitleaks.toml
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Global allowlist for Move Mind AI"
+paths = [
+  '''pnpm-lock\.yaml''',
+  '''uv\.lock''',
+  '''(^|/)node_modules/''',
+  '''(^|/)dist/''',
+  '''(^|/)coverage/''',
+  '''(^|/)\.git/''',
+  '''(^|/)docs/audit/samples/''',
+]
+
+# Dummy keys used only in CI for unit tests (match exactly; narrow regex).
+regexTarget = "match"
+regexes = [
+  '''dummy-key-for-unit-tests''',
+]
