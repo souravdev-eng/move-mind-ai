@@ -9,7 +9,7 @@ MoveMind AI is a **generic, multi-tenant AI log-debugging SaaS**, not a CMS3 too
 - **v1 (current code in this repo)** is hand-tuned for CMS3 as the reference implementation. Several layers contain CMS3-specific hardcoding (fields, prompts, namespace, state). This is acknowledged, intentional, and enumerated in SOW §2 and §4.
 - **v2 (target)** replaces CMS3 coupling with a descriptor-driven generic agent per SOW §5 and Phase 1+. The direction is: agent logic stays constant; per-project knowledge lives in a user-confirmed YAML descriptor.
 
-**Implication for edits:** prefer changes that generalize cleanly. When touching CMS3-specific code, think about how it would be expressed as descriptor-driven logic in v2, and avoid adding *new* CMS3 hardcoding unless explicitly scoped to v1 stabilization.
+**Implication for edits:** prefer changes that generalize cleanly. When touching CMS3-specific code, think about how it would be expressed as descriptor-driven logic in v2, and avoid adding _new_ CMS3 hardcoding unless explicitly scoped to v1 stabilization.
 
 ## Repo layout
 
