@@ -9,6 +9,6 @@ export function renderAt(path: string) {
   return render(
     <ThemeProvider>
       <RouterProvider router={router} />
-    </ThemeProvider>,
+    </ThemeProvider>
   );
 }

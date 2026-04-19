@@ -54,14 +54,14 @@ export function useSimulatedStream(): {
         timers.current.push(t);
       });
     },
-    [clearTimers],
+    [clearTimers]
   );
 
   useEffect(
     () => () => {
       clearTimers();
     },
-    [clearTimers],
+    [clearTimers]
   );
 
   return { messages: state.messages, streaming: state.streaming, submit, reset };

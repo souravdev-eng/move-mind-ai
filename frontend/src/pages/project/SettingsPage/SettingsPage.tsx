@@ -27,10 +27,7 @@ export function SettingsPage() {
 
   return (
     <>
-      <PageHeader
-        title="Project settings"
-        subtitle="Members, retention and danger zone."
-      />
+      <PageHeader title="Project settings" subtitle="Members, retention and danger zone." />
 
       <Stack spacing={3}>
         <Card variant="outlined">

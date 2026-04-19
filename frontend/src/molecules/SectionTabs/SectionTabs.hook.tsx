@@ -8,8 +8,8 @@ export function useSectionTabs(tabs: TabItem[]) {
   const activeIdx = Math.max(
     0,
     tabs.findIndex((t) =>
-      t.match ? t.match(pathname) : pathname === t.to || pathname.startsWith(`${t.to}/`),
-    ),
+      t.match ? t.match(pathname) : pathname === t.to || pathname.startsWith(`${t.to}/`)
+    )
   );
   function navigate(newIdx: number) {
     const t = tabs[newIdx];

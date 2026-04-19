@@ -15,7 +15,6 @@ import {
   alpha,
 } from "@mui/material";
 
-
 import { OrgSwitcher } from "@/pages/shell/OrgSwitcher";
 import { ProjectSwitcher } from "@/pages/shell/ProjectSwitcher";
 import { useColorMode } from "@/theme";

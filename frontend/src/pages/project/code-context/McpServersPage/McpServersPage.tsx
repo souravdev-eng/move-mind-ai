@@ -65,11 +65,7 @@ export function McpServersPage() {
               {list.map((s) => (
                 <TableRow key={s.id} hover>
                   <TableCell>
-                    <Link
-                      component={RouterLink}
-                      to={`${base}/mcp/${s.id}`}
-                      underline="hover"
-                    >
+                    <Link component={RouterLink} to={`${base}/mcp/${s.id}`} underline="hover">
                       <Stack>
                         <Typography variant="body2" fontWeight={500}>
                           {s.name}

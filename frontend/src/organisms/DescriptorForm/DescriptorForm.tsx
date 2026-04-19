@@ -51,7 +51,11 @@ export function DescriptorForm({ descriptor, readOnly = false }: Props) {
           </Section>
 
           <Section title="Identifiers">
-            <DescriptorField label="Actor" field={descriptor.identifiers.actor} readOnly={readOnly} />
+            <DescriptorField
+              label="Actor"
+              field={descriptor.identifiers.actor}
+              readOnly={readOnly}
+            />
             <DescriptorField label="Flow" field={descriptor.identifiers.flow} readOnly={readOnly} />
             <DescriptorField label="Unit" field={descriptor.identifiers.unit} readOnly={readOnly} />
             <DescriptorField
@@ -155,7 +159,7 @@ export function DescriptorForm({ descriptor, readOnly = false }: Props) {
               whiteSpace: "pre-wrap",
             }}
           >
-{`execution_id: exec_5521
+            {`execution_id: exec_5521
 customer_id: 7093495
 journey_id: jrny_onboarding_v3
 events:

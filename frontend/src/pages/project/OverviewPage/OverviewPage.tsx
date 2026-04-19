@@ -60,10 +60,7 @@ export function OverviewPage() {
           label="Last sync"
           value={formatDistanceToNowStrict(new Date(project.lastSyncIso), { addSuffix: true })}
         />
-        <KPIStat
-          label="Events 24h"
-          value={project.eventsLast24h.toLocaleString("en-US")}
-        />
+        <KPIStat label="Events 24h" value={project.eventsLast24h.toLocaleString("en-US")} />
         <KPIStat
           label="Eval score"
           value={`${String(Math.round(project.evalScore * 100))}%`}
@@ -80,8 +77,16 @@ export function OverviewPage() {
                 Descriptor
               </Typography>
               <Stack direction="row" spacing={1} mb={2} flexWrap="wrap" useFlexGap>
-                <Chip label={`domain: ${cms3Descriptor.domainId}`} size="small" variant="outlined" />
-                <Chip label={`version: ${project.descriptorVersion}`} size="small" variant="outlined" />
+                <Chip
+                  label={`domain: ${cms3Descriptor.domainId}`}
+                  size="small"
+                  variant="outlined"
+                />
+                <Chip
+                  label={`version: ${project.descriptorVersion}`}
+                  size="small"
+                  variant="outlined"
+                />
                 <Chip
                   label={`primary key: ${cms3Descriptor.correlationKeys.primary.value}`}
                   size="small"
@@ -148,7 +153,10 @@ export function OverviewPage() {
                 Health
               </Typography>
               <Stack spacing={1.5}>
-                <HealthRow label="Connector" value={<StatusBadge status={project.connectorStatus} />} />
+                <HealthRow
+                  label="Connector"
+                  value={<StatusBadge status={project.connectorStatus} />}
+                />
                 <HealthRow
                   label="Drift alerts"
                   value={project.driftAlerts > 0 ? <StatusBadge status="warning" /> : "None"}
@@ -172,7 +180,9 @@ export function OverviewPage() {
               </Typography>
               <Stack spacing={1}>
                 <Typography variant="body2">• Connect a code server for code grounding</Typography>
-                <Typography variant="body2">• Connect Jira to create tickets from investigations</Typography>
+                <Typography variant="body2">
+                  • Connect Jira to create tickets from investigations
+                </Typography>
                 <Typography variant="body2">• Invite your team from Settings</Typography>
               </Stack>
             </CardContent>

@@ -59,7 +59,7 @@ export const projects: Project[] = [
 
 export function findProject(orgSlug: string, projectSlug: string): Project | undefined {
   return projects.find(
-    (p) => p.slug === projectSlug && p.orgId.endsWith(orgSlug.replace(/^org_/, "")),
+    (p) => p.slug === projectSlug && p.orgId.endsWith(orgSlug.replace(/^org_/, ""))
   );
 }
 

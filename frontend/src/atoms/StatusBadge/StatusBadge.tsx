@@ -1,6 +1,11 @@
 import { Chip } from "@mui/material";
 
-import { type ConnectorStatus, type McpStatus, type RunStatus, type Verdict } from "@/interfaces/domain";
+import {
+  type ConnectorStatus,
+  type McpStatus,
+  type RunStatus,
+  type Verdict,
+} from "@/interfaces/domain";
 
 type Status = ConnectorStatus | McpStatus | RunStatus | Verdict | "open" | "in_progress" | "done";
 

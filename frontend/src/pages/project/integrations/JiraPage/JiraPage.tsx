@@ -118,7 +118,12 @@ function MappingTab() {
               Field mapping
             </Typography>
             <Stack spacing={1.5} mt={1}>
-              <TextField size="small" label="Summary" value="{{ title }}" slotProps={{ input: { readOnly: true } }} />
+              <TextField
+                size="small"
+                label="Summary"
+                value="{{ title }}"
+                slotProps={{ input: { readOnly: true } }}
+              />
               <TextField
                 size="small"
                 label="Description"

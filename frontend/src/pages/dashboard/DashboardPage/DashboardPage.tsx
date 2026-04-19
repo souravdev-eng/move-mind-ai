@@ -87,7 +87,11 @@ export function DashboardPage() {
               {list.map((p) => (
                 <TableRow key={p.id} hover>
                   <TableCell>
-                    <Link component={RouterLink} to={`/orgs/${orgSlug}/projects/${p.slug}/overview`} underline="hover">
+                    <Link
+                      component={RouterLink}
+                      to={`/orgs/${orgSlug}/projects/${p.slug}/overview`}
+                      underline="hover"
+                    >
                       <Stack direction="row" spacing={1} alignItems="center">
                         <span aria-hidden="true">{p.icon}</span>
                         <Typography variant="body2" fontWeight={500}>

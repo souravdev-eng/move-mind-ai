@@ -165,7 +165,11 @@ export function OnboardingWizard() {
               <Typography variant="subtitle1" fontWeight={600}>
                 Pulling sample (200–1000 events)
               </Typography>
-              <LinearProgress variant="determinate" value={72} sx={{ height: 6, borderRadius: 3 }} />
+              <LinearProgress
+                variant="determinate"
+                value={72}
+                sx={{ height: 6, borderRadius: 3 }}
+              />
               <Typography variant="caption" color="text.secondary">
                 720 / 1000 events fetched…
               </Typography>
@@ -191,8 +195,8 @@ export function OnboardingWizard() {
                 Confirm & kick off ingestion
               </Typography>
               <Typography variant="body2" color="text.secondary" maxWidth={560}>
-                We&apos;ll run the full ingestion in the background. You can close this tab and
-                come back to the project from the dashboard.
+                We&apos;ll run the full ingestion in the background. You can close this tab and come
+                back to the project from the dashboard.
               </Typography>
               <Box>
                 <Chip label={`Connector: ${form.connector}`} sx={{ mr: 1 }} />
@@ -208,8 +212,8 @@ export function OnboardingWizard() {
                 You&apos;re live 🎉
               </Typography>
               <Typography variant="body2" color="text.secondary" maxWidth={560}>
-                Ingestion is running. Your project is ready to answer questions — we&apos;ve
-                landed you on the reference project for now so you can see what it looks like.
+                Ingestion is running. Your project is ready to answer questions — we&apos;ve landed
+                you on the reference project for now so you can see what it looks like.
               </Typography>
               <Button
                 variant="contained"
@@ -230,11 +234,7 @@ export function OnboardingWizard() {
         <Button disabled={active === 0} onClick={back}>
           Back
         </Button>
-        <Button
-          variant="contained"
-          onClick={next}
-          disabled={active === STEPS.length - 1}
-        >
+        <Button variant="contained" onClick={next} disabled={active === STEPS.length - 1}>
           {active === STEPS.length - 2 ? "Kick off ingestion" : "Next"}
         </Button>
       </Stack>

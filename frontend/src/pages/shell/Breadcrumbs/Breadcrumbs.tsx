@@ -85,7 +85,10 @@ export function Breadcrumbs() {
               {c.label}
             </Link>
           ) : (
-            <Typography variant="body2" color={i === crumbs.length - 1 ? "text.primary" : "text.secondary"}>
+            <Typography
+              variant="body2"
+              color={i === crumbs.length - 1 ? "text.primary" : "text.secondary"}
+            >
               {c.label}
             </Typography>
           )}

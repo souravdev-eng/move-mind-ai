@@ -21,7 +21,11 @@ export function PageHeader({ title, subtitle, actions }: Props) {
           </Typography>
         ) : null}
       </Box>
-      {actions ? <Stack direction="row" spacing={1}>{actions}</Stack> : null}
+      {actions ? (
+        <Stack direction="row" spacing={1}>
+          {actions}
+        </Stack>
+      ) : null}
     </Stack>
   );
 }

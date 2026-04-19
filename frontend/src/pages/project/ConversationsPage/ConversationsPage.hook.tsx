@@ -13,13 +13,13 @@ export function useConversationsPage() {
 
   const filtered = project
     ? conversations
-      .filter((c) => c.projectId === project.id)
-      .filter((c) => (verdict === "all" ? true : c.verdict === verdict))
-      .filter((c) =>
-        query.trim() === ""
-          ? true
-          : `${c.title} ${c.preview} ${c.author}`.toLowerCase().includes(query.toLowerCase()),
-      )
+        .filter((c) => c.projectId === project.id)
+        .filter((c) => (verdict === "all" ? true : c.verdict === verdict))
+        .filter((c) =>
+          query.trim() === ""
+            ? true
+            : `${c.title} ${c.preview} ${c.author}`.toLowerCase().includes(query.toLowerCase())
+        )
     : [];
 
   return { project, query, setQuery, verdict, setVerdict, filtered };
