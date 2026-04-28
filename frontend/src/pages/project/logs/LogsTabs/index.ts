@@ -1,0 +1,1 @@
+export { LogsTabs } from "./LogsTabs";

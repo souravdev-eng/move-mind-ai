@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+# Lint-staged runs ESLint + Prettier on staged files only. Tests are NOT run here.
+# Gitleaks runs if installed; otherwise skipped with a warning.
+
+cd "$(dirname "$0")/../frontend" && pnpm exec lint-staged
+FRONTEND_EXIT=$?
+cd - >/dev/null
+if [ $FRONTEND_EXIT -ne 0 ]; then
+  echo "pre-commit: lint-staged failed"
+  exit $FRONTEND_EXIT
+fi
+
+if command -v gitleaks >/dev/null 2>&1; then
+  gitleaks protect --staged --redact --verbose
+  GITLEAKS_EXIT=$?
+  if [ $GITLEAKS_EXIT -ne 0 ]; then
+    echo "pre-commit: gitleaks detected potential secret — commit blocked"
+    exit $GITLEAKS_EXIT
+  fi
+else
+  echo "pre-commit: gitleaks not installed, skipping secret scan. Install with: brew install gitleaks"
+fi

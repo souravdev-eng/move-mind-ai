@@ -1,0 +1,1 @@
+export { InvestigatePage } from "./InvestigatePage";

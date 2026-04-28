@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+pnpm --silent --prefix frontend exec commitlint --config commitlint.config.cjs --edit "$1"

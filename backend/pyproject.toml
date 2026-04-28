@@ -1,0 +1,47 @@
+[project]
+name = "move-mind-ai"
+version = "0.1.0"
+description = "GenAI application powered by LangChain, LangGraph, and RAG"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    # LangChain ecosystem
+    "langchain==1.2.12",
+    "langchain-openai==1.1.11",
+    "langchain-community==0.4.1",
+    "langchain-pinecone",
+    "langchain-text-splitters==1.1.1",
+    "langgraph==1.1.2",
+    # Vector store
+    "faiss-cpu==1.13.2",
+    "pinecone",
+    # API
+    "fastapi==0.135.1",
+    "uvicorn[standard]==0.41.0",
+    # Config
+    "pydantic==2.12.5",
+    "pydantic-settings==2.13.1",
+    "python-dotenv==1.2.2",
+    "unstructured>=0.21.5",
+    "markdown>=3.10.2",
+    "ipykernel>=7.2.0",
+    "ragas>=0.4.3",
+    "rank-bm25>=0.2.2",
+    "flashrank>=0.2.9",
+    # UI (temporary — remove when migrating to React)
+    "streamlit>=1.45.0",
+    "black>=26.3.1",
+    "isort>=8.0.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==9.0.2",
+    "ruff==0.15.6",
+    "ipykernel==7.2.0",
+]
+
+[tool.pytest.ini_options]
+markers = [
+    "integration: marks tests as end-to-end integration tests requiring live API keys (deselect with '-m not integration')",
+]

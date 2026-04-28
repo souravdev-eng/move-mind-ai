@@ -1,0 +1,1024 @@
+{
+  "generated_at": "2026-04-10T06:10:29.030619+00:00",
+  "overall": {
+    "total_questions": 27,
+    "keyword_hit_rate": 0.606,
+    "jargon_leak_rate": 0.0,
+    "faithfulness": 0.637,
+    "answer_relevancy": 0.512
+  },
+  "by_category": {
+    "cid_lookup": {
+      "count": 6,
+      "keyword_hit_rate": 0.892,
+      "jargon_leak_rate": 0.0,
+      "faithfulness": 0.953,
+      "answer_relevancy": 0.557
+    },
+    "root_cause": {
+      "count": 6,
+      "keyword_hit_rate": 0.581,
+      "jargon_leak_rate": 0.0,
+      "faithfulness": 0.348,
+      "answer_relevancy": 0.505
+    },
+    "business_condition": {
+      "count": 5,
+      "keyword_hit_rate": 0.6,
+      "jargon_leak_rate": 0.0,
+      "faithfulness": 0.562,
+      "answer_relevancy": 0.472
+    },
+    "api_timeline": {
+      "count": 5,
+      "keyword_hit_rate": 0.533,
+      "jargon_leak_rate": 0.0,
+      "faithfulness": 0.812,
+      "answer_relevancy": 0.503
+    },
+    "multi_turn": {
+      "count": 5,
+      "keyword_hit_rate": 0.37,
+      "jargon_leak_rate": 0.0,
+      "faithfulness": 0.593,
+      "answer_relevancy": null
+    }
+  },
+  "results": [
+    {
+      "id": "CID-001",
+      "category": "cid_lookup",
+      "question": "What happened to CID 7093495?",
+      "answer": "**What happened**\nThe customer with ID 7093495 went through a series of steps on a service platform, starting from identifying themselves as a returning customer and moving through various stages such as checking their skill set, verifying their address, and expressing interest in a service. They also selected a date for their service and reviewed pricing and booking options.\n\n**Why it happened**\nThe customer was navigating through a structured process designed to gather necessary information and preferences for a service they were interested in. This process included checking if they had selected a date for their service and evaluating other details related to their service needs.\n\n**What this means**\nThis appears to be normal behavior, as the customer successfully completed all steps without any errors, indicating that the process worked as intended.",
+      "contexts": [
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:50:51.925Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 14\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/date\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:50:51.926Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 18\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: DatePicker\nmessage: UI condition evaluated\ncondition: true == true\ntarget: check-falt-rate-date\ndecision_result: True\nresult_json: {\"decision_result\": true}\nconfiguration_json: {\"condition\": \"true == true\", \"condition_key\": \"condition\", \"config_path\": \"conditions[0].condition\", \"item_id\": \"conditions[0].condition\", \"scope\": \"conditions\", \"target\": \"check-falt-rate-date\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:48.631Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 28\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: DatePicker\nmessage: UI condition evaluated\ncondition: true == true\ntarget: check-falt-rate-date\ndecision_result: True\nresult_json: {\"decision_result\": true}\nconfiguration_json: {\"condition\": \"true == true\", \"condition_key\": \"condition\", \"config_path\": \"conditions[0].condition\", \"item_id\": \"conditions[0].condition\", \"scope\": \"conditions\", \"target\": \"check-falt-rate-date\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:48.631Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 25\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: DatePicker\nmessage: UI condition evaluated\ncondition: !{{moveDate}}\ntarget: check-falt-rate-date\ndecision_result: False\nresult_json: {\"decision_result\": false}\nconfiguration_json: {\"condition\": \"!{{moveDate}}\", \"condition_key\": \"displayCondition\", \"config_path\": \"dynamicButtons[0].btnProps.displayCondition\", \"item_id\": \"dynamicButtons[0].btnProps.displayCondition\", \"item_label\": \"I'M NOT SURE YET\", \"scope\": \"dynamicButtons\", \"target\": \"check-falt-rate-date\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": "7093495",
+      "expected_keywords": [
+        "returning customer",
+        "booking",
+        "78",
+        "successful",
+        "quote"
+      ],
+      "expected_not_contains": [
+        "decision_result",
+        "graphql_request",
+        "gql_",
+        "chunk_type",
+        "step_order",
+        "evaluate_ui_condition",
+        "execution_id"
+      ],
+      "notes": "Should describe a full successful journey through the ccflownew flow ending at the booking page. No technical jargon.",
+      "keyword_hit_rate": 0.6,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "78",
+        "quote"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.452
+    },
+    {
+      "id": "CID-002",
+      "category": "cid_lookup",
+      "question": "Can you give me a summary of what the customer with ID 7093495 went through?",
+      "answer": "**What happened**\nThe customer with ID 7093495 went through a series of steps on a service platform. They started by confirming their identity as a returning customer and then proceeded through various stages, including checking their skill set, verifying their address, expressing interest in services, selecting a date, and reviewing pricing and conditions. The journey involved multiple pages and decisions, ultimately leading to a quote and booking page.\n\n**Why it happened**\nThe customer was likely trying to book a service or get a quote for a service they were interested in. The process involved confirming their details and preferences to tailor the service offering to their needs.\n\n**What this means**\nThis appears to be normal expected behavior for a customer navigating through a service booking or inquiry process. There are no indications of any issues or problems in the logs provided.",
+      "contexts": [
+        "timestamp: 2026-04-02T06:44:02.505Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 2\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/returning-customer\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/returning-customer\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"sid\": \"WKb038ce9450331e20d925c524085c2f97\", \"user_type\": \"10\"}",
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:52:28.973Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 73\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/conditions\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/quote/conditions\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:44:05.808Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 3\naction: patch_context\nevent_type: context_update\nstatus: success\nlevel: info\npage_path: /ccflownew/returning-customer\nsource: useDynamicActionExecutor\nmessage: Context updated\nresult_json: {\"changed_count\": 1}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"sid\": \"WKb038ce9450331e20d925c524085c2f97\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:44:02.430Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 1\naction: gql_lsa_lead_on_answer_call\nevent_type: dynamic_action\nstatus: success\nlevel: info\npage_path: /ccflownew/name-and-phone\nsource: graphql\nmessage: Dynamic action executed\nresult_json: {\"duration_ms\": 2457}\nconfiguration_json: {\"action_type\": \"gql_lsa_lead_on_answer_call\", \"source\": \"graphql\", \"target_path\": \"returning-customer\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"sid\": \"WKb038ce9450331e20d925c524085c2f97\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": null,
+      "expected_keywords": [
+        "address",
+        "date",
+        "pricing",
+        "booking",
+        "quote"
+      ],
+      "expected_not_contains": [
+        "decision_result",
+        "graphql",
+        "chunk_type",
+        "step_order"
+      ],
+      "notes": "Summary should cover key stages: address check, date selection, items, pricing, booking.",
+      "keyword_hit_rate": 1.0,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [],
+      "leaked_jargon": [],
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.795
+    },
+    {
+      "id": "CID-003",
+      "category": "cid_lookup",
+      "question": "Did CID 7093495 complete their journey successfully?",
+      "answer": "**What happened**\nThe customer with ID 7093495 went through a series of steps in their journey, starting from identifying themselves as a returning customer, checking their skill set, providing their address, verifying their branch, expressing their service interest, selecting a date, and moving through various other stages until they reached the final booking page.\n\n**Why it happened**\nThe customer successfully navigated through all the necessary steps in the process, meeting all the requirements at each stage, which allowed them to proceed smoothly from start to finish.\n\n**What this means**\nThis is normal expected behavior, as the customer completed all 78 steps successfully, indicating that their journey was completed without any issues.",
+      "contexts": [
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:51:49.309Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 33\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/skill-set-check\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/skill-set-check\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:50:51.925Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 14\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/date\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:07.987Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 47\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/items\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/items\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:49.407Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 35\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/move-scope\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/move-scope\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": "7093495",
+      "expected_keywords": [
+        "successful",
+        "completed",
+        "78"
+      ],
+      "expected_not_contains": [
+        "decision_result",
+        "graphql",
+        "evaluate_ui_condition"
+      ],
+      "notes": "All 78 steps were successful. Answer should confirm this clearly in plain English.",
+      "keyword_hit_rate": 1.0,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [],
+      "leaked_jargon": [],
+      "faithfulness": 0.917,
+      "answer_relevancy": 0.57
+    },
+    {
+      "id": "CID-004",
+      "category": "cid_lookup",
+      "question": "Where did the customer 7093495 start and where did they end up?",
+      "answer": "**What happened**\nThe customer began their journey on a page meant for returning customers. They then navigated through various steps, including checking their skills, verifying their address, and expressing interest in services. Eventually, they reached the final stages where they received a quote and booking information.\n\n**Why it happened**\nThe customer was likely following a structured process to inquire about or book a service. This process involved several steps to gather necessary information and provide the customer with a quote.\n\n**What this means**\nThis appears to be normal behavior, as the customer successfully moved through all the steps without any issues, ending with a quote and booking page.",
+      "contexts": [
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:52:13.010Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 54\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/junk-option\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/junk-option\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:21.820Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 65\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/quote\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/quote\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:44:02.505Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 2\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/returning-customer\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/returning-customer\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"sid\": \"WKb038ce9450331e20d925c524085c2f97\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:07.987Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 47\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/items\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/items\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": null,
+      "expected_keywords": [
+        "returning customer",
+        "booking",
+        "quote",
+        "start"
+      ],
+      "expected_not_contains": [
+        "route_entered",
+        "gql_",
+        "step_order",
+        "decision_result"
+      ],
+      "notes": "Start: returning-customer page. End: quote/booking page. Plain English journey overview.",
+      "keyword_hit_rate": 0.75,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "start"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.522
+    },
+    {
+      "id": "CID-005",
+      "category": "cid_lookup",
+      "question": "How many steps did the journey have for CID 7093495?",
+      "answer": "**What happened**\nThe customer with ID 7093495 went through a process that involved multiple steps, specifically 78 steps, as they navigated through various pages related to their journey.\n\n**Why it happened**\nThe customer was likely following a structured process or workflow designed to gather information or complete a task, which required them to visit different pages and make certain decisions along the way.\n\n**What this means**\nThis appears to be normal behavior, as the process was completed successfully with all 78 steps marked as successful.",
+      "contexts": [
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:51:49.308Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 32\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/isnj-journey\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/isnj-journey\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:49.309Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 33\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/skill-set-check\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/skill-set-check\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:49.311Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 34\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/is-labor\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/is-labor\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:50:51.925Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 14\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/date\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": "7093495",
+      "expected_keywords": [
+        "78"
+      ],
+      "expected_not_contains": [
+        "step_order",
+        "chunk_type",
+        "graphql"
+      ],
+      "notes": "78 steps total, all successful. Simple factual answer.",
+      "keyword_hit_rate": 1.0,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [],
+      "leaked_jargon": [],
+      "faithfulness": 0.8,
+      "answer_relevancy": 0.497
+    },
+    {
+      "id": "CID-006",
+      "category": "cid_lookup",
+      "question": "What pages did CID 7093495 visit during their journey?",
+      "answer": "**What happened**\nThe customer with ID 7093495 visited several pages during their journey. They started on the returning customer page, then moved through various steps including checking their skill set, entering their address, verifying their branch, expressing their service interest, selecting a date, and checking conditions related to their move. They also visited pages related to the scope of their move, items involved, and finally reached the pricing and booking pages.\n\n**Why it happened**\nThe customer was likely going through a process to arrange a service, such as a moving service, where they needed to provide details about their requirements, preferences, and any specific conditions. This journey is designed to gather all necessary information to provide a quote and finalize a booking.\n\n**What this means**\nThis appears to be normal behavior for a customer going through a structured process to arrange a service. There is no indication of any issues or problems in the journey.",
+      "contexts": [
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:50:51.925Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 14\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/date\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:07.987Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 47\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/items\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/items\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:06.798Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 43\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/conditions\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/conditions\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:44:05.920Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 6\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/address\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/address\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"sid\": \"WKb038ce9450331e20d925c524085c2f97\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": "7093495",
+      "expected_keywords": [
+        "address",
+        "date",
+        "items",
+        "pricing",
+        "booking"
+      ],
+      "expected_not_contains": [
+        "/ccflownew/",
+        "route_entered",
+        "decision_result",
+        "chunk_type"
+      ],
+      "notes": "Should list pages in human-readable form, not raw route paths.",
+      "keyword_hit_rate": 1.0,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [],
+      "leaked_jargon": [],
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.505
+    },
+    {
+      "id": "ROOT-001",
+      "category": "root_cause",
+      "question": "Why did the journey for CID 7093495 end at the booking page?",
+      "answer": "**What happened**  \nThe customer moved smoothly through every stage of the ordering journey \u2014 confirming their address, selecting a service date, listing items, reviewing the quote and prices \u2014 and was finally shown the booking page. No interruptions or error messages appeared during these 78 steps; each page loaded successfully.\n\n**Why it happened**  \nBecause the customer provided all the required information and passed each eligibility check, the system automatically directed them to the last step, which is the booking screen where they can lock in the service.\n\n**What this means**  \nThis looks completely normal; the journey reached its expected finishing point without any problems.",
+      "contexts": [
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:52:29.027Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 74\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/booking\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/quote/booking\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:49.308Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 32\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/isnj-journey\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/isnj-journey\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:07.987Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 47\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/items\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/items\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:50:51.925Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 14\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/date\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": "7093495",
+      "expected_keywords": [
+        "booking",
+        "condition",
+        "requirement",
+        "normal",
+        "designed"
+      ],
+      "expected_not_contains": [
+        "hasskillsetpricing",
+        "isLaborJourney",
+        "decision_result",
+        "evaluate_ui_condition",
+        "True",
+        "False"
+      ],
+      "notes": "The journey ended at booking because the customer did not meet the skill-set or labour-only conditions. Should be explained as a business rule, not a bug.",
+      "keyword_hit_rate": 0.4,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "condition",
+        "requirement",
+        "designed"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": 0.538,
+      "answer_relevancy": 0.489
+    },
+    {
+      "id": "ROOT-002",
+      "category": "root_cause",
+      "question": "Why was CID 7093495 not able to proceed past the quote booking screen?",
+      "answer": "**What happened**  \nThe customer moved smoothly through all the earlier pages and reached the \u201cBook your quote\u201d screen. When they tried to continue, the screen stayed put\u2014so from their point of view the journey simply stopped there.\n\n**Why it happened**  \nBehind the scenes that page asks three business-rules. Two of those rules check whether the quote already has a special-crew price or is marked as a labour-only job; in this case both answers were \u201cno.\u201d Because those requirements were not met, the page refused to advance.\n\n**What this means**  \nThis stop-point is deliberate\u2014it prevents jobs that don\u2019t yet have the right pricing details from being booked\u2014so the behaviour is normal even though it feels like a dead end to the customer.",
+      "contexts": [
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:52:29.027Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 77\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/booking\nsource: ScriptedForm\nmessage: UI condition evaluated\ncondition: true == true\ntarget: ../pricing\ndecision_result: True\nresult_json: {\"decision_result\": true}\nconfiguration_json: {\"condition\": \"true == true\", \"condition_key\": \"condition\", \"config_path\": \"conditions[2].condition\", \"item_id\": \"conditions[2].condition\", \"scope\": \"conditions\", \"target\": \"../pricing\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:29.027Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 74\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/booking\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/quote/booking\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:29.027Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 78\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/booking\nsource: ScriptedForm\nmessage: UI condition evaluated\ncondition: {{isLaborJourney}} == true\ntarget: ../pricing\ndecision_result: False\nresult_json: {\"decision_result\": false}\nconfiguration_json: {\"condition\": \"{{isLaborJourney}} == true\", \"condition_key\": \"condition\", \"config_path\": \"condition\", \"item_id\": \"moveStatus\", \"scope\": \"config\", \"target\": \"../pricing\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:29.027Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 75\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/booking\nsource: ScriptedForm\nmessage: UI condition evaluated\ncondition: {{hasskillsetpricing}} == true\ntarget: ../pricing\ndecision_result: False\nresult_json: {\"decision_result\": false}\nconfiguration_json: {\"condition\": \"{{hasskillsetpricing}} == true\", \"condition_key\": \"condition\", \"config_path\": \"conditions[0].condition\", \"item_id\": \"conditions[0].condition\", \"scope\": \"conditions\", \"target\": \"../pricing\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": "7093495",
+      "expected_keywords": [
+        "requirement",
+        "rule",
+        "pricing"
+      ],
+      "expected_not_contains": [
+        "hasskillsetpricing",
+        "isLaborJourney",
+        "decision_result",
+        "evaluate_ui_condition"
+      ],
+      "notes": "The booking screen checks require special skill-set pricing or labour-only job. Customer met neither. This is intentional business logic.",
+      "keyword_hit_rate": 1.0,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [],
+      "leaked_jargon": [],
+      "faithfulness": 0.077,
+      "answer_relevancy": 0.655
+    },
+    {
+      "id": "ROOT-003",
+      "category": "root_cause",
+      "question": "What caused the journey to stop for customer 7093495?",
+      "answer": "**What happened**  \nThe customer moved through each step of the quote process, reaching the price page and then the terms and conditions page. The journey then led them to the booking screen, after which there are no further signs of activity \u2014 meaning the customer simply stopped there.\n\n**Why it happened**  \nAll pages loaded successfully and every rule check was passed, so the system did not block or redirect them. The records show only successful page visits, which suggests the customer chose to leave after viewing the booking screen rather than being forced out by an error.\n\n**What this means**  \nThis looks normal: the flow worked correctly and the customer seems to have abandoned the process by choice, not because of a system problem.",
+      "contexts": [
+        "timestamp: 2026-04-02T06:52:21.884Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 66\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/pricing\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/quote/pricing\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:28.973Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 73\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/conditions\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/quote/conditions\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:44:02.505Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 2\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/returning-customer\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/returning-customer\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"sid\": \"WKb038ce9450331e20d925c524085c2f97\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:49.308Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 32\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/isnj-journey\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/isnj-journey\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": null,
+      "expected_keywords": [
+        "booking",
+        "normal",
+        "expected"
+      ],
+      "expected_not_contains": [
+        "decision_result",
+        "graphql",
+        "gql_",
+        "evaluate_ui_condition"
+      ],
+      "notes": "Journey did not stop due to an error \u2014 all 78 steps succeeded. It reached its natural end point at booking.",
+      "keyword_hit_rate": 0.667,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "expected"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": 0.8,
+      "answer_relevancy": 0.532
+    },
+    {
+      "id": "ROOT-004",
+      "category": "root_cause",
+      "question": "Why did CID 7093495 go through a junk option page?",
+      "answer": "**What happened**  \nAfter the customer listed the items they wanted moved, the website briefly showed an extra page that offered a junk-removal add-on before taking them to the usual pricing and booking steps.\n\n**Why it happened**  \nThe moving-quote journey is set up with several size-based rules that decide whether to show that offer. None of the size rules matched this customer, so the default rule kicked in and automatically displayed the junk-removal page.\n\n**What this means**  \nThis is normal, planned behaviour; the system worked exactly as it was designed to.",
+      "contexts": [
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:52:13.010Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 54\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/junk-option\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/junk-option\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:07.987Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 51\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/items\nsource: ScriptedForm\nmessage: UI condition evaluated\ncondition: true == true\ntarget: junk-option\ndecision_result: True\nresult_json: {\"decision_result\": true}\nconfiguration_json: {\"condition\": \"true == true\", \"condition_key\": \"condition\", \"config_path\": \"conditions[3].condition\", \"item_id\": \"conditions[3].condition\", \"scope\": \"conditions\", \"target\": \"junk-option\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:07.987Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 48\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/items\nsource: ScriptedForm\nmessage: UI condition evaluated\ncondition: {{moveSize}} == 1\ntarget: junk-option\ndecision_result: False\nresult_json: {\"decision_result\": false}\nconfiguration_json: {\"condition\": \"{{moveSize}} == 1\", \"condition_key\": \"condition\", \"config_path\": \"conditions[0].condition\", \"item_id\": \"conditions[0].condition\", \"scope\": \"conditions\", \"target\": \"junk-option\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:07.987Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 49\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/items\nsource: ScriptedForm\nmessage: UI condition evaluated\ncondition: {{moveSize}} == 7\ntarget: junk-option\ndecision_result: False\nresult_json: {\"decision_result\": false}\nconfiguration_json: {\"condition\": \"{{moveSize}} == 7\", \"condition_key\": \"condition\", \"config_path\": \"conditions[1].condition\", \"item_id\": \"conditions[1].condition\", \"scope\": \"conditions\", \"target\": \"junk-option\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": "7093495",
+      "expected_keywords": [
+        "junk",
+        "item",
+        "option",
+        "selection"
+      ],
+      "expected_not_contains": [
+        "decision_result",
+        "evaluate_ui_condition",
+        "route_entered",
+        "step_order"
+      ],
+      "notes": "Customer was routed to junk-option because the items conditions evaluated that this was a junk removal journey type.",
+      "keyword_hit_rate": 0.5,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "option",
+        "selection"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": 0.375,
+      "answer_relevancy": 0.532
+    },
+    {
+      "id": "ROOT-005",
+      "category": "root_cause",
+      "question": "Why was a lead created during the journey for CID 7093495?",
+      "answer": "**What happened**  \nWhile completing the online quote, the customer filled in their move details and later viewed the pricing screen. At each of those two moments, the website quietly added the customer to the sales database as a new enquiry. Nothing unusual was shown to the customer; they simply continued",
+      "contexts": [
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:52:02.962Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 38\naction: gql_create_lead_new\nevent_type: dynamic_action\nstatus: success\nlevel: info\npage_path: /ccflownew/move-scope\nsource: graphql\nmessage: Dynamic action executed\nresult_json: {\"duration_ms\": 6983}\nconfiguration_json: {\"action_type\": \"gql_create_lead_new\", \"source\": \"graphql\", \"target_path\": \"check-ist-flow\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:25.862Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 69\naction: gql_create_lead_new\nevent_type: dynamic_action\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/pricing\nsource: graphql\nmessage: Dynamic action executed\nresult_json: {\"duration_ms\": 2015}\nconfiguration_json: {\"action_type\": \"gql_create_lead_new\", \"source\": \"graphql\", \"target_path\": \"conditions\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:44:02.430Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 1\naction: gql_lsa_lead_on_answer_call\nevent_type: dynamic_action\nstatus: success\nlevel: info\npage_path: /ccflownew/name-and-phone\nsource: graphql\nmessage: Dynamic action executed\nresult_json: {\"duration_ms\": 2457}\nconfiguration_json: {\"action_type\": \"gql_lsa_lead_on_answer_call\", \"source\": \"graphql\", \"target_path\": \"returning-customer\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"sid\": \"WKb038ce9450331e20d925c524085c2f97\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:49.308Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 32\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/isnj-journey\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/isnj-journey\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": "7093495",
+      "expected_keywords": [
+        "interest",
+        "registered",
+        "lead",
+        "details"
+      ],
+      "expected_not_contains": [
+        "gql_create_lead_new",
+        "graphql_request",
+        "step_order"
+      ],
+      "notes": "gql_create_lead_new was called twice \u2014 at move-scope (step 38) and quote/pricing (step 69). Should explain in plain English: a customer record was created when they showed interest.",
+      "keyword_hit_rate": 0.25,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "interest",
+        "registered",
+        "lead"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": 0.2,
+      "answer_relevancy": 0.253
+    },
+    {
+      "id": "ROOT-006",
+      "category": "root_cause",
+      "question": "Why did the customer go through the address page during their journey?",
+      "answer": "**What happened**  \nThe customer started their booking, confirmed they were a returning customer, and was then shown a page asking for their address before moving on to the next questions about the service.\n\n**Why it happened**  \nWe always show the address step at that point so we can check the customer\u2019s location, link them to the right local branch, and make sure the later price and schedule options are accurate.\n\n**What this means**  \nThis is the normal, expected path \u2014 nothing appears to be wrong.",
+      "contexts": [
+        "group_key: cid:unknown_customer | exec:exec-0f5de6ed-0424-47cf-893f-9f13158ccbfb\njourney_id: ccflownew\ncustomer_ids: ['unknown']\nexecution_ids: ['exec-0f5de6ed-0424-47cf-893f-9f13158ccbfb']\nevent_count: 7\nstep_range: 1 -> 7\nstatus_counts: {'success': 7}\ntop_actions: {'route_entered': 2, 'evaluate_ui_condition': 2, 'legacy_log_message': 1, 'graphql_request': 1, 'patch_context': 1}\nroute_path: /ccflownew/call-type -> /ccflownew/name-and-phone\ncondition_checks:\n- step 3 | page=/ccflownew/call-type | condition=true == true | result=True | target=None\n- step 5 | page=/ccflownew/name-and-phone | condition=true == true | result=True | target=returning-customer",
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:44:05.920Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 6\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/address\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/address\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"sid\": \"WKb038ce9450331e20d925c524085c2f97\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:44:02.505Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 2\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/returning-customer\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/returning-customer\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"sid\": \"WKb038ce9450331e20d925c524085c2f97\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:49.308Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 32\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/isnj-journey\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/isnj-journey\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "rewrite",
+      "active_customer_id": null,
+      "expected_keywords": [
+        "address",
+        "property",
+        "location"
+      ],
+      "expected_not_contains": [
+        "gql_get_property_details_by_address",
+        "graphql_request",
+        "step_order",
+        "route_entered"
+      ],
+      "notes": "Address page was reached at step 6. Property details were looked up. Plain English: the system checked the customer's address and property details.",
+      "keyword_hit_rate": 0.667,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "property"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": 0.1,
+      "answer_relevancy": 0.57
+    },
+    {
+      "id": "BIZ-001",
+      "category": "business_condition",
+      "question": "Is the behaviour at the booking page for CID 7093495 normal or a bug?",
+      "answer": "**What happened**\nThe customer reached the booking page as part of their journey. While on this page, there were checks to see if certain conditions were met, which would determine if they should be directed to the pricing page.\n\n**Why it happened**\nThe system was checking if the customer had specific requirements or qualifications that would lead them to the pricing page. However, the customer did not meet these requirements, so they remained on the booking page.\n\n**What this means**\nThis appears to be normal behavior. The system is designed to evaluate certain criteria before directing customers to the next step, and in this case, the customer did not meet the criteria to be sent to the pricing page.",
+      "contexts": [
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:52:29.027Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 77\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/booking\nsource: ScriptedForm\nmessage: UI condition evaluated\ncondition: true == true\ntarget: ../pricing\ndecision_result: True\nresult_json: {\"decision_result\": true}\nconfiguration_json: {\"condition\": \"true == true\", \"condition_key\": \"condition\", \"config_path\": \"conditions[2].condition\", \"item_id\": \"conditions[2].condition\", \"scope\": \"conditions\", \"target\": \"../pricing\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:29.027Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 75\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/booking\nsource: ScriptedForm\nmessage: UI condition evaluated\ncondition: {{hasskillsetpricing}} == true\ntarget: ../pricing\ndecision_result: False\nresult_json: {\"decision_result\": false}\nconfiguration_json: {\"condition\": \"{{hasskillsetpricing}} == true\", \"condition_key\": \"condition\", \"config_path\": \"conditions[0].condition\", \"item_id\": \"conditions[0].condition\", \"scope\": \"conditions\", \"target\": \"../pricing\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:29.027Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 74\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/booking\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/quote/booking\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:29.027Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 78\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/booking\nsource: ScriptedForm\nmessage: UI condition evaluated\ncondition: {{isLaborJourney}} == true\ntarget: ../pricing\ndecision_result: False\nresult_json: {\"decision_result\": false}\nconfiguration_json: {\"condition\": \"{{isLaborJourney}} == true\", \"condition_key\": \"condition\", \"config_path\": \"condition\", \"item_id\": \"moveStatus\", \"scope\": \"config\", \"target\": \"../pricing\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": "7093495",
+      "expected_keywords": [
+        "normal",
+        "expected",
+        "designed",
+        "rule"
+      ],
+      "expected_not_contains": [
+        "decision_result",
+        "hasskillsetpricing",
+        "evaluate_ui_condition"
+      ],
+      "notes": "This is normal \u2014 the journey is designed to stop here unless the customer meets specific criteria. Should say 'What this means: this is expected behaviour'.",
+      "keyword_hit_rate": 0.5,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "expected",
+        "rule"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.517
+    },
+    {
+      "id": "BIZ-002",
+      "category": "business_condition",
+      "question": "Why was CID 7093495 checked for skill set at the beginning of the journey?",
+      "answer": "**What happened**  \nThe customer began the booking flow as a returning client. Almost immediately, the system took them to a \u201cskill-set check\u201d screen to confirm something about the crew needed for their job before letting them continue to the address and branch-verification pages.\n\n**Why it happened**  \nThe process is designed to ask this question right at the start so the system can tell whether the job qualifies for a simple flat-rate service or will need a different pricing path. Doing this early avoids wasting the customer\u2019s time later in the journey.\n\n**What this means**  \nThis early skill-set check is standard, planned behaviour and does not indicate any problem.",
+      "contexts": [
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:51:49.309Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 33\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/skill-set-check\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/skill-set-check\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:44:05.823Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 5\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/check-skill-set-flat-rate\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/check-skill-set-flat-rate\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"sid\": \"WKb038ce9450331e20d925c524085c2f97\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:48.631Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 28\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: DatePicker\nmessage: UI condition evaluated\ncondition: true == true\ntarget: check-falt-rate-date\ndecision_result: True\nresult_json: {\"decision_result\": true}\nconfiguration_json: {\"condition\": \"true == true\", \"condition_key\": \"condition\", \"config_path\": \"conditions[0].condition\", \"item_id\": \"conditions[0].condition\", \"scope\": \"conditions\", \"target\": \"check-falt-rate-date\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:44:27.226Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 10\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/verify-branch\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/verify-branch\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": "7093495",
+      "expected_keywords": [
+        "skill",
+        "check",
+        "type"
+      ],
+      "expected_not_contains": [
+        "route_entered",
+        "step_order",
+        "evaluate_ui_condition",
+        "decision_result"
+      ],
+      "notes": "Customer passed through check-skill-set-flat-rate page early (step 5). This is a routing check to determine journey type.",
+      "keyword_hit_rate": 0.667,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "type"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": 0.455,
+      "answer_relevancy": 0.586
+    },
+    {
+      "id": "BIZ-003",
+      "category": "business_condition",
+      "question": "Why did the customer 7093495 go through so many checks on the date page?",
+      "answer": "**What happened**  \nThe customer landed on the date-selection screen. While they were there, the system silently ran several checks\u2014first as the page opened, then again after the customer picked a date\u2014to decide which buttons (such as \u201cFlexible date\u201d and \u201cExact date\u201d) should be shown. From the customer\u2019s point of view the page simply refreshed to display the right options.\n\n**Why it happened**  \nEach time the page loads or the chosen date changes, the business rules that control which booking choices appear must be re-applied. Because the customer interacted with the calendar more than once, those rules were triggered several times in a row.\n\n**What this means**  \nNothing looks wrong; the multiple checks are routine background work and are expected whenever a customer adjusts their date.",
+      "contexts": [
+        "timestamp: 2026-04-02T06:50:51.926Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 18\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: DatePicker\nmessage: UI condition evaluated\ncondition: true == true\ntarget: check-falt-rate-date\ndecision_result: True\nresult_json: {\"decision_result\": true}\nconfiguration_json: {\"condition\": \"true == true\", \"condition_key\": \"condition\", \"config_path\": \"conditions[0].condition\", \"item_id\": \"conditions[0].condition\", \"scope\": \"conditions\", \"target\": \"check-falt-rate-date\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:48.631Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 28\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: DatePicker\nmessage: UI condition evaluated\ncondition: true == true\ntarget: check-falt-rate-date\ndecision_result: True\nresult_json: {\"decision_result\": true}\nconfiguration_json: {\"condition\": \"true == true\", \"condition_key\": \"condition\", \"config_path\": \"conditions[0].condition\", \"item_id\": \"conditions[0].condition\", \"scope\": \"conditions\", \"target\": \"check-falt-rate-date\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:48.631Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 27\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: DatePicker\nmessage: UI condition evaluated\ncondition: {{moveDate}}\ntarget: check-falt-rate-date\ndecision_result: True\nresult_json: {\"decision_result\": true}\nconfiguration_json: {\"condition\": \"{{moveDate}}\", \"condition_key\": \"displayCondition\", \"config_path\": \"dynamicButtons[2].btnProps.displayCondition\", \"item_id\": \"dynamicButtons[2].btnProps.displayCondition\", \"item_label\": \"EXACT DATE\", \"scope\": \"dynamicButtons\", \"target\": \"check-falt-rate-date\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:48.631Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 26\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: DatePicker\nmessage: UI condition evaluated\ncondition: {{moveDate}}\ntarget: check-falt-rate-date\ndecision_result: True\nresult_json: {\"decision_result\": true}\nconfiguration_json: {\"condition\": \"{{moveDate}}\", \"condition_key\": \"displayCondition\", \"config_path\": \"dynamicButtons[1].btnProps.displayCondition\", \"item_id\": \"dynamicButtons[1].btnProps.displayCondition\", \"item_label\": \"FLEXIBLE DATE\", \"scope\": \"dynamicButtons\", \"target\": \"check-falt-rate-date\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:50:51.926Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 17\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: DatePicker\nmessage: UI condition evaluated\ncondition: {{moveDate}}\ntarget: check-falt-rate-date\ndecision_result: False\nresult_json: {\"decision_result\": false}\nconfiguration_json: {\"condition\": \"{{moveDate}}\", \"condition_key\": \"displayCondition\", \"config_path\": \"dynamicButtons[2].btnProps.displayCondition\", \"item_id\": \"dynamicButtons[2].btnProps.displayCondition\", \"item_label\": \"EXACT DATE\", \"scope\": \"dynamicButtons\", \"target\": \"check-falt-rate-date\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": null,
+      "expected_keywords": [
+        "date",
+        "availability",
+        "check"
+      ],
+      "expected_not_contains": [
+        "evaluate_ui_condition",
+        "decision_result",
+        "graphql_request",
+        "gql_get_booked_out"
+      ],
+      "notes": "Steps 15-28 on date page: multiple conditions checked (availability, booking status). Should explain: the system was checking date availability and booking constraints.",
+      "keyword_hit_rate": 0.667,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "availability"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": 0.071,
+      "answer_relevancy": 0.47
+    },
+    {
+      "id": "BIZ-004",
+      "category": "business_condition",
+      "question": "Was there anything unusual about how CID 7093495's journey was handled?",
+      "answer": "**What happened**\nThe customer with ID 7093495 went through a series of steps on a service platform, starting from identifying themselves as a returning customer, checking their skill set, providing their address, verifying their branch, expressing their service interest, selecting a date, and moving through various other steps until they reached the booking page.\n\n**Why it happened**\nThe customer was guided through these steps as part of a structured process to gather necessary information and preferences for the service they were interested in. This process ensures that all relevant details are collected to provide an accurate quote and finalize the booking.\n\n**What this means**\nThis appears to be normal expected behavior, as the customer successfully completed all steps without any issues, and there were no indications of errors or unusual occurrences in the journey.",
+      "contexts": [
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:50:51.925Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 14\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/date\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:49.407Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 35\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/move-scope\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/move-scope\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:07.987Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 47\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/items\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/items\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:06.798Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 43\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/conditions\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/conditions\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": "7093495",
+      "expected_keywords": [
+        "normal",
+        "expected",
+        "standard"
+      ],
+      "expected_not_contains": [
+        "decision_result",
+        "graphql",
+        "step_order",
+        "chunk_type"
+      ],
+      "notes": "Nothing unusual \u2014 all 78 steps successful, standard ccflownew journey path.",
+      "keyword_hit_rate": 0.667,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "standard"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.459
+    },
+    {
+      "id": "BIZ-005",
+      "category": "business_condition",
+      "question": "Why did the system create notes for customer 7093495?",
+      "answer": "**What happened**  \nWhile the customer was looking at their quote on the pricing screen, the system quietly added an internal note to their file. The customer kept moving through the journey and would not have noticed anything on-screen.\n\n**Why it happened**  \nOur quoting flow is set up to add a note automatically as soon as a customer reaches the pricing step, so our team has a record of the key details discussed up to that point.\n\n**What this means**  \nThis is normal, expected behaviour\u2014everything completed successfully and there is no sign of a problem.",
+      "contexts": [
+        "timestamp: 2026-04-02T06:52:28.963Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 72\naction: gql_create_notes\nevent_type: dynamic_action\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/pricing\nsource: graphql\nmessage: Dynamic action executed\nresult_json: {\"duration_ms\": 3101}\nconfiguration_json: {\"action_type\": \"gql_create_notes\", \"source\": \"graphql\", \"target_path\": \"conditions\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:44:05.808Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 3\naction: patch_context\nevent_type: context_update\nstatus: success\nlevel: info\npage_path: /ccflownew/returning-customer\nsource: useDynamicActionExecutor\nmessage: Context updated\nresult_json: {\"changed_count\": 1}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"sid\": \"WKb038ce9450331e20d925c524085c2f97\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:13.771Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 55\naction: patch_context\nevent_type: context_update\nstatus: success\nlevel: info\npage_path: /ccflownew/junk-option\nsource: useDynamicActionExecutor\nmessage: Context updated\nresult_json: {\"changed_count\": 1}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:44:02.505Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 2\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/returning-customer\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/returning-customer\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"sid\": \"WKb038ce9450331e20d925c524085c2f97\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": null,
+      "expected_keywords": [
+        "notes",
+        "record",
+        "pricing",
+        "saved"
+      ],
+      "expected_not_contains": [
+        "gql_create_notes",
+        "graphql_request",
+        "step_order",
+        "route_entered"
+      ],
+      "notes": "gql_create_notes was called at step 72 on quote/pricing page. Plain English: notes were saved about the customer's quote details.",
+      "keyword_hit_rate": 0.5,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "notes",
+        "saved"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": 0.286,
+      "answer_relevancy": 0.33
+    },
+    {
+      "id": "API-001",
+      "category": "api_timeline",
+      "question": "How many API calls were made during the journey of CID 7093495?",
+      "answer": "**What happened**\nThe customer with ID 7093495 went through a process that involved several steps, such as providing their name and phone number, entering their address, selecting a date, and reviewing move details and pricing. During this journey, a total of 9 requests were made to gather or send information.\n\n**Why it happened**\nThese requests were necessary to collect the customer's information, check availability, and provide them with relevant details about their move and pricing options. Each step required specific information to be processed to ensure the customer received accurate and timely responses.\n\n**What this means**\nThis is normal expected behavior, as multiple requests are typically needed to handle different parts of a customer's journey and ensure they receive the necessary information and services.",
+      "contexts": [
+        "api_timeline_type: cms3_journey_api_timeline\ncustomer_id: 7093495\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ninterpretation_note: In these logs, `graphql_request` events are transport-level GraphQL requests, while `gql_*` actions are named business operations.\ngraphql_request_count: 9\nnamed_graphql_operation_count: 10\nordered_graphql_requests:\n1. step=7 | page=/ccflownew/address | action=graphql_request\n2. step=19 | page=/ccflownew/date | action=graphql_request\n3. step=22 | page=/ccflownew/date | action=graphql_request\n4. step=36 | page=/ccflownew/move-scope | action=graphql_request\n5. step=39 | page=/ccflownew/move-scope | action=graphql_request\n6. step=57 | page=/ccflownew/junk-option | action=graphql_request\n7. step=62 | page=/ccflownew/pitch | action=graphql_request\n8. step=67 | page=/ccflownew/quote/pricing | action=graphql_request\n9. step=70 | page=/ccflownew/quote/pricing | action=graphql_request\nordered_named_graphql_operations:\n1. step=1 | page=/ccflownew/name-and-phone | action=gql_lsa_lead_on_answer_call\n2. step=9 | page=/ccflownew/address | action=gql_get_available_agentsfrom_flex_query\n3. step=21 | page=/ccflownew/date | action=gql_get_property_details_by_address\n4. step=24 | page=/ccflownew/date | action=gql_get_booked_out\n5. step=38 | page=/ccflownew/move-scope | action=gql_create_lead_new\n6. step=41 | page=/ccflownew/move-scope | action=gql_get_available_agentsfrom_flex_query\n7. step=59 | page=/ccflownew/junk-option | action=gql_save_junk_transfer_details_mutation\n8. step=64 | page=/ccflownew/pitch | action=gql_get_price_details\n9. step=69 | page=/ccflownew/quote/pricing | action=gql_create_lead_new\n10. step=72 | page=/ccflownew/quote/pricing | action=gql_create_notes",
+        "timestamp: 2026-04-02T06:44:02.430Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 1\naction: gql_lsa_lead_on_answer_call\nevent_type: dynamic_action\nstatus: success\nlevel: info\npage_path: /ccflownew/name-and-phone\nsource: graphql\nmessage: Dynamic action executed\nresult_json: {\"duration_ms\": 2457}\nconfiguration_json: {\"action_type\": \"gql_lsa_lead_on_answer_call\", \"source\": \"graphql\", \"target_path\": \"returning-customer\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"sid\": \"WKb038ce9450331e20d925c524085c2f97\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:44:27.213Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 9\naction: gql_get_available_agentsfrom_flex_query\nevent_type: dynamic_action\nstatus: success\nlevel: info\npage_path: /ccflownew/address\nsource: graphql\nmessage: Dynamic action executed\nresult_json: {\"duration_ms\": 4042}\nconfiguration_json: {\"action_type\": \"gql_get_available_agentsfrom_flex_query\", \"source\": \"graphql\", \"target_path\": \"verify-branch\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:02.745Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 21\naction: gql_get_property_details_by_address\nevent_type: dynamic_action\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: graphql\nmessage: Dynamic action executed\nresult_json: {\"duration_ms\": 10818}\nconfiguration_json: {\"action_type\": \"gql_get_property_details_by_address\", \"source\": \"graphql\", \"target_path\": \"check-falt-rate-date\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:04.486Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 24\naction: gql_get_booked_out\nevent_type: dynamic_action\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: graphql\nmessage: Dynamic action executed\nresult_json: {\"duration_ms\": 1740}\nconfiguration_json: {\"action_type\": \"gql_get_booked_out\", \"source\": \"graphql\", \"target_path\": \"check-falt-rate-date\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:02.962Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 38\naction: gql_create_lead_new\nevent_type: dynamic_action\nstatus: success\nlevel: info\npage_path: /ccflownew/move-scope\nsource: graphql\nmessage: Dynamic action executed\nresult_json: {\"duration_ms\": 6983}\nconfiguration_json: {\"action_type\": \"gql_create_lead_new\", \"source\": \"graphql\", \"target_path\": \"check-ist-flow\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": "7093495",
+      "expected_keywords": [
+        "9",
+        "10",
+        "request",
+        "call"
+      ],
+      "expected_not_contains": [
+        "graphql_request",
+        "gql_",
+        "step_order",
+        "chunk_type"
+      ],
+      "notes": "9 transport-level graphql_request events + 10 named operations. Answer should clarify both if asked generally.",
+      "keyword_hit_rate": 0.75,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "10"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": 0.625,
+      "answer_relevancy": 0.491
+    },
+    {
+      "id": "API-002",
+      "category": "api_timeline",
+      "question": "What data was looked up during the journey for CID 7093495?",
+      "answer": "**What happened**\nThe customer with ID 7093495 went through a series of steps on a service platform. They visited various pages related to their service interest, address, and other details necessary for their journey. The customer successfully navigated through all the steps without any issues.\n\n**Why it happened**\nThe customer was likely trying to gather information or complete a process related to a service they were interested in. This involved checking details like their address, service interest, and other relevant information to ensure everything was in order for their needs.\n\n**What this means**\nThis appears to be normal behavior. The customer successfully completed all steps without any errors, indicating that the process worked as intended.",
+      "contexts": [
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:51:49.308Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 32\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/isnj-journey\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/isnj-journey\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:49.307Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 31\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/check-falt-rate-date\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/check-falt-rate-date\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:44:05.920Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 6\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/address\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/address\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"sid\": \"WKb038ce9450331e20d925c524085c2f97\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:44:27.232Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 11\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/service-interest\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/service-interest\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": "7093495",
+      "expected_keywords": [
+        "address",
+        "availability",
+        "price",
+        "details"
+      ],
+      "expected_not_contains": [
+        "gql_get_property_details_by_address",
+        "gql_get_booked_out",
+        "gql_get_price_details",
+        "graphql_request"
+      ],
+      "notes": "Named operations: property details, booked-out check, price details, agent availability. Translate to business language.",
+      "keyword_hit_rate": 0.5,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "availability",
+        "price"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.436
+    },
+    {
+      "id": "API-003",
+      "category": "api_timeline",
+      "question": "Was a lead registered for CID 7093495 during the journey?",
+      "answer": "**What happened**\nThe customer with ID 7093495 went through a series of steps on a service platform, which included entering their address, selecting a date, and reviewing items. During this process, there were two attempts to register the customer's interest in the service.\n\n**Why it happened**\nThe attempts to register the customer's interest were likely part of the process to capture potential leads as the customer navigated through the service options and provided necessary information.\n\n**What this means**\nThis appears to be normal behavior, as the system is designed to register interest when a customer goes through the service selection process. There is no indication of any issues or errors in the logs provided.",
+      "contexts": [
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:51:49.308Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 32\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/isnj-journey\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/isnj-journey\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:50:51.925Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 14\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/date\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:44:05.920Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 6\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/address\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/address\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"sid\": \"WKb038ce9450331e20d925c524085c2f97\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:07.987Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 47\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/items\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/items\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": "7093495",
+      "expected_keywords": [
+        "lead",
+        "registered",
+        "interest",
+        "twice"
+      ],
+      "expected_not_contains": [
+        "gql_create_lead_new",
+        "graphql_request",
+        "step_order"
+      ],
+      "notes": "gql_create_lead_new was called twice \u2014 at move-scope and quote/pricing. Should confirm yes, and explain when in plain English.",
+      "keyword_hit_rate": 0.5,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "registered",
+        "twice"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": null,
+      "answer_relevancy": null
+    },
+    {
+      "id": "API-004",
+      "category": "api_timeline",
+      "question": "Was pricing information retrieved for CID 7093495?",
+      "answer": "**What happened**\nThe customer with ID 7093495 went through a series of steps on a service platform, eventually reaching the pricing information page. However, there were checks in place to determine if specific conditions were met for displaying certain pricing details.\n\n**Why it happened**\nThe customer reached the pricing page, but some conditions related to their service preferences or requirements were not met. This means that while they accessed the pricing page, they might not have seen all the pricing details they were expecting.\n\n**What this means**\nThis situation suggests that the customer did not meet certain criteria to view specific pricing information. This could be normal if the system is designed to show pricing only when certain conditions are fulfilled. However, if the customer expected to see more information, it might indicate a need to review the criteria or communicate them more clearly to customers.",
+      "contexts": [
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:52:21.884Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 66\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/pricing\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/quote/pricing\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:29.027Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 77\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/booking\nsource: ScriptedForm\nmessage: UI condition evaluated\ncondition: true == true\ntarget: ../pricing\ndecision_result: True\nresult_json: {\"decision_result\": true}\nconfiguration_json: {\"condition\": \"true == true\", \"condition_key\": \"condition\", \"config_path\": \"conditions[2].condition\", \"item_id\": \"conditions[2].condition\", \"scope\": \"conditions\", \"target\": \"../pricing\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:29.027Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 75\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/booking\nsource: ScriptedForm\nmessage: UI condition evaluated\ncondition: {{hasskillsetpricing}} == true\ntarget: ../pricing\ndecision_result: False\nresult_json: {\"decision_result\": false}\nconfiguration_json: {\"condition\": \"{{hasskillsetpricing}} == true\", \"condition_key\": \"condition\", \"config_path\": \"conditions[0].condition\", \"item_id\": \"conditions[0].condition\", \"scope\": \"conditions\", \"target\": \"../pricing\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:29.027Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 76\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/booking\nsource: ScriptedForm\nmessage: UI condition evaluated\ncondition: {{isLaborJourney}} == true\ntarget: ../pricing\ndecision_result: False\nresult_json: {\"decision_result\": false}\nconfiguration_json: {\"condition\": \"{{isLaborJourney}} == true\", \"condition_key\": \"condition\", \"config_path\": \"conditions[1].condition\", \"item_id\": \"conditions[1].condition\", \"scope\": \"conditions\", \"target\": \"../pricing\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": "7093495",
+      "expected_keywords": [
+        "price",
+        "pricing",
+        "retrieved",
+        "quote"
+      ],
+      "expected_not_contains": [
+        "gql_get_price_details",
+        "graphql_request",
+        "step_order"
+      ],
+      "notes": "gql_get_price_details called at step 64 on pitch page. Plain English: yes, pricing details were retrieved.",
+      "keyword_hit_rate": 0.25,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "price",
+        "retrieved",
+        "quote"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": null,
+      "answer_relevancy": 0.581
+    },
+    {
+      "id": "API-005",
+      "category": "api_timeline",
+      "question": "Were agent availability checks done for customer 7093495?",
+      "answer": "**What happened**\nThe customer, identified by the number 7093495, went through a process where their interest in a service was being registered. During this process, checks were made to see if agents were available to assist them.\n\n**Why it happened**\nThe checks for agent availability were part of the standard procedure to ensure that the customer could be matched with an available agent to help with their service needs.\n\n**What this means**\nThis is normal expected behavior, as checking for agent availability is a routine part of the customer service process to ensure that customers receive timely assistance.",
+      "contexts": [
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:44:27.213Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 9\naction: gql_get_available_agentsfrom_flex_query\nevent_type: dynamic_action\nstatus: success\nlevel: info\npage_path: /ccflownew/address\nsource: graphql\nmessage: Dynamic action executed\nresult_json: {\"duration_ms\": 4042}\nconfiguration_json: {\"action_type\": \"gql_get_available_agentsfrom_flex_query\", \"source\": \"graphql\", \"target_path\": \"verify-branch\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:06.777Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 41\naction: gql_get_available_agentsfrom_flex_query\nevent_type: dynamic_action\nstatus: success\nlevel: info\npage_path: /ccflownew/move-scope\nsource: graphql\nmessage: Dynamic action executed\nresult_json: {\"duration_ms\": 3815}\nconfiguration_json: {\"action_type\": \"gql_get_available_agentsfrom_flex_query\", \"source\": \"graphql\", \"target_path\": \"check-ist-flow\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:48.631Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 28\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: DatePicker\nmessage: UI condition evaluated\ncondition: true == true\ntarget: check-falt-rate-date\ndecision_result: True\nresult_json: {\"decision_result\": true}\nconfiguration_json: {\"condition\": \"true == true\", \"condition_key\": \"condition\", \"config_path\": \"conditions[0].condition\", \"item_id\": \"conditions[0].condition\", \"scope\": \"conditions\", \"target\": \"check-falt-rate-date\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:50:51.926Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 18\naction: evaluate_ui_condition\nevent_type: ui_condition\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: DatePicker\nmessage: UI condition evaluated\ncondition: true == true\ntarget: check-falt-rate-date\ndecision_result: True\nresult_json: {\"decision_result\": true}\nconfiguration_json: {\"condition\": \"true == true\", \"condition_key\": \"condition\", \"config_path\": \"conditions[0].condition\", \"item_id\": \"conditions[0].condition\", \"scope\": \"conditions\", \"target\": \"check-falt-rate-date\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "retrieve",
+      "active_customer_id": null,
+      "expected_keywords": [
+        "agent",
+        "availability",
+        "checked"
+      ],
+      "expected_not_contains": [
+        "gql_get_available_agentsfrom_flex_query",
+        "graphql_request",
+        "step_order"
+      ],
+      "notes": "gql_get_available_agentsfrom_flex_query was called twice \u2014 at address (step 9) and move-scope (step 41). Plain English: yes, agent availability was checked at two points.",
+      "keyword_hit_rate": 0.667,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "checked"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": null,
+      "answer_relevancy": null
+    },
+    {
+      "id": "MULTI-001",
+      "category": "multi_turn",
+      "question": "Why did the journey stop there?",
+      "answer": "**What happened**  \nThe customer went through every page of the online booking flow, ending on the final \u201cbooking\u201d page after completing 78 separate steps. Once that last page was reached, their session simply ended.\n\n**Why it happened**  \nThe journey contains exactly 78 steps; when the customer finishes the final step, there are no further pages or actions, so the process comes to a natural close.\n\n**What this means**  \nThis is expected behaviour\u2014the journey ended because the customer reached the normal finish point, not because of a problem.",
+      "contexts": [
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:50:51.756Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 12\naction: navigate\nevent_type: dynamic_action\nstatus: success\nlevel: info\npage_path: /ccflownew/service-interest\nsource: useDynamicActionExecutor\nmessage: Navigate\nresult_json: {\"navigated\": true}\nconfiguration_json: {\"from_path\": \"date\", \"to_path\": \"date\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:12.985Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 52\naction: navigate\nevent_type: dynamic_action\nstatus: success\nlevel: info\npage_path: /ccflownew/items\nsource: useDynamicActionExecutor\nmessage: Navigate\nresult_json: {\"navigated\": true}\nconfiguration_json: {\"from_path\": \"junk-option\", \"to_path\": \"junk-option\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:49.309Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 33\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/skill-set-check\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/skill-set-check\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:44:05.920Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 6\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/address\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/address\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"sid\": \"WKb038ce9450331e20d925c524085c2f97\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "rewrite",
+      "active_customer_id": "7093495",
+      "expected_keywords": [
+        "booking",
+        "requirement",
+        "rule",
+        "normal"
+      ],
+      "expected_not_contains": [
+        "hasskillsetpricing",
+        "isLaborJourney",
+        "decision_result",
+        "evaluate_ui_condition"
+      ],
+      "notes": "Follow-up after learning the journey ended at booking. Should rewrite to include CID and page, then explain the business rule.",
+      "keyword_hit_rate": 0.5,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "requirement",
+        "rule"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": 0.111,
+      "answer_relevancy": null
+    },
+    {
+      "id": "MULTI-002",
+      "category": "multi_turn",
+      "question": "Were there any errors?",
+      "answer": "**What happened**\nThe customer with ID 7093495 completed a series of steps on the service platform without encountering any issues.\n\n**Why it happened**\nThe process was designed to guide the customer through various stages, such as verifying details and selecting options, and it functioned smoothly without any interruptions.\n\n**What this means**\nThere were no errors during the process. Everything proceeded as expected, indicating that the system worked correctly for this customer.",
+      "contexts": [
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:44:02.505Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 2\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/returning-customer\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/returning-customer\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"sid\": \"WKb038ce9450331e20d925c524085c2f97\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:44:05.808Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 3\naction: patch_context\nevent_type: context_update\nstatus: success\nlevel: info\npage_path: /ccflownew/returning-customer\nsource: useDynamicActionExecutor\nmessage: Context updated\nresult_json: {\"changed_count\": 1}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"sid\": \"WKb038ce9450331e20d925c524085c2f97\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:44:27.226Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 10\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/verify-branch\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/verify-branch\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:49.309Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 33\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/skill-set-check\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/skill-set-check\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "rewrite",
+      "active_customer_id": "7093495",
+      "expected_keywords": [
+        "no",
+        "successful",
+        "error",
+        "normal"
+      ],
+      "expected_not_contains": [
+        "status_counts",
+        "decision_result",
+        "chunk_type"
+      ],
+      "notes": "All 78 steps were successful. Answer should clearly say no errors were found.",
+      "keyword_hit_rate": 0.5,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "successful",
+        "normal"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": 1.0,
+      "answer_relevancy": null
+    },
+    {
+      "id": "MULTI-003",
+      "category": "multi_turn",
+      "question": "What happened in between?",
+      "answer": "**What happened**\nAfter starting on the returning customers page, the customer moved through several steps. They first reached a general quote page, then proceeded to a pricing page. After that, they visited a conditions page, and finally, they arrived at the booking page where they could finalize their quote.\n\n**Why it happened**\nThe customer was likely following a structured process to obtain a quote. This process involved reviewing pricing details and conditions before reaching the final booking stage.\n\n**What this means**\nThis sequence of steps seems to be a normal part of the customer's journey to obtain a quote, indicating that the process is functioning as expected.",
+      "contexts": [
+        "timestamp: 2026-04-02T06:52:29.027Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 74\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/booking\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/quote/booking\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:21.884Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 66\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/pricing\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/quote/pricing\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:28.973Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 73\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/conditions\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/quote/conditions\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:21.820Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 65\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/quote\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/quote\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:44:02.505Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 2\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/returning-customer\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/returning-customer\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"sid\": \"WKb038ce9450331e20d925c524085c2f97\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "rewrite",
+      "active_customer_id": null,
+      "expected_keywords": [
+        "address",
+        "date",
+        "items",
+        "pricing"
+      ],
+      "expected_not_contains": [
+        "route_entered",
+        "step_order",
+        "decision_result",
+        "graphql"
+      ],
+      "notes": "Should describe the key stages in between start and end: address, date, skill check, items, junk, pitch, pricing.",
+      "keyword_hit_rate": 0.25,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "address",
+        "date",
+        "items"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": 0.667,
+      "answer_relevancy": null
+    },
+    {
+      "id": "MULTI-004",
+      "category": "multi_turn",
+      "question": "Should we raise a bug for this?",
+      "answer": "**What happened**  \nThe customer completed the entire online quote journey, ending at the booking page after reviewing their quote and pricing details.\n\n**Why it happened**  \nThe journey is designed to conclude at the booking page once all necessary steps are completed and the customer has agreed to the terms and pricing.\n\n**What this means**  \nThere is no need to raise a bug. The journey ended as expected, with no indication of any issues.",
+      "contexts": [
+        "group_key: cid:7093495 | exec:exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\njourney_id: ccflownew\ncustomer_ids: ['7093495']\nexecution_ids: ['exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88']\nevent_count: 78\nstep_range: 1 -> 78\nstatus_counts: {'success': 78}\ntop_actions: {'route_entered': 22, 'evaluate_ui_condition': 16, 'patch_context': 11, 'graphql_request': 9, 'navigate': 8, 'updateContext': 2, 'gql_get_available_agentsfrom_flex_query': 2, 'gql_create_lead_new': 2}\nroute_path: /ccflownew/returning-customer -> /ccflownew/check-skill-set-flat-rate -> /ccflownew/address -> /ccflownew/verify-branch -> /ccflownew/service-interest -> /ccflownew/date -> /ccflownew/check-falt-rate-date -> /ccflownew/isnj-journey -> /ccflownew/skill-set-check -> /ccflownew/is-labor -> /ccflownew/move-scope -> /ccflownew/check-ist-flow -> /ccflownew/conditions -> /ccflownew/next -> /ccflownew/items -> /ccflownew/junk-option -> /ccflownew/junk-normal-or-labour-check -> /ccflownew/pitch -> /ccflownew/quote -> /ccflownew/quote/pricing -> /ccflownew/quote/conditions -> /ccflownew/quote/booking\ncondition_checks:\n- step 15 | page=/ccflownew/date | condition=!{{moveDate}} | result=True | target=check-falt-rate-date\n- step 16 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 17 | page=/ccflownew/date | condition={{moveDate}} | result=False | target=check-falt-rate-date\n- step 18 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 25 | page=/ccflownew/date | condition=!{{moveDate}} | result=False | target=check-falt-rate-date\n- step 26 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 27 | page=/ccflownew/date | condition={{moveDate}} | result=True | target=check-falt-rate-date\n- step 28 | page=/ccflownew/date | condition=true == true | result=True | target=check-falt-rate-date\n- step 48 | page=/ccflownew/items | condition={{moveSize}} == 1 | result=False | target=junk-option\n- step 49 | page=/ccflownew/items | condition={{moveSize}} == 7 | result=False | target=junk-option\n- step 50 | page=/ccflownew/items | condition={{moveSize}} == 6 | result=False | target=junk-option\n- step 51 | page=/ccflownew/items | condition=true == true | result=True | target=junk-option",
+        "timestamp: 2026-04-02T06:52:29.027Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 74\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/quote/booking\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/quote/booking\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:49.308Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 32\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/isnj-journey\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/isnj-journey\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:50:51.925Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 14\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/date\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:49.309Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 33\naction: route_entered\nevent_type: navigation\nstatus: success\nlevel: info\npage_path: /ccflownew/skill-set-check\nsource: router\nmessage: Route entered\nresult_json: {\"pathname\": \"/ccflownew/skill-set-check\"}\nconfiguration_json: {\"search\": \"\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "rewrite",
+      "active_customer_id": "7093495",
+      "expected_keywords": [
+        "business",
+        "rule",
+        "designed",
+        "normal",
+        "condition"
+      ],
+      "expected_not_contains": [
+        "decision_result",
+        "hasskillsetpricing",
+        "evaluate_ui_condition"
+      ],
+      "notes": "This is a business condition, not a bug. Answer should help the manager understand this is by design, and whether a ticket makes sense depends on whether the rule itself needs changing.",
+      "keyword_hit_rate": 0.2,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "business",
+        "rule",
+        "normal",
+        "condition"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": null,
+      "answer_relevancy": null
+    },
+    {
+      "id": "MULTI-005",
+      "category": "multi_turn",
+      "question": "Which one was called first?",
+      "answer": "**What happened**\nThe first request made during the customer's journey was related to collecting their name and phone number.\n\n**Why it happened**\nThis request was likely made to initiate the process by capturing the customer's basic contact information, which is a common first step in many customer interactions.\n\n**What this means**\nThis is normal expected behavior, as collecting contact information is typically the first step in engaging with a customer.",
+      "contexts": [
+        "api_timeline_type: cms3_journey_api_timeline\ncustomer_id: 7093495\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ninterpretation_note: In these logs, `graphql_request` events are transport-level GraphQL requests, while `gql_*` actions are named business operations.\ngraphql_request_count: 9\nnamed_graphql_operation_count: 10\nordered_graphql_requests:\n1. step=7 | page=/ccflownew/address | action=graphql_request\n2. step=19 | page=/ccflownew/date | action=graphql_request\n3. step=22 | page=/ccflownew/date | action=graphql_request\n4. step=36 | page=/ccflownew/move-scope | action=graphql_request\n5. step=39 | page=/ccflownew/move-scope | action=graphql_request\n6. step=57 | page=/ccflownew/junk-option | action=graphql_request\n7. step=62 | page=/ccflownew/pitch | action=graphql_request\n8. step=67 | page=/ccflownew/quote/pricing | action=graphql_request\n9. step=70 | page=/ccflownew/quote/pricing | action=graphql_request\nordered_named_graphql_operations:\n1. step=1 | page=/ccflownew/name-and-phone | action=gql_lsa_lead_on_answer_call\n2. step=9 | page=/ccflownew/address | action=gql_get_available_agentsfrom_flex_query\n3. step=21 | page=/ccflownew/date | action=gql_get_property_details_by_address\n4. step=24 | page=/ccflownew/date | action=gql_get_booked_out\n5. step=38 | page=/ccflownew/move-scope | action=gql_create_lead_new\n6. step=41 | page=/ccflownew/move-scope | action=gql_get_available_agentsfrom_flex_query\n7. step=59 | page=/ccflownew/junk-option | action=gql_save_junk_transfer_details_mutation\n8. step=64 | page=/ccflownew/pitch | action=gql_get_price_details\n9. step=69 | page=/ccflownew/quote/pricing | action=gql_create_lead_new\n10. step=72 | page=/ccflownew/quote/pricing | action=gql_create_notes",
+        "timestamp: 2026-04-02T06:44:02.430Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 1\naction: gql_lsa_lead_on_answer_call\nevent_type: dynamic_action\nstatus: success\nlevel: info\npage_path: /ccflownew/name-and-phone\nsource: graphql\nmessage: Dynamic action executed\nresult_json: {\"duration_ms\": 2457}\nconfiguration_json: {\"action_type\": \"gql_lsa_lead_on_answer_call\", \"source\": \"graphql\", \"target_path\": \"returning-customer\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"sid\": \"WKb038ce9450331e20d925c524085c2f97\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:44:27.213Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 9\naction: gql_get_available_agentsfrom_flex_query\nevent_type: dynamic_action\nstatus: success\nlevel: info\npage_path: /ccflownew/address\nsource: graphql\nmessage: Dynamic action executed\nresult_json: {\"duration_ms\": 4042}\nconfiguration_json: {\"action_type\": \"gql_get_available_agentsfrom_flex_query\", \"source\": \"graphql\", \"target_path\": \"verify-branch\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:02.745Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 21\naction: gql_get_property_details_by_address\nevent_type: dynamic_action\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: graphql\nmessage: Dynamic action executed\nresult_json: {\"duration_ms\": 10818}\nconfiguration_json: {\"action_type\": \"gql_get_property_details_by_address\", \"source\": \"graphql\", \"target_path\": \"check-falt-rate-date\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:51:04.486Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 24\naction: gql_get_booked_out\nevent_type: dynamic_action\nstatus: success\nlevel: info\npage_path: /ccflownew/date\nsource: graphql\nmessage: Dynamic action executed\nresult_json: {\"duration_ms\": 1740}\nconfiguration_json: {\"action_type\": \"gql_get_booked_out\", \"source\": \"graphql\", \"target_path\": \"check-falt-rate-date\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}",
+        "timestamp: 2026-04-02T06:52:02.962Z\njourney_id: ccflownew\nexecution_id: exec-7093495-95fdafb2-9657-4cf0-aed9-31d98658fd88\ncustomer_id: 7093495\nstep_order: 38\naction: gql_create_lead_new\nevent_type: dynamic_action\nstatus: success\nlevel: info\npage_path: /ccflownew/move-scope\nsource: graphql\nmessage: Dynamic action executed\nresult_json: {\"duration_ms\": 6983}\nconfiguration_json: {\"action_type\": \"gql_create_lead_new\", \"source\": \"graphql\", \"target_path\": \"check-ist-flow\"}\ntrace_json: {\"app\": \"cms3\", \"environment\": \"wip\", \"release\": \"development\", \"session_id\": \"session-b7a272d6-4fd6-4b3e-a27c-ba3fc40699b9\", \"user_type\": \"10\"}"
+      ],
+      "query_type": "rewrite",
+      "active_customer_id": "7093495",
+      "expected_keywords": [
+        "first",
+        "call",
+        "answer",
+        "lead",
+        "start"
+      ],
+      "expected_not_contains": [
+        "gql_lsa_lead_on_answer_call",
+        "step_order",
+        "graphql_request"
+      ],
+      "notes": "First call was gql_lsa_lead_on_answer_call at step 1. Plain English: the first action was registering that the agent answered the customer's call.",
+      "keyword_hit_rate": 0.4,
+      "jargon_leak_rate": 0.0,
+      "missed_keywords": [
+        "answer",
+        "lead",
+        "start"
+      ],
+      "leaked_jargon": [],
+      "faithfulness": null,
+      "answer_relevancy": null
+    }
+  ]
+}

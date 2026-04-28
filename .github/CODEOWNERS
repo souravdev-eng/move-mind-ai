@@ -1,0 +1,22 @@
+# CODEOWNERS — auto-assigns reviewers on PRs.
+# Format: <pattern> <owner> [owner ...]
+# See: https://docs.github.com/en/repositories/managing-your-repositories-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default: everything needs owner review
+*                           @saurav
+
+# CI / workflows
+/.github/                   @saurav
+
+# Security-sensitive roots
+/SECURITY.md                @saurav
+/.gitleaks.toml             @saurav
+/.husky/                    @saurav
+/commitlint.config.cjs      @saurav
+
+# Frontend
+/frontend/                  @saurav
+/agents/frontend/           @saurav
+
+# Backend
+/backend/                   @saurav
