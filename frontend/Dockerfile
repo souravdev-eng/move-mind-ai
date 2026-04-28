@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Install dependencies first (layer caching)
 COPY package.json pnpm-lock.yaml* ./
-RUN pnpm install
+RUN pnpm install --ignore-scripts
 
 # Copy source
 COPY . .

@@ -1,5 +1,8 @@
+import { useState } from "react";
+
+import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import SendIcon from "@mui/icons-material/Send";
-import { Box, Button, IconButton, Stack, TextField, Typography } from "@mui/material";
+import { Alert, Badge, Box, Button, IconButton, Stack, TextField, Tooltip, Typography } from "@mui/material";
 
 import { PageHeader } from "@/molecules/PageHeader";
 import { EvidenceDrawer } from "@/organisms/EvidenceDrawer";
@@ -27,12 +30,15 @@ export function InvestigatePage() {
     setTimeWindow,
     messages,
     streaming,
+    error,
+    pipeline,
+    sources,
     reset,
     onSubmit,
     hasMessages,
-    evidence,
   } = useInvestigatePage();
-  const showEvidence = hasMessages;
+  const [evidenceOpen, setEvidenceOpen] = useState(true);
+  const showEvidence = hasMessages && evidenceOpen;
 
   if (!project) {
     return <Typography>Project not found.</Typography>;
@@ -64,7 +70,7 @@ export function InvestigatePage() {
           display: "grid",
           gridTemplateColumns: {
             xs: "1fr",
-            md: showEvidence ? "240px 1fr 320px" : "240px 1fr",
+            md: showEvidence ? "240px 1fr 360px" : "240px 1fr",
           },
           gap: 0,
           border: 1,
@@ -106,9 +112,15 @@ export function InvestigatePage() {
                 </Stack>
               </Stack>
             ) : (
-              <MessageList messages={messages} streaming={streaming} />
+              <MessageList messages={messages} streaming={streaming} pipeline={pipeline} />
             )}
           </Box>
+
+          {error ? (
+            <Alert severity="error" sx={{ mx: 2, mb: 1 }}>
+              {error}
+            </Alert>
+          ) : null}
 
           <Box
             component="form"
@@ -134,11 +146,31 @@ export function InvestigatePage() {
               >
                 <SendIcon />
               </IconButton>
+              {hasMessages ? (
+                <Tooltip title={evidenceOpen ? "Hide evidence" : "Show evidence"}>
+                  <IconButton
+                    aria-label="Toggle evidence"
+                    onClick={() => {
+                      setEvidenceOpen((p) => !p);
+                    }}
+                    color={evidenceOpen ? "primary" : "default"}
+                  >
+                    <Badge
+                      badgeContent={sources.length > 0 ? sources.length : null}
+                      color="primary"
+                      variant="dot"
+                      invisible={sources.length === 0}
+                    >
+                      <ArticleOutlinedIcon fontSize="small" />
+                    </Badge>
+                  </IconButton>
+                </Tooltip>
+              ) : null}
             </Stack>
           </Box>
         </Box>
 
-        {showEvidence ? <EvidenceDrawer items={evidence} /> : null}
+        {showEvidence ? <EvidenceDrawer sources={sources} /> : null}
       </Box>
     </>
   );

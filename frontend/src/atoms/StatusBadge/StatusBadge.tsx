@@ -50,5 +50,14 @@ const labelMap: Record<Status, string> = {
 };
 
 export function StatusBadge({ status }: { status: Status }) {
-  return <Chip size="small" variant="outlined" color={colorMap[status]} label={labelMap[status]} />;
+  const isUnknown = status === "unknown";
+  return (
+    <Chip
+      size="small"
+      variant={isUnknown ? "filled" : "outlined"}
+      color={colorMap[status]}
+      label={labelMap[status]}
+      sx={isUnknown ? { opacity: 0.6, fontStyle: "italic" } : {}}
+    />
+  );
 }
