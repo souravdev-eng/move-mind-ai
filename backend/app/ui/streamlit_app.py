@@ -15,8 +15,8 @@ if PROJECT_ROOT not in sys.path:
 
 load_dotenv()
 
-from app.graphs.agent import build_rag_graph
-from app.graphs.constants import (
+from app.graphs.agent import build_rag_graph  # noqa: E402
+from app.graphs.constants import (  # noqa: E402
     NODE_CLASSIFY_ISSUE,
     NODE_CLASSIFY_QUESTION,
     NODE_GENERATE_ANSWER,
@@ -25,7 +25,7 @@ from app.graphs.constants import (
     NODE_RETRIEVE_DOCS,
     NODE_REWRITE_QUESTION,
 )
-from app.utils.helpers import get_logger
+from app.utils.helpers import get_logger  # noqa: E402
 
 logger = get_logger(__name__)
 
@@ -174,7 +174,9 @@ if prompt := st.chat_input("Ask about a CID, route transition, or failure..."):
 
                 if node_name == NODE_RETRIEVE_DOCS:
                     retrieved_documents = output.get("documents", [])
-                    status.write(f"Retrieved {len(retrieved_documents)} candidate chunks")
+                    status.write(
+                        f"Retrieved {len(retrieved_documents)} candidate chunks"
+                    )
 
                 elif node_name == NODE_RERANK_DOCS:
                     reranked_documents = output.get("reranked_documents", [])
@@ -187,7 +189,9 @@ if prompt := st.chat_input("Ask about a CID, route transition, or failure..."):
                     classification = {
                         "issue_type": output.get("issue_type"),
                         "issue_confidence": output.get("issue_confidence"),
-                        "issue_classification_reason": output.get("issue_classification_reason"),
+                        "issue_classification_reason": output.get(
+                            "issue_classification_reason"
+                        ),
                     }
 
         status.update(label="Done", state="complete", expanded=False)
@@ -195,7 +199,9 @@ if prompt := st.chat_input("Ask about a CID, route transition, or failure..."):
 
         # Show classification inline below the answer
         if classification.get("issue_type"):
-            label, _ = _ISSUE_BADGE.get(classification["issue_type"], ("⚪ Unknown", "info"))
+            label, _ = _ISSUE_BADGE.get(
+                classification["issue_type"], ("⚪ Unknown", "info")
+            )
             confidence = classification.get("issue_confidence", 0)
             reason = classification.get("issue_classification_reason", "")
             st.markdown(

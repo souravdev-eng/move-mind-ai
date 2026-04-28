@@ -88,7 +88,10 @@ def main() -> int:
         for langsmith_ex, local_ex in to_update:
             client.update_example(
                 example_id=langsmith_ex.id,
-                outputs={**langsmith_ex.outputs, "answer": local_ex.get("ground_truth", "")},
+                outputs={
+                    **langsmith_ex.outputs,
+                    "answer": local_ex.get("ground_truth", ""),
+                },
             )
         print(f"Updated {len(to_update)} existing examples with ground_truth answer.")
     else:

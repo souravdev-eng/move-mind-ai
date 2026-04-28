@@ -13,6 +13,7 @@ logger = get_logger(__name__)
 # Custom metrics — grounded in our golden dataset schema
 # ---------------------------------------------------------------------------
 
+
 def keyword_hit_rate(answer: str, expected_keywords: list[str]) -> float:
     """
     Fraction of expected business keywords found in the answer (case-insensitive).
@@ -45,7 +46,9 @@ def compute_custom_metrics(results: list[dict[str, Any]]) -> list[dict[str, Any]
     """Add keyword_hit_rate and jargon_leak_rate to each result in-place."""
     for r in results:
         r["keyword_hit_rate"] = keyword_hit_rate(r["answer"], r["expected_keywords"])
-        r["jargon_leak_rate"] = jargon_leak_rate(r["answer"], r["expected_not_contains"])
+        r["jargon_leak_rate"] = jargon_leak_rate(
+            r["answer"], r["expected_not_contains"]
+        )
         # Flag individual keyword misses and jargon leaks for easy review
         answer_lower = r["answer"].lower()
         r["missed_keywords"] = [
@@ -60,6 +63,7 @@ def compute_custom_metrics(results: list[dict[str, Any]]) -> list[dict[str, Any]
 # ---------------------------------------------------------------------------
 # Ragas metrics — faithfulness + answer relevancy
 # ---------------------------------------------------------------------------
+
 
 def compute_ragas_metrics(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """
@@ -100,7 +104,9 @@ def compute_ragas_metrics(results: list[dict[str, Any]]) -> list[dict[str, Any]]
             SingleTurnSample(
                 user_input=r["question"],
                 response=r["answer"],
-                retrieved_contexts=r["contexts"] if r["contexts"] else ["no context retrieved"],
+                retrieved_contexts=r["contexts"]
+                if r["contexts"]
+                else ["no context retrieved"],
             )
             for r in results
         ]
@@ -125,8 +131,16 @@ def compute_ragas_metrics(results: list[dict[str, Any]]) -> list[dict[str, Any]]
                 return None
 
         for i, r in enumerate(results):
-            r["faithfulness"] = _safe(df.loc[i, "faithfulness"]) if "faithfulness" in df.columns else None
-            r["answer_relevancy"] = _safe(df.loc[i, "answer_relevancy"]) if "answer_relevancy" in df.columns else None
+            r["faithfulness"] = (
+                _safe(df.loc[i, "faithfulness"])
+                if "faithfulness" in df.columns
+                else None
+            )
+            r["answer_relevancy"] = (
+                _safe(df.loc[i, "answer_relevancy"])
+                if "answer_relevancy" in df.columns
+                else None
+            )
 
         logger.info("Ragas evaluation complete")
 
@@ -144,10 +158,10 @@ def compute_ragas_metrics(results: list[dict[str, Any]]) -> list[dict[str, Any]]
 # ---------------------------------------------------------------------------
 
 THRESHOLDS = {
-    "keyword_hit_rate":   {"target": 0.80, "label": "≥ 0.80"},
-    "jargon_leak_rate":   {"target": 0.10, "label": "< 0.10", "lower_is_better": True},
-    "faithfulness":       {"target": 0.80, "label": "≥ 0.80"},
-    "answer_relevancy":   {"target": 0.70, "label": "≥ 0.70"},
+    "keyword_hit_rate": {"target": 0.80, "label": "≥ 0.80"},
+    "jargon_leak_rate": {"target": 0.10, "label": "< 0.10", "lower_is_better": True},
+    "faithfulness": {"target": 0.80, "label": "≥ 0.80"},
+    "answer_relevancy": {"target": 0.70, "label": "≥ 0.70"},
 }
 
 

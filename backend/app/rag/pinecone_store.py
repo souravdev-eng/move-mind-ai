@@ -32,7 +32,9 @@ def get_pinecone_client():
     global _pc
     if _pc is None:
         if not settings.PINECONE_API_KEY:
-            raise ValueError("PINECONE_API_KEY is required for Pinecone-backed retrieval.")
+            raise ValueError(
+                "PINECONE_API_KEY is required for Pinecone-backed retrieval."
+            )
 
         from pinecone import Pinecone
 

@@ -52,9 +52,7 @@ def _get(outputs: dict, reference: dict, key: str, default: Any = None) -> Any:
     return (reference or {}).get(key, default)
 
 
-def keyword_hit_evaluator(
-    inputs: dict, outputs: dict, reference_outputs: dict
-) -> dict:
+def keyword_hit_evaluator(inputs: dict, outputs: dict, reference_outputs: dict) -> dict:
     """Fraction of `expected_keywords` present in the answer."""
     answer = (outputs or {}).get("answer", "") or ""
     expected = (reference_outputs or {}).get("expected_keywords", []) or []
@@ -67,9 +65,7 @@ def keyword_hit_evaluator(
     }
 
 
-def jargon_leak_evaluator(
-    inputs: dict, outputs: dict, reference_outputs: dict
-) -> dict:
+def jargon_leak_evaluator(inputs: dict, outputs: dict, reference_outputs: dict) -> dict:
     """Fraction of forbidden jargon terms found in the answer (lower is better)."""
     answer = (outputs or {}).get("answer", "") or ""
     forbidden = (reference_outputs or {}).get("expected_not_contains", []) or []
@@ -106,7 +102,11 @@ def groundedness_evaluator(
 
     match = _JSON_BLOCK.search(raw if isinstance(raw, str) else str(raw))
     if not match:
-        return {"key": "groundedness", "score": 0.0, "comment": f"unparseable: {raw[:120]}"}
+        return {
+            "key": "groundedness",
+            "score": 0.0,
+            "comment": f"unparseable: {raw[:120]}",
+        }
 
     try:
         data = json.loads(match.group())

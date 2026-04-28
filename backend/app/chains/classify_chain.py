@@ -33,6 +33,7 @@ CLASSIFY_PROMPT = ChatPromptTemplate.from_messages(
     ]
 )
 
+
 def get_classify_chain():
     """Return the fast classifier chain."""
     return CLASSIFY_PROMPT | get_llm("fast") | StrOutputParser()

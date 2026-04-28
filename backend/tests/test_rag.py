@@ -10,6 +10,7 @@ def test_load_processed_chunks():
     chunks_path = Path("data/processed/cms3_log_chunks.json")
     if not chunks_path.exists():
         import pytest
+
         pytest.skip("Processed chunks file not present — run ingestion first")
 
     docs = load_processed_chunks(chunks_path)

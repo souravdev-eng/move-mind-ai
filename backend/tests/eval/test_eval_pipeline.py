@@ -6,7 +6,6 @@ Usage:
     pytest tests/eval/ -v -s -m integration                # same, explicit mark
 """
 
-import json
 from pathlib import Path
 
 import pytest
@@ -15,10 +14,10 @@ GOLDEN_DATASET_PATH = Path("data/eval/golden_dataset.json")
 RESULTS_OUTPUT_PATH = Path("data/eval/baseline_results.json")
 
 THRESHOLDS = {
-    "keyword_hit_rate": 0.75,   # ≥ 75% of expected business keywords present
-    "jargon_leak_rate": 0.10,   # < 10% of forbidden technical terms leaked
-    "faithfulness": 0.75,       # ≥ 75% — answer grounded in retrieved context
-    "answer_relevancy": 0.65,   # ≥ 65% — answer is relevant to the question
+    "keyword_hit_rate": 0.75,  # ≥ 75% of expected business keywords present
+    "jargon_leak_rate": 0.10,  # < 10% of forbidden technical terms leaked
+    "faithfulness": 0.75,  # ≥ 75% — answer grounded in retrieved context
+    "answer_relevancy": 0.65,  # ≥ 65% — answer is relevant to the question
 }
 
 
@@ -32,7 +31,9 @@ def test_eval_pipeline_runs_and_meets_thresholds():
     from app.eval.report import generate_report
     from app.eval.runner import run_eval
 
-    assert GOLDEN_DATASET_PATH.exists(), f"Golden dataset not found at {GOLDEN_DATASET_PATH}"
+    assert GOLDEN_DATASET_PATH.exists(), (
+        f"Golden dataset not found at {GOLDEN_DATASET_PATH}"
+    )
 
     # Run all questions through the live graph
     results = run_eval(GOLDEN_DATASET_PATH)
@@ -90,7 +91,6 @@ def test_no_jargon_in_any_single_answer():
 
     if leaky:
         details = "\n".join(
-            f"  [{r['id']}] leaked: {r['leaked_jargon']}"
-            for r in leaky
+            f"  [{r['id']}] leaked: {r['leaked_jargon']}" for r in leaky
         )
         pytest.fail(f"{len(leaky)} answers leaked technical jargon:\n{details}")

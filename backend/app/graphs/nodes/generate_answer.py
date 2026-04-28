@@ -9,7 +9,7 @@ from app.graphs.state import GraphState
 from app.prompts.templates import CMS3_CONTEXT_SCHEMA
 from app.utils.helpers import format_docs, get_logger
 from langsmith import traceable
-    
+
 logger = get_logger(__name__)
 
 
@@ -27,7 +27,9 @@ def _debug_context_summary(state: GraphState) -> str:
     return "\n".join(lines)
 
 
-def _api_clarification_answer(state: GraphState, context_documents: list[dict]) -> str | None:
+def _api_clarification_answer(
+    state: GraphState, context_documents: list[dict]
+) -> str | None:
     """Ask for clarification when the user-provided count conflicts with API interpretation."""
     if state.get("analysis_mode") != "api_calls":
         return None
@@ -82,7 +84,8 @@ def _api_clarification_answer(state: GraphState, context_documents: list[dict]) 
 
     return None
 
-@traceable(name="generate_answer")      
+
+@traceable(name="generate_answer")
 def generate_answer(state: GraphState) -> dict:
     """Generate the final answer from reranked CMS3 evidence and chat history."""
     context_documents = state.get("reranked_documents") or state.get("documents", [])
@@ -108,7 +111,9 @@ def generate_answer(state: GraphState) -> dict:
     # resolved question. Developer prompt still exposes both {question} (raw) and
     # {effective_question} (resolved) separately.
     invoke_kwargs = {
-        "question": effective_question if explanation_mode == "manager" else original_question,
+        "question": effective_question
+        if explanation_mode == "manager"
+        else original_question,
         "effective_question": effective_question,
         "debug_context": _debug_context_summary(state),
         "context": context,

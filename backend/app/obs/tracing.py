@@ -46,7 +46,11 @@ def attach_span_metadata(meta: dict) -> None:
 
 def _tracing_enabled() -> bool:
     """Tracing is enabled when the env var is truthy AND an API key exists."""
-    env_flag = os.environ.get("LANGCHAIN_TRACING_V2", "").lower() in {"1", "true", "yes"}
+    env_flag = os.environ.get("LANGCHAIN_TRACING_V2", "").lower() in {
+        "1",
+        "true",
+        "yes",
+    }
     return env_flag and bool(settings.LANGCHAIN_API_KEY)
 
 
