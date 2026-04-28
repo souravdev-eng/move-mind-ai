@@ -54,12 +54,12 @@ jobs:
 
       - name: Validate commits
         run: |
-          pnpm --prefix frontend exec commitlint \
-            --config ../commitlint.config.cjs \
+          pnpm exec commitlint \
+            --config commitlint.config.cjs \
             --from ${{ github.event.pull_request.base.sha }} \
             --to ${{ github.event.pull_request.head.sha }} \
             --verbose
-        working-directory: ${{ github.workspace }}
+        working-directory: frontend
 
   branch-name:
     name: Branch name convention
