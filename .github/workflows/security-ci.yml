@@ -2,9 +2,9 @@ name: security-ci
 
 on:
   push:
-    branches: [main]
+    branches: [main, dev]
   pull_request:
-    branches: [main]
+    branches: [main, dev]
 
 permissions:
   contents: read
@@ -54,12 +54,12 @@ jobs:
 
       - name: Validate commits
         run: |
-          pnpm --prefix frontend exec commitlint \
+          pnpm exec commitlint \
             --config commitlint.config.cjs \
             --from ${{ github.event.pull_request.base.sha }} \
             --to ${{ github.event.pull_request.head.sha }} \
             --verbose
-        working-directory: ${{ github.workspace }}
+        working-directory: frontend
 
   branch-name:
     name: Branch name convention

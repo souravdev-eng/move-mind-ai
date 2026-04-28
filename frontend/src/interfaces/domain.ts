@@ -211,3 +211,82 @@ export interface Member {
   role: "admin" | "owner" | "member" | "viewer";
   joinedAtIso: string;
 }
+
+// ── SSE streaming types (matches backend app/api/routes/chat.py) ──────────
+
+export type AgentNodeName =
+  | "classify_question"
+  | "rewrite_question"
+  | "resolve_context"
+  | "retrieve_docs"
+  | "rerank_docs"
+  | "generate_answer"
+  | "classify_issue";
+
+export type NodeStatus = "running" | "done";
+
+export interface SourceDocumentDTO {
+  content: string;
+  chunk_type: string;
+  customer_id: string;
+  execution_id: string;
+  journey_id: string;
+  page_path: string;
+  action: string;
+  step_order: number | null;
+  target: string;
+  decision_result: string | number | boolean | null;
+  status: string;
+  error_code: string;
+}
+
+export interface SSESessionEvent {
+  type: "session";
+  session_id: string;
+}
+
+export interface SSEStatusEvent {
+  type: "status";
+  node: AgentNodeName;
+}
+
+export interface SSERetrievalEvent {
+  type: "retrieval";
+  retrieved_count: number;
+}
+
+export interface SSERerankEvent {
+  type: "rerank";
+  reranked_count: number;
+}
+
+export interface SSETokenEvent {
+  type: "token";
+  content: string;
+}
+
+export interface SSESourcesEvent {
+  type: "sources";
+  session_id: string;
+  query_type: string | null;
+  effective_question: string | null;
+  retrieved_count: number;
+  reranked_count: number;
+  sources: SourceDocumentDTO[];
+  issue_type: Verdict | null;
+  issue_confidence: number | null;
+  issue_classification_reason: string | null;
+}
+
+export interface SSEDoneEvent {
+  type: "done";
+}
+
+export type SSEEvent =
+  | SSESessionEvent
+  | SSEStatusEvent
+  | SSERetrievalEvent
+  | SSERerankEvent
+  | SSETokenEvent
+  | SSESourcesEvent
+  | SSEDoneEvent;

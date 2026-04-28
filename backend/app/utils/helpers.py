@@ -33,9 +33,7 @@ def normalize_for_checkpoint(value):
     if hasattr(value, "item"):
         return normalize_for_checkpoint(value.item())
     if isinstance(value, dict):
-        return {
-            str(key): normalize_for_checkpoint(item) for key, item in value.items()
-        }
+        return {str(key): normalize_for_checkpoint(item) for key, item in value.items()}
     if isinstance(value, list):
         return [normalize_for_checkpoint(item) for item in value]
     if isinstance(value, tuple):
@@ -66,7 +64,9 @@ def doc_to_dict(doc: Document) -> dict:
 
 def dict_to_doc(data: dict) -> Document:
     """Convert a plain dict back to a Document."""
-    return Document(page_content=data["page_content"], metadata=data.get("metadata", {}))
+    return Document(
+        page_content=data["page_content"], metadata=data.get("metadata", {})
+    )
 
 
 def format_docs(docs: list[dict | Document], separator: str = "\n\n---\n\n") -> str:

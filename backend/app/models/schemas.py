@@ -41,6 +41,6 @@ class ChatResponse(BaseModel):
     reranked_count: int = 0
     sources: list[SourceDocument] = Field(default_factory=list)
     # Issue classification — set after generate_answer
-    issue_type: str | None = None                    # "bug" | "business_condition" | "unknown"
-    issue_confidence: float | None = None            # 0.0 – 1.0
+    issue_type: str | None = None  # "bug" | "business_condition" | "unknown"
+    issue_confidence: float | None = None  # 0.0 – 1.0
     issue_classification_reason: str | None = None  # one plain-English sentence

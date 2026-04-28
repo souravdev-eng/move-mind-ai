@@ -13,7 +13,12 @@ from app.utils.helpers import get_logger
 
 logger = get_logger(__name__)
 
-METRIC_KEYS = ["keyword_hit_rate", "jargon_leak_rate", "faithfulness", "answer_relevancy"]
+METRIC_KEYS = [
+    "keyword_hit_rate",
+    "jargon_leak_rate",
+    "faithfulness",
+    "answer_relevancy",
+]
 
 
 def _avg(values: list[float | None]) -> float | None:
@@ -120,7 +125,8 @@ def _print_summary(
 
     # Failed questions
     failures = [
-        r for r in results
+        r
+        for r in results
         if not passes_threshold("keyword_hit_rate", r.get("keyword_hit_rate"))
         or not passes_threshold("jargon_leak_rate", r.get("jargon_leak_rate"))
     ]

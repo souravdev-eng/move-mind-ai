@@ -52,6 +52,7 @@ def _extract_requested_api_count(question: str) -> int | None:
     match = COUNT_PATTERN.search(question)
     return int(match.group(1)) if match else None
 
+
 @traceable(run_type="llm")
 def resolve_context(state: GraphState) -> dict:
     """Resolve persistent debugging scope such as CID, route, and API intent."""

@@ -98,7 +98,9 @@ def build_scope_filter(
     metadata_filter = {}
     session_context = session_context or {}
 
-    customer_id = extract_customer_id(question) or session_context.get("active_customer_id")
+    customer_id = extract_customer_id(question) or session_context.get(
+        "active_customer_id"
+    )
     page_path = extract_page_path(question) or session_context.get("active_page_path")
 
     if not customer_id:

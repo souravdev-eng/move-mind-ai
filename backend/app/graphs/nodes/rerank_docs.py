@@ -19,7 +19,9 @@ def rerank_docs(state: GraphState) -> dict:
         item.get("metadata", {}).get("chunk_type") == "api_timeline_summary"
         for item in input_documents
     ):
-        logger.info("[rerank] structured API timeline query, preserving ordered context")
+        logger.info(
+            "[rerank] structured API timeline query, preserving ordered context"
+        )
         attach_span_metadata(
             {
                 "num_input": len(input_documents),

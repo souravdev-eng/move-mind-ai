@@ -1,9 +1,8 @@
 import { useState } from "react";
 
 import { useActiveProject } from "@/hooks/useActiveProject";
-import { useSimulatedStream } from "@/hooks/useSimulatedStream";
+import { useChatStream } from "@/hooks/useChatStream";
 import { type ExplanationMode } from "@/interfaces/domain";
-import { cannedEvidence } from "@/mocks";
 
 export function useInvestigatePage() {
   const project = useActiveProject();
@@ -11,7 +10,20 @@ export function useInvestigatePage() {
   const [mode, setMode] = useState<ExplanationMode>("manager");
   const [correlationKey, setCorrelationKey] = useState("");
   const [timeWindow, setTimeWindow] = useState("24h");
-  const { messages, streaming, submit, reset } = useSimulatedStream();
+
+  const {
+    messages,
+    streaming,
+    error,
+    pipeline,
+    sources,
+    issueType,
+    issueConfidence,
+    issueReason,
+    hasMessages,
+    submit,
+    reset,
+  } = useChatStream();
 
   function onSubmit(e: { preventDefault: () => void }) {
     e.preventDefault();
@@ -19,7 +31,7 @@ export function useInvestigatePage() {
     if (!q || streaming) {
       return;
     }
-    submit(q);
+    void submit(q);
     setInput("");
   }
 
@@ -35,9 +47,14 @@ export function useInvestigatePage() {
     setTimeWindow,
     messages,
     streaming,
+    error,
+    pipeline,
+    sources,
+    issueType,
+    issueConfidence,
+    issueReason,
     reset,
     onSubmit,
-    hasMessages: messages.length > 0,
-    evidence: cannedEvidence,
+    hasMessages,
   };
 }

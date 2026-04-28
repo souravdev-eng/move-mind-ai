@@ -16,13 +16,18 @@ def test_full_pipeline_cid_question():
     config = {"configurable": {"thread_id": "smoke-test-001"}}
 
     result = graph.invoke(
-        {"question": "What happened to CID 7093495?", "original_question": "What happened to CID 7093495?"},
+        {
+            "question": "What happened to CID 7093495?",
+            "original_question": "What happened to CID 7093495?",
+        },
         config=config,
     )
 
     assert result.get("answer"), "Expected a non-empty answer"
     assert len(result["answer"]) > 50, "Answer too short — likely a failure response"
-    assert result.get("documents") or result.get("reranked_documents"), "Expected retrieved documents"
+    assert result.get("documents") or result.get("reranked_documents"), (
+        "Expected retrieved documents"
+    )
 
     print("\n--- ANSWER ---")
     print(result["answer"])
@@ -42,13 +47,19 @@ def test_full_pipeline_followup_question():
 
     # Turn 1 — establish context
     graph.invoke(
-        {"question": "What happened to CID 7093495?", "original_question": "What happened to CID 7093495?"},
+        {
+            "question": "What happened to CID 7093495?",
+            "original_question": "What happened to CID 7093495?",
+        },
         config=config,
     )
 
     # Turn 2 — follow-up without repeating CID
     result = graph.invoke(
-        {"question": "Why did the journey stop there?", "original_question": "Why did the journey stop there?"},
+        {
+            "question": "Why did the journey stop there?",
+            "original_question": "Why did the journey stop there?",
+        },
         config=config,
     )
 

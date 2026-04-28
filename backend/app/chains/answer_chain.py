@@ -13,6 +13,12 @@ def get_answer_chain(question: str | None = None, explanation_mode: str = "manag
         "manager"   — plain English prompt for non-technical manager (default)
         "developer" — technical prompt for developer Jira ticket (Week 2)
     """
-    prompt = DEVELOPER_ANSWER_PROMPT if explanation_mode == "developer" else MANAGER_ANSWER_PROMPT
-    model_preset = "thinking" if question and question_needs_reasoning(question) else "smart"
+    prompt = (
+        DEVELOPER_ANSWER_PROMPT
+        if explanation_mode == "developer"
+        else MANAGER_ANSWER_PROMPT
+    )
+    model_preset = (
+        "thinking" if question and question_needs_reasoning(question) else "smart"
+    )
     return prompt | get_llm(model_preset, streaming=True) | StrOutputParser()

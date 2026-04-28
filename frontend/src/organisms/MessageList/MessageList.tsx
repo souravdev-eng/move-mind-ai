@@ -1,27 +1,60 @@
-import { Box, CircularProgress, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 
 import { StatusBadge } from "@/atoms/StatusBadge";
+import { type PipelineNode } from "@/hooks/useChatStream";
 import { type ChatMessage } from "@/interfaces/domain";
+import { AgentPipeline } from "@/molecules/AgentPipeline";
 import { ToolCallBlock } from "@/molecules/ToolCallBlock";
 
 interface Props {
   messages: ChatMessage[];
   streaming: boolean;
+  pipeline?: PipelineNode[];
 }
 
-export function MessageList({ messages, streaming }: Props) {
+export function MessageList({ messages, streaming: _streaming, pipeline = [] }: Props) {
+  void _streaming; // kept in interface for API compat; pipeline replaces spinner
+
+  // Find the index after the last user message — that's where the pipeline goes
+  const pipelineInsertIdx = (() => {
+    for (let i = messages.length - 1; i >= 0; i--) {
+      if (messages.at(i)?.role === "user") return i + 1;
+    }
+    return -1;
+  })();
+
   return (
     <Stack spacing={2} sx={{ py: 2 }}>
-      {messages.map((m) => (
-        <MessageBubble key={m.id} message={m} />
+      {messages.map((m, idx) => (
+        <MessageBubbleWithPipeline
+          key={m.id}
+          message={m}
+          showPipeline={idx === pipelineInsertIdx && pipeline.length > 0}
+          pipeline={pipeline}
+        />
       ))}
-      {streaming ? (
-        <Stack direction="row" alignItems="center" spacing={1} color="text.secondary">
-          <CircularProgress size={14} />
-          <Typography variant="caption">Agent is thinking…</Typography>
-        </Stack>
+      {/* If pipeline exists but no assistant message yet, show it after all messages */}
+      {pipelineInsertIdx === messages.length && pipeline.length > 0 ? (
+        <AgentPipeline nodes={pipeline} />
       ) : null}
     </Stack>
+  );
+}
+
+function MessageBubbleWithPipeline({
+  message,
+  showPipeline,
+  pipeline,
+}: {
+  message: ChatMessage;
+  showPipeline: boolean;
+  pipeline: PipelineNode[];
+}) {
+  return (
+    <>
+      {showPipeline ? <AgentPipeline nodes={pipeline} /> : null}
+      <MessageBubble message={message} />
+    </>
   );
 }
 

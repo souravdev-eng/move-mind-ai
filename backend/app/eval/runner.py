@@ -60,7 +60,10 @@ def run_eval(dataset_path: str | Path) -> list[dict[str, Any]]:
 
         if category == "multi_turn" and item.get("prior_question"):
             # Warm up the session with the prior question first
-            logger.info("  → priming session with prior question: %s", item["prior_question"][:60])
+            logger.info(
+                "  → priming session with prior question: %s",
+                item["prior_question"][:60],
+            )
             _invoke(graph, item["prior_question"], session_id, qid=f"{qid}-prime")
 
         result = _invoke(graph, question, session_id, qid=qid)
@@ -70,19 +73,21 @@ def run_eval(dataset_path: str | Path) -> list[dict[str, Any]]:
             for doc in (result.get("reranked_documents") or result.get("documents", []))
         ]
 
-        results.append({
-            "id": qid,
-            "category": category,
-            "question": question,
-            "answer": result.get("answer", ""),
-            "contexts": contexts,
-            "query_type": result.get("query_type", ""),
-            "active_customer_id": result.get("active_customer_id", ""),
-            # Golden dataset fields for metric computation
-            "expected_keywords": item.get("expected_keywords", []),
-            "expected_not_contains": item.get("expected_not_contains", []),
-            "notes": item.get("notes", ""),
-        })
+        results.append(
+            {
+                "id": qid,
+                "category": category,
+                "question": question,
+                "answer": result.get("answer", ""),
+                "contexts": contexts,
+                "query_type": result.get("query_type", ""),
+                "active_customer_id": result.get("active_customer_id", ""),
+                # Golden dataset fields for metric computation
+                "expected_keywords": item.get("expected_keywords", []),
+                "expected_not_contains": item.get("expected_not_contains", []),
+                "notes": item.get("notes", ""),
+            }
+        )
 
     logger.info("Runner complete — %d results collected", len(results))
     return results

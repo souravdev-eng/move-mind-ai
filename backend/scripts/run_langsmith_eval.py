@@ -95,7 +95,9 @@ def main() -> int:
     )
 
     print("Experiment complete.")
-    print(f"  View in LangSmith: {getattr(results, 'experiment_name', experiment_prefix)}")
+    print(
+        f"  View in LangSmith: {getattr(results, 'experiment_name', experiment_prefix)}"
+    )
     return 0
 
 

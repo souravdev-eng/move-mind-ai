@@ -33,10 +33,10 @@ DEFAULT_BASELINE = Path("data/eval/baseline_results.json")
 
 # Metrics to gate on. `lower_is_better` flips which direction counts as bad.
 GATE_CONFIG: dict[str, dict[str, Any]] = {
-    "faithfulness":      {"max_drift": 0.03, "lower_is_better": False},
-    "answer_relevancy":  {"max_drift": 0.03, "lower_is_better": False},
-    "keyword_hit_rate":  {"max_drift": 0.03, "lower_is_better": False},
-    "jargon_leak_rate":  {"max_drift": 0.02, "lower_is_better": True},
+    "faithfulness": {"max_drift": 0.03, "lower_is_better": False},
+    "answer_relevancy": {"max_drift": 0.03, "lower_is_better": False},
+    "keyword_hit_rate": {"max_drift": 0.03, "lower_is_better": False},
+    "jargon_leak_rate": {"max_drift": 0.02, "lower_is_better": True},
 }
 
 
@@ -127,7 +127,7 @@ def main() -> int:
         "--update-baseline",
         action="store_true",
         help="Overwrite baseline with current after printing the diff. "
-             "Use only with an explicit commit justifying the move.",
+        "Use only with an explicit commit justifying the move.",
     )
     args = parser.parse_args()
 
