@@ -1,15 +1,7 @@
 import { useState } from "react";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import {
-  Badge,
-  Box,
-  Chip,
-  Collapse,
-  IconButton,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Badge, Box, Chip, Collapse, IconButton, Stack, Typography } from "@mui/material";
 
 import { type SourceDocumentDTO } from "@/interfaces/domain";
 
@@ -105,7 +97,12 @@ function EvidenceCard({ source: src }: { source: SourceDocumentDTO }) {
         </IconButton>
         <Stack direction="row" spacing={0.5} flexWrap="wrap" alignItems="center" flex={1}>
           {src.chunk_type ? (
-            <Chip label={src.chunk_type} size="small" variant="outlined" sx={{ height: 18, fontSize: 10 }} />
+            <Chip
+              label={src.chunk_type}
+              size="small"
+              variant="outlined"
+              sx={{ height: 18, fontSize: 10 }}
+            />
           ) : null}
           {src.status ? (
             <Chip

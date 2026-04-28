@@ -40,9 +40,7 @@ describe("MessageList", () => {
   });
 
   it("renders pipeline nodes when provided", () => {
-    const pipeline = [
-      { name: "retrieve_docs" as const, status: "running" as const },
-    ];
+    const pipeline = [{ name: "retrieve_docs" as const, status: "running" as const }];
     const userOnly: ChatMessage[] = [MESSAGES[0]!];
     render(<MessageList messages={userOnly} streaming pipeline={pipeline} />);
     expect(screen.getAllByText(/retrieving/i).length).toBeGreaterThan(0);
