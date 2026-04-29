@@ -6,11 +6,13 @@ import json
 import time
 import uuid
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from fastapi.responses import StreamingResponse
 from langchain_core.callbacks.usage import get_usage_metadata_callback
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.dependencies import get_rag_graph
+from app.db.session import get_async_session
 from app.graphs.constants import (
     NODE_CLASSIFY_ISSUE,
     NODE_CLASSIFY_QUESTION,
@@ -21,6 +23,11 @@ from app.graphs.constants import (
     NODE_REWRITE_QUESTION,
 )
 from app.models.schemas import ChatRequest, ChatResponse, SourceDocument
+from app.services.message_persistence import (
+    get_or_create_conversation,
+    save_message,
+    update_conversation_title,
+)
 from app.obs.tracing import (
     build_run_config,
     enrich_run_from_stream,
@@ -72,16 +79,27 @@ def _docs_to_sources(documents: list[dict]) -> list[SourceDocument]:
 
 
 @router.post("/chat", response_model=ChatResponse)
-async def chat(request: ChatRequest):
+async def chat(
+    request: ChatRequest,
+    session: AsyncSession = Depends(get_async_session),
+):
     """Run the CMS3 debugging graph and return the answer plus evidence."""
     explanation_mode = "manager"
     config, thread_id, run_id = _run_config(
         request.session_id, request.message, explanation_mode
     )
 
+    # Get or create conversation, set title from first message
+    conversation = await get_or_create_conversation(
+        session, thread_id, title=request.message[:100] if not request.session_id else None
+    )
+
+    # Save human message
+    await save_message(session, str(conversation.id), "human", request.message)
+
     if request.stream:
         return StreamingResponse(
-            _stream_response(request.message, config, thread_id, run_id),
+            _stream_response(request.message, config, thread_id, run_id, str(conversation.id), session),
             media_type="text/event-stream",
         )
 
@@ -96,6 +114,24 @@ async def chat(request: ChatRequest):
     documents = result.get("documents", [])
     reranked_documents = result.get("reranked_documents", [])
     source_documents = reranked_documents or documents
+
+    # Save AI message with sources and metadata
+    await save_message(
+        session,
+        str(conversation.id),
+        "ai",
+        result["answer"],
+        sources=[doc.model_dump() for doc in _docs_to_sources(source_documents)],
+        agent_metadata={
+            "query_type": result.get("query_type"),
+            "effective_question": result.get("question"),
+            "retrieved_count": len(documents),
+            "reranked_count": len(reranked_documents),
+            "issue_type": result.get("issue_type"),
+            "issue_confidence": result.get("issue_confidence"),
+            "issue_classification_reason": result.get("issue_classification_reason"),
+        },
+    )
 
     return ChatResponse(
         answer=result["answer"],
@@ -122,7 +158,14 @@ _STATUS_NODES = {
 }
 
 
-async def _stream_response(question: str, config: dict, thread_id: str, run_id: str):
+async def _stream_response(
+    question: str,
+    config: dict,
+    thread_id: str,
+    run_id: str,
+    conversation_id: str,
+    db_session: AsyncSession,
+):
     """SSE generator with node statuses, streamed answer tokens, and final evidence."""
     graph = get_rag_graph()
     documents: list[dict] = []
@@ -220,7 +263,24 @@ async def _stream_response(question: str, config: dict, thread_id: str, run_id: 
     if final_answer and not emitted_token:
         yield f"data: {json.dumps({'type': 'token', 'content': final_answer})}\n\n"
 
+    # Save AI message to database
     sources = _docs_to_sources(reranked_documents or documents)
+    await save_message(
+        db_session,
+        conversation_id,
+        "ai",
+        final_answer,
+        sources=[source.model_dump() for source in sources],
+        agent_metadata={
+            "query_type": query_type,
+            "effective_question": effective_question,
+            "retrieved_count": len(documents),
+            "reranked_count": len(reranked_documents),
+            "issue_type": issue_type,
+            "issue_confidence": issue_confidence,
+            "issue_classification_reason": issue_classification_reason,
+        },
+    )
     yield (
         "data: "
         + json.dumps(

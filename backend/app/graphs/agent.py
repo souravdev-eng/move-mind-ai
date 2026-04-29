@@ -1,6 +1,8 @@
 """LangGraph agent for the CMS3 log-debugging assistant."""
 
-from langgraph.checkpoint.memory import MemorySaver
+from __future__ import annotations
+
+from langgraph.checkpoint.base import BaseCheckpointSaver
 from langgraph.graph import END, StateGraph
 
 from app.graphs.constants import (
@@ -31,8 +33,8 @@ def route_after_classify(state: GraphState) -> str:
     return state["query_type"]
 
 
-def build_rag_graph():
-    """Construct and compile the CMS3 debugging graph with thread memory."""
+def build_rag_graph(checkpointer: BaseCheckpointSaver | None = None):
+    """Construct and compile the CMS3 debugging graph with durable checkpoints."""
     workflow = StateGraph(GraphState)
     workflow.add_node(NODE_CLASSIFY_QUESTION, classify_question)
     workflow.add_node(NODE_REWRITE_QUESTION, rewrite_question)
@@ -58,6 +60,5 @@ def build_rag_graph():
     workflow.add_edge(NODE_GENERATE_ANSWER, NODE_CLASSIFY_ISSUE)
     workflow.add_edge(NODE_CLASSIFY_ISSUE, END)
 
-    compiled_workflow = workflow.compile(checkpointer=MemorySaver())
-    compiled_workflow.get_graph().draw_mermaid_png(output_file_path="graph.png")
+    compiled_workflow = workflow.compile(checkpointer=checkpointer)
     return compiled_workflow

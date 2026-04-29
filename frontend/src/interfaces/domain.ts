@@ -290,3 +290,29 @@ export type SSEEvent =
   | SSETokenEvent
   | SSESourcesEvent
   | SSEDoneEvent;
+
+// ── Backend conversation/message types (from app/models/conversation_schemas.py) ─────────────
+
+export interface BackendConversation {
+  id: string;
+  session_id: string;
+  title: string | null;
+  meta: Record<string, unknown> | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface BackendMessage {
+  id: string;
+  conversation_id: string;
+  role: "human" | "ai";
+  content: string;
+  sources: Record<string, unknown> | null;
+  agent_metadata: Record<string, unknown> | null;
+  attachments: Record<string, unknown> | null;
+  created_at: string;
+}
+
+export interface BackendConversationWithMessages extends BackendConversation {
+  messages: BackendMessage[];
+}

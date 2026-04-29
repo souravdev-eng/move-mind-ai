@@ -48,6 +48,11 @@ class Settings(BaseSettings):
     RERANK_TOP_N: int = 5
     FLASHRANK_MODEL_NAME: str = "ms-marco-TinyBERT-L-2-v2"
 
+    # Database & cache
+    DATABASE_URL: str = "postgresql://movemind:movemind@localhost:5432/movemind"  # For psycopg (psycopg3)
+    DATABASE_ASYNC_URL: str = "postgresql+psycopg://movemind:movemind@localhost:5432/movemind"  # For SQLAlchemy async
+    REDIS_URL: str = "redis://localhost:6379/0"
+
     LANGCHAIN_TRACING_V2: bool = False
     LANGCHAIN_API_KEY: str | None = None
     LANGCHAIN_PROJECT: str = "move-mind-ai"

@@ -5,8 +5,8 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.dependencies import init_rag_graph
-from app.api.routes import chat, health
+from app.api.dependencies import init_rag_graph, shutdown_rag_graph
+from app.api.routes import chat, conversations, health
 from app.utils.helpers import get_logger
 
 logger = get_logger(__name__)
@@ -14,12 +14,14 @@ logger = get_logger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Startup: load the RAG chain once. Shutdown: clean up."""
-    logger.info("Starting up — loading LangGraph RAG graph...")
-    init_rag_graph()
+    """Startup: open Postgres pool + compile graph. Shutdown: close pool."""
+    logger.info("Starting up — initialising Postgres + LangGraph RAG graph...")
+    await init_rag_graph()
     logger.info("LangGraph RAG graph loaded. API is ready.")
     yield
-    logger.info("Shutting down.")
+    logger.info("Shutting down — closing Postgres pool...")
+    await shutdown_rag_graph()
+    logger.info("Shutdown complete.")
 
 
 def create_app() -> FastAPI:
@@ -42,6 +44,7 @@ def create_app() -> FastAPI:
 
     app.include_router(health.router, tags=["health"])
     app.include_router(chat.router, prefix="/api/v1", tags=["chat"])
+    app.include_router(conversations.router, prefix="/api/v1", tags=["conversations"])
 
     return app
 

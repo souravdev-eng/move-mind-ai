@@ -14,10 +14,10 @@ import {
   Typography,
 } from "@mui/material";
 
+import { ConversationSidebar } from "@/molecules/ConversationSidebar";
 import { PageHeader } from "@/molecules/PageHeader";
 import { EvidenceDrawer } from "@/organisms/EvidenceDrawer";
 import { MessageList } from "@/organisms/MessageList";
-import { ScopePanel } from "@/organisms/ScopePanel";
 
 import { useInvestigatePage } from "./InvestigatePage.hook";
 
@@ -32,12 +32,6 @@ export function InvestigatePage() {
     project,
     input,
     setInput,
-    mode,
-    setMode,
-    correlationKey,
-    setCorrelationKey,
-    timeWindow,
-    setTimeWindow,
     messages,
     streaming,
     error,
@@ -46,6 +40,10 @@ export function InvestigatePage() {
     reset,
     onSubmit,
     hasMessages,
+    handleSelectConversation,
+    handleNewConversation,
+    sessionId,
+    refreshTrigger,
   } = useInvestigatePage();
   const [evidenceOpen, setEvidenceOpen] = useState(true);
   const showEvidence = hasMessages && evidenceOpen;
@@ -80,7 +78,7 @@ export function InvestigatePage() {
           display: "grid",
           gridTemplateColumns: {
             xs: "1fr",
-            md: showEvidence ? "240px 1fr 360px" : "240px 1fr",
+            md: showEvidence ? "280px 1fr 360px" : "280px 1fr",
           },
           gap: 0,
           border: 1,
@@ -90,13 +88,11 @@ export function InvestigatePage() {
           bgcolor: "background.default",
         }}
       >
-        <ScopePanel
-          mode={mode}
-          onModeChange={setMode}
-          correlationKey={correlationKey}
-          onCorrelationKeyChange={setCorrelationKey}
-          timeWindow={timeWindow}
-          onTimeWindowChange={setTimeWindow}
+        <ConversationSidebar
+          currentSessionId={sessionId}
+          onSelectConversation={handleSelectConversation}
+          onNewConversation={handleNewConversation}
+          refreshTrigger={refreshTrigger}
         />
 
         <Box sx={{ display: "flex", flexDirection: "column", minHeight: 0 }}>

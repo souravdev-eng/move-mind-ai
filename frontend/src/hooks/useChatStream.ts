@@ -58,6 +58,14 @@ export function useChatStream() {
     setState(INITIAL_STATE);
   }, [cancel]);
 
+  const setSessionId = useCallback((sessionId: string | null) => {
+    setState((prev) => ({ ...prev, sessionId }));
+  }, []);
+
+  const setMessages = useCallback((messages: ChatMessage[]) => {
+    setState((prev) => ({ ...prev, messages }));
+  }, []);
+
   const submit = useCallback(
     async (question: string) => {
       cancel();
@@ -210,6 +218,8 @@ export function useChatStream() {
     submit,
     reset,
     cancel,
+    setSessionId,
+    setMessages,
     hasMessages: state.messages.length > 0,
   };
 }
